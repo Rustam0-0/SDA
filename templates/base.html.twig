@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Saveurs d'Armenie{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/vnd.microsoft.icon"
+          href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.ico">
+    <link rel="shortcut icon" type="image/png"
+          href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.png">
+    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> #}
+    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.css" rel="stylesheet"
+          type="text/css">
+
+    {# pour js-mobile-catalog-toggle #}
+    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/base.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.css" rel="stylesheet"
+          type="text/css">
+    {#    ////////////////////// #}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="/assets/style.css" type="text/css" rel="stylesheet">
+
+    <script src="https://cdn.tiny.cloud/1/f7nrvb0b2s521028a10roouemfhy288eiu43bb2vnnrcqelq/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+    <script>tinymce.init({
+            selector: 'textarea',
+            menubar: true,
+            plugins: 'code',
+            plugins: 'lists',
+            toolbar: 'numlist bullist'
+        });</script>
+</head>
+<body>
+<header class="main-header">
+    <div class="top-header">
+        <div class="container">
+            <a href="" class="mobile-catalog-toggle js-mobile-catalog-toggle">
+                <i class="fa fa-bars"></i>
+                Catalogue
+            </a>
+            <ul class="top-menu clear-list">
+                <li>
+                    <a href="" title="Blog">Blog</a>
+                </li>
+                <li>
+                    <a href="" title="Contacts">Contacts</a>
+                </li>
+            </ul>
+            <ul class="social clear-list">
+                <li>
+                    <a href="https://www.instagram.com/saveursdarmenie/">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/nazelie.hunanyan">
+                        <i class="fa-brands fa-facebook">
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="container">
+            <a href="" class="logo" title="Saveurs d'Armenie">
+                {#                <i class="icon icon-logo"></i> #}
+                Saveurs d'Armenie
+            </a>
+            <div class="phone">
+                <i class="icon-phone icon"></i>
+                <a href="tel:0617336170" class="tel">0617336170</a>
+            </div>
+        </div>
+    </div>
+    <div class="catalog d-none d-lg-block">
+        <div class="container">
+            {#            <div class="row flex-center"> #}
+            <ul class="main-menu">
+                {% for category in categories %}
+                    <li class="separator"></li>
+                    <li class="level-1">
+                        <a href="">
+                            {{ category.name }}
+                        </a>
+                        <ul class="level-2">
+                            {% for subcat in category.subcats %}
+                                <li class="" data-handle="">
+                                    <a title="{{ subcat.name }}" href="" class="menu-link">
+                                        <span class="link-text">{{ subcat.name }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+            {#            </div> #}
+        </div>
+    </div>
+</header>
+
+{#    {{ dump(app.user) }} #}
+
+{% block body %}{% endblock %}
+
+<footer>
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 foot-logo">
+                <a href="" title="">
+                    <i class="icon icon-logo"></i>
+                </a>
+                <div class="copy">
+                    <p><span>SAS "Saveurs d'Armenie", 2017<br> Tous les droits sont réservés</span></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-8 col-md-7 col-xs-12 foot-menus">
+                <div class="title">
+                    Catalogue
+                </div>
+                <ul class="clear-list">
+                    {% for category in categories %}
+                        <li>
+                            <a href="" title="{{ category.name }}" class="menu-link">
+                                <span class="link-text">{{ category.name }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {#            <div class="d-lg-block col-sm-1 col-md-1 col-xs-1"></div> #}
+            <div class="col-lg-5 col-md-12 col-xs-12 foot-contacts">
+                <div class="title">
+                    Nos contacts
+                </div>
+                <div class="foot-contacts-inner">
+                    <div class="phone">
+                        <i class="icon-phone icon"></i>
+                        <a href="tel:0617336170" class="tel">0617336170</a>
+                    </div>
+                    <div class="address">
+                        <i class="icon icon-place"></i>
+                        <div class="address-block">
+                            <p>80000, France, <br> Amiens, 219 Av. Louis Blanc</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot-social">
+                    <div class="social-links"><span class="hide-xs">Dans les réseaux sociaux:</span>
+                        <ul class="social clear-list">
+                            <li>
+                                <a href="https://www.instagram.com/saveursdarmenie/">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/nazelie.hunanyan">
+                                    <i class="fa-brands fa-facebook">
+                                    </i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {#                    <div class="insales"> #}
+                    {#                        powered by <a href=""></a> #}
+                    {#                    </div> #}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{# pour js-mobile-catalog-toggle #}
+<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/jquery.min.js"></script>
+<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.js"></script>
+{# ////////////////////////////// #}
+
+<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.js"></script>
+<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.js"></script>
+
+<div id="mobile-menu">
+    <button class="mobile-menu-close js-mobile-catalog-toggle"><span>х</span>Fermer le catalogue</button>
+    {#    <ul class="mobile-menu clear-list menu level-1"> #}
+    {#        {% for category in categories %} #}
+    {#            <li class="separator"></li> #}
+    {#            <li class="mobile-menu-item menu-item level-1 dropdown"> #}
+    {#                <span class="mobile-menu-icon menu-icon level-1"></span> #}
+    {#                    <div class="d-flex justify-content-between"> #}
+    {#                        <a href="" class="mobile-menu-link menu-link level-1"> #}
+    {#                            {{ category.name }} #}
+    {#                        </a> #}
+    {#                        <a class="dropdown-link dropdown-toggle" id="dropdownMenuLink" data-toggle="collapse" #}
+    {#                           aria-expanded="false"> #}
+    {#                            <i class="dropdown-icon ion ion-ios-arrow-down"></i> #}
+    {#                        </a> #}
+    {#                    </div> #}
+    {#                <ul class="collapse" id="collapseExample"> #}
+    {#                    {% for subcat in category.subcats %} #}
+    {#                        <li class="dropdown-item" data-handle=""> #}
+    {#                            <a title="{{ subcat.name }}" href="" class="menu-link"> #}
+    {#                                <span class="link-text" style="color: #080809">{{ subcat.name }}</span> #}
+    {#                            </a> #}
+    {#                        </li> #}
+    {#                    {% endfor %} #}
+    {#                </ul> #}
+    {#            </li> #}
+    {#        {% endfor %} #}
+    {#    </ul> #}
+
+    {#    <ul class="mobile-menu clear-list menu level-1"> #}
+    {#        {% for category in categories %} #}
+    {#            <div class="dropdown"> #}
+    {#                <li data-toggle="dropdown"> #}
+    {#                <li> #}
+    {#                    <a> #}
+    {#                        {{ category.name }} #}
+    {#                    </a> #}
+    {#                        <div class="d-flex justify-content-between"> #}
+    {#                            <a href="" class=""> #}
+    {#                                {{ category.name }} #}
+    {#                            </a> #}
+    {#                            <a class="dropdown-toggle" data-toggle="dropdown"> #}
+    {#                                <i class="dropdown-icon ion ion-ios-arrow-down"></i> #}
+    {#                            </a> #}
+    {#                        </div> #}
+    {#                </li> #}
+    {#                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"> #}
+    {#                    {% for subcat in category.subcats %} #}
+    {#                        <li class="dropdown-item"> #}
+    {#                            <a href="" style="color: #080809"> #}
+    {#                                {{ subcat.name }} #}
+    {#                            </a> #}
+    {#                        </li> #}
+    {#                    {% endfor %} #}
+    {#                </ul> #}
+    {#            </div> #}
+    {#        {% endfor %} #}
+    {#    </ul> #}
+
+    <nav class="navbar">
+        <ul class="mobile-menu clear-list menu level-1 navbar-nav">
+            {% for category in categories %}
+                <div class="dropdown py-3">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" id="dropdownMenuButton" aria-expanded="false"
+                       style="font-size: 20px; text-transform: uppercase;">
+                        {{ category.name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #ffcc00">
+                        {% for subcat in category.subcats %}
+                            <a href="" style="color: #080809; font-size: 20px" class="dropdown-item">
+                                {{ subcat.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    {#    <ul class="collection-mobile-menu mobile-menu list-vertical"> #}
+    {#        <span>х</span>Fermer le catalogue</button> #}
+    {#        {% for category in categories %} #}
+    {#            <li class="dropdown" data-handle=""> #}
+    {#                <div class="d-flex justify-content-between"> #}
+    {#                    <a title="{{ category.name }}" href=""> #}
+    {#                        {{ category.name }} #}
+    {#                    </a> #}
+    {#                    <a class="dropdown-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" #}
+    {#                       aria-expanded="false"> #}
+    {#                        <i class="dropdown-icon ion ion-ios-arrow-down"></i> #}
+    {#                    </a> #}
+    {#                </div> #}
+    {#                <ul class="dropdown-menu submenu" aria-labelledby="dropdownMenuLink"> #}
+    {#                    {% for subcat in category.subcats %} #}
+    {#                        <li class="dropdown-item"> #}
+    {#                            <a title="{{ subcat.name }}" href=""> #}
+    {#                                {{ subcat.name }} #}
+    {#                            </a> #}
+    {#                        </li> #}
+    {#                    {% endfor %} #}
+    {#                </ul> #}
+    {#            </li> #}
+    {#        {% endfor %} #}
+    {#    </ul> #}
+</div>
+<div class="opaco js-mobile-catalog-toggle"></div>
+</body>
+</html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>
+
+{# <script type="text/javascript" src="/assets/script.js"></script> #}
