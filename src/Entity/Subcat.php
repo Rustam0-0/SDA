@@ -2,62 +2,109 @@
 
 namespace App\Entity;
 
+use App\Repository\SubcatRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Subcat
- *
- * @ORM\Table(name="subcat", indexes={@ORM\Index(name="IDX_FD76144112469DE2", columns={"category_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=SubcatRepository::class)
  */
 class Subcat
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="subcats")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="text", type="string", length=5000, nullable=true)
+     * @ORM\Column(type="string", length=5000, nullable=true)
      */
     private $text;
 
-    /**
-     * @var \Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
-     */
-    private $category;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
 
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(?string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
+    }
 }
