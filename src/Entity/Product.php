@@ -52,6 +52,12 @@ class Product
      */
     private $date_update;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Subcat::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $subcat;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +143,18 @@ class Product
     public function setDateUpdate(?\DateTimeInterface $date_update): self
     {
         $this->date_update = $date_update;
+
+        return $this;
+    }
+
+    public function getSubcat(): ?Subcat
+    {
+        return $this->subcat;
+    }
+
+    public function setSubcat(?Subcat $subcat): self
+    {
+        $this->subcat = $subcat;
 
         return $this;
     }
