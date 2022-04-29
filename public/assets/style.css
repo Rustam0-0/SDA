@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
 @charset "UTF-8";
-/* line 10, theme.scss */
+
+.zaebal {
+    padding: 100px !important;
+}
+
 .star-rating-wrapper {
     *zoom: 1;
 }

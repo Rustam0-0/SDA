@@ -81,13 +81,15 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_product_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Product $product, ProductRepository $productRepository, CategoryRepository $repocat): Response
+    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager, ProductRepository $productRepository, CategoryRepository $repocat): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $productRepository->add($product);
+            $product->setDateUpdate(new \DateTime());
+            $entityManager->flush();
+            $this->addFlash('success', 'Produit est edité');
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }
 

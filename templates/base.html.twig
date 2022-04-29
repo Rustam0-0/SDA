@@ -117,8 +117,11 @@
         </div>
     </div>
 </header>
-
 {#    {{ dump(app.user) }} #}
+
+{#{% for flash_success in app.flashes('success') %}#}
+{#    <div class="alert alert-success" role="alert">{{ flash_success }}</div>#}
+{#{% endfor %}#}
 
 {% block body %}{% endblock %}
 

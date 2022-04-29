@@ -3,17 +3,23 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>Product index</h1>
+    {#    <br> #}
+    {#    <br> #}
+    {#    <br> #}
+    {#    <br> #}
+    {#    <br> #}
+    {#    <br> #}
+    {#    <br> #}
 
-    <table class="table">
-        <thead>
+    <div class="container zaebal">
+        {% for flash_success in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">{{ flash_success }}</div>
+        {% endfor %}
+
+        <h1>Product index</h1>
+
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -25,30 +31,31 @@
                 <th>Date_update</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.picture }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.stock }}</td>
-                <td>{{ product.dateAdd ? product.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.dateUpdate ? product.dateUpdate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description | raw }}</td>
+                    <td><img class="img-fluid" width="10%" src="/assets/images/products/{{ product.picture }}"></td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>{{ product.dateAdd ? product.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ product.dateUpdate ? product.dateUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+                        <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
+        <a href="{{ path('app_product_new') }}">Create new</a>
+    </div>
 {% endblock %}

@@ -3,11 +3,25 @@
 {% block title %}Edit Product{% endblock %}
 
 {% block body %}
-    <h1>Edit Product</h1>
+    <div class="container zaebal">
+        <h1>Edit Product</h1>
 
-    {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
+{#        {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}#}
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+{#        <a href="{{ path('app_product_index') }}">back to list</a>#}
 
-    {{ include('product/_delete_form.html.twig') }}
+{#        {{ include('product/_delete_form.html.twig') }}#}
+
+        <img class="img-fluid" width="50%" src="/assets/images/PRODUCTS/{{ product.picture }}">
+
+        {{ include('product/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        <div class="container justify-content-between d-flex flex-wrap py-2">
+            <a class="btn btn-secondary" href="{{ path('app_product_index') }}">Retour</a>
+            <form method="post" action="{{ path('app_product_delete', {'id': product.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
