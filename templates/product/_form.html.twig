@@ -1,4 +1,30 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{#    {{ form_widget(form) }} #}
+{#    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button> #}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+<div class="d-flex flex-wrap py-15">
+    <div class="col-lg-6 col-sm-12 px-5">
+        {{ form_row(form.name) }}
+        {{ form_row(form.subcat) }}
+        {{ form_row(form.picture) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.stock) }}
+    </div>
+    <div class="col-lg-6 col-sm-12 px-5">
+        {{ form_row(form.description) }}
+    </div>
+</div>
+<div class="text-center py-5">
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
 {{ form_end(form) }}
