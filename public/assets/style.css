@@ -2239,16 +2239,16 @@ a {
 }
 
 /* line 1379, theme.scss */
-.header-content:after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 10px;
-    background-image: url(/assets/images/home/header-content.png) center bottom repeat-x;
-    margin-bottom: -10px;
-    position: relative;
-    z-index: 20;
-}
+/*.header-content:after {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*    height: 10px;*/
+/*    background-image: url(/assets/images/home/header-content.png) center bottom repeat-x;*/
+/*    margin-bottom: -10px;*/
+/*    position: relative;*/
+/*    z-index: 20;*/
+/*}*/
 
 .carousel:after {
     content: '';
