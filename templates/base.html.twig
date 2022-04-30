@@ -82,8 +82,8 @@
     <div class="header-content">
         <div class="container">
             <a href="" class="logo" title="Saveurs d'Armenie">
-                {#                <i class="icon icon-logo"></i> #}
-                Saveurs d'Armenie
+{#                <i class="icon icon-logo"></i>#}
+                <img class="img-fluid" href="/" src="/assets/images/logo/black.ai">
             </a>
             <div class="phone">
                 <i class="icon-phone icon"></i>
@@ -119,9 +119,9 @@
 </header>
 {#    {{ dump(app.user) }} #}
 
-{#{% for flash_success in app.flashes('success') %}#}
-{#    <div class="alert alert-success" role="alert">{{ flash_success }}</div>#}
-{#{% endfor %}#}
+{# {% for flash_success in app.flashes('success') %} #}
+{#    <div class="alert alert-success" role="alert">{{ flash_success }}</div> #}
+{# {% endfor %} #}
 
 {% block body %}{% endblock %}
 
