@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    {#    {{ dump(list) }}#}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}" title="Accueil">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ list[0].category.name }}</li>
+        </ol>
+    </nav>
+    <div id="results" class="container-fluid py-5">
+        {% for subcat in list %}
+            <article class="results_product_item">
+                <a href="{{ path('prodlist2', { id: subcat.id}) }}"
+                   class="results_product_item_image_container" title="">
+                    {#                    {{ dump(subcat.products|first).picture) }} #}
+                    {% if (subcat.products|first) %}
+                        <img src="/assets/images/PRODUCTS/{{ (subcat.products|first).picture }}"
+                             alt="" class="results_product_item_image lazyload"/>
+                    {% endif %}
+                </a>
+                <div class="results_product_item_content">
+                    <a href="{{ path('prodlist2', { id: subcat.id}) }}"
+                       class="results_product_item_name" title="">
+                        {{ subcat.name }}
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,11 +20,13 @@ class BaseController extends AbstractController
 //        ]);
 //    }
 
-    public function index(CategoryRepository $repocat): Response
+    public function index(CategoryRepository $repocat, ProductRepository $repoprod): Response
     {
         $categories = $repocat->findAll();
+        $list = $repoprod->findAll();
         return $this->render('base.html.twig', [
-            'categories' => $categories
+            'categories' => $categories,
+            'list' => $list
         ]);
     }
 }

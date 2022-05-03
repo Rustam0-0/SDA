@@ -79,22 +79,15 @@
             </ul>
         </div>
     </div>
-{#    <div class="header-content">#}
-    <div class="header-content" style="background-color: #fff3dd">
+    <div class="header-content">
         <div class="container">
             <a href="/" class="logo" title="Saveurs d'Arménie">
-{#                <i class="icon icon-logo"></i>#}
                 <img class="img-fluid w-50" src="/assets/images/logo/gold.jpg">
             </a>
-{#            <div class="phone">#}
-{#                <i class="icon-phone icon"></i>#}
-{#                <a href="tel:0617336170" class="tel">0617336170</a>#}
-{#            </div>#}
         </div>
     </div>
     <div class="catalog d-none d-lg-block">
         <div class="container">
-            {#            <div class="row flex-center"> #}
             <ul class="main-menu">
                 {% for category in categories %}
                     <li class="separator"></li>
@@ -105,7 +98,7 @@
                         <ul class="level-2">
                             {% for subcat in category.subcats %}
                                 <li class="" data-handle="">
-                                    <a title="{{ subcat.name }}" href="" class="menu-link">
+                                    <a title="{{ subcat.name }}" href="{{path('prodlist2', {id:subcat.id})}}" class="menu-link">
                                         <span class="link-text">{{ subcat.name }}</span>
                                     </a>
                                 </li>
@@ -114,7 +107,6 @@
                     </li>
                 {% endfor %}
             </ul>
-            {#            </div> #}
         </div>
     </div>
 </header>
@@ -129,34 +121,15 @@
 <footer>
     <div class="container">
         <div class="d-flex flex-wrap">
-            <div class="col-lg-3 col-md-5 col-sm-4 col-xs-12 foot-logo">
+            <div class="col-lg-3 col-md-5 col-sm-4 hide-xs">
                 <a href="/" title="">
-{#                    <i class="icon icon-logo"></i>#}
-                    <img class="img-fluid w-100" src="/assets/images/logo/gold.jpg">
+                    <img class="img-fluid w-100" src="/assets/images/logo/black.jpg">
                 </a>
-                <div class="copy">
+                <div class="">
                     <p><span>SAS "Saveurs d'Armenie", 2017<br> Tous les droits sont réservés</span></p>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-8 col-md-7 col-xs-12 foot-menus">
-                <div class="title">
-                    Catalogue
-                </div>
-                <ul class="clear-list">
-                    {% for category in categories %}
-                        <li>
-                            <a href="" title="{{ category.name }}" class="menu-link">
-                                <span class="link-text">{{ category.name }}</span>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {#            <div class="d-lg-block col-sm-1 col-md-1 col-xs-1"></div> #}
-            <div class="col-lg-5 col-md-12 col-xs-12 foot-contacts">
-                <div class="title">
-                    Nos contacts
-                </div>
+            <div class="col-lg-4 offset-1 col-sm-8 col-md-7 col-xs-12 foot-menus">
                 <div class="foot-contacts-inner">
                     <div class="phone">
                         <i class="icon-phone icon"></i>
@@ -169,8 +142,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-xs-12 foot-contacts">
                 <div class="foot-social">
-                    <div class="social-links"><span class="hide-xs">Dans les réseaux sociaux:</span>
+                    <div class="">
+                        <div class="hide-xs" style="opacity: 0.2">Dans les réseaux sociaux:</div>
                         <ul class="social clear-list">
                             <li>
                                 <a href="https://www.instagram.com/saveursdarmenie/">
@@ -185,9 +161,6 @@
                             </li>
                         </ul>
                     </div>
-                    {#                    <div class="insales"> #}
-                    {#                        powered by <a href=""></a> #}
-                    {#                    </div> #}
                 </div>
             </div>
         </div>
@@ -204,63 +177,6 @@
 
 <div id="mobile-menu">
     <button class="mobile-menu-close js-mobile-catalog-toggle"><span>х</span>Fermer le catalogue</button>
-    {#    <ul class="mobile-menu clear-list menu level-1"> #}
-    {#        {% for category in categories %} #}
-    {#            <li class="separator"></li> #}
-    {#            <li class="mobile-menu-item menu-item level-1 dropdown"> #}
-    {#                <span class="mobile-menu-icon menu-icon level-1"></span> #}
-    {#                    <div class="d-flex justify-content-between"> #}
-    {#                        <a href="" class="mobile-menu-link menu-link level-1"> #}
-    {#                            {{ category.name }} #}
-    {#                        </a> #}
-    {#                        <a class="dropdown-link dropdown-toggle" id="dropdownMenuLink" data-toggle="collapse" #}
-    {#                           aria-expanded="false"> #}
-    {#                            <i class="dropdown-icon ion ion-ios-arrow-down"></i> #}
-    {#                        </a> #}
-    {#                    </div> #}
-    {#                <ul class="collapse" id="collapseExample"> #}
-    {#                    {% for subcat in category.subcats %} #}
-    {#                        <li class="dropdown-item" data-handle=""> #}
-    {#                            <a title="{{ subcat.name }}" href="" class="menu-link"> #}
-    {#                                <span class="link-text" style="color: #080809">{{ subcat.name }}</span> #}
-    {#                            </a> #}
-    {#                        </li> #}
-    {#                    {% endfor %} #}
-    {#                </ul> #}
-    {#            </li> #}
-    {#        {% endfor %} #}
-    {#    </ul> #}
-
-    {#    <ul class="mobile-menu clear-list menu level-1"> #}
-    {#        {% for category in categories %} #}
-    {#            <div class="dropdown"> #}
-    {#                <li data-toggle="dropdown"> #}
-    {#                <li> #}
-    {#                    <a> #}
-    {#                        {{ category.name }} #}
-    {#                    </a> #}
-    {#                        <div class="d-flex justify-content-between"> #}
-    {#                            <a href="" class=""> #}
-    {#                                {{ category.name }} #}
-    {#                            </a> #}
-    {#                            <a class="dropdown-toggle" data-toggle="dropdown"> #}
-    {#                                <i class="dropdown-icon ion ion-ios-arrow-down"></i> #}
-    {#                            </a> #}
-    {#                        </div> #}
-    {#                </li> #}
-    {#                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"> #}
-    {#                    {% for subcat in category.subcats %} #}
-    {#                        <li class="dropdown-item"> #}
-    {#                            <a href="" style="color: #080809"> #}
-    {#                                {{ subcat.name }} #}
-    {#                            </a> #}
-    {#                        </li> #}
-    {#                    {% endfor %} #}
-    {#                </ul> #}
-    {#            </div> #}
-    {#        {% endfor %} #}
-    {#    </ul> #}
-
     <nav class="navbar">
         <ul class="mobile-menu clear-list menu level-1 navbar-nav">
             {% for category in categories %}
@@ -281,37 +197,10 @@
             {% endfor %}
         </ul>
     </nav>
-
-    {#    <ul class="collection-mobile-menu mobile-menu list-vertical"> #}
-    {#        <span>х</span>Fermer le catalogue</button> #}
-    {#        {% for category in categories %} #}
-    {#            <li class="dropdown" data-handle=""> #}
-    {#                <div class="d-flex justify-content-between"> #}
-    {#                    <a title="{{ category.name }}" href=""> #}
-    {#                        {{ category.name }} #}
-    {#                    </a> #}
-    {#                    <a class="dropdown-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" #}
-    {#                       aria-expanded="false"> #}
-    {#                        <i class="dropdown-icon ion ion-ios-arrow-down"></i> #}
-    {#                    </a> #}
-    {#                </div> #}
-    {#                <ul class="dropdown-menu submenu" aria-labelledby="dropdownMenuLink"> #}
-    {#                    {% for subcat in category.subcats %} #}
-    {#                        <li class="dropdown-item"> #}
-    {#                            <a title="{{ subcat.name }}" href=""> #}
-    {#                                {{ subcat.name }} #}
-    {#                            </a> #}
-    {#                        </li> #}
-    {#                    {% endfor %} #}
-    {#                </ul> #}
-    {#            </li> #}
-    {#        {% endfor %} #}
-    {#    </ul> #}
 </div>
 <div class="opaco js-mobile-catalog-toggle"></div>
 </body>
 </html>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
