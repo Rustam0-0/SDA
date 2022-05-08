@@ -1,0 +1,1424 @@
+@charset "UTF-8";
+/* line 10, layouts.scss */
+.article-title {
+    font-size: 2.5rem; }
+
+/* line 13, layouts.scss */
+.article-image {
+    margin-bottom: 1rem; }
+
+/* line 16, layouts.scss */
+.article-products {
+    padding: 1rem 0; }
+
+/* line 19, layouts.scss */
+.article-shadow {
+    -webkit-box-shadow: 1px 5px 5px rgba(0, 1, 1, 0.1);
+    box-shadow: 1px 5px 5px rgba(0, 1, 1, 0.1);
+    padding-bottom: 2%;
+    margin-bottom: -webkit-calc(20px + 4%);
+    margin-bottom: -moz-calc(20px + 4%);
+    margin-bottom: calc(20px + 4%); }
+
+/* line 28, layouts.scss */
+.blog-item {
+    margin-bottom: 1rem; }
+
+/* line 31, layouts.scss */
+.blog-articles {
+    padding-left: 0; }
+
+/* line 35, layouts.scss */
+.cart-heading {
+    padding: 30px 0;
+    font-size: 24px; }
+
+/* line 39, layouts.scss */
+.cart-heading strong {
+    font-weight: 500; }
+
+/* line 42, layouts.scss */
+.cart-heading i {
+    font-size: 41px;
+    margin-left: 10px; }
+
+/* line 46, layouts.scss */
+.discounts-wrap {
+    background: #ffcc00;
+    color: #fff;
+    position: relative;
+    margin-top: 10px;
+    padding: 26px;
+    margin-bottom: 15px; }
+
+/* line 54, layouts.scss */
+.discounts-wrap:after {
+    content: '';
+    height: 10px;
+    background: url(decor-y.png) top center repeat-x;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0; }
+
+/* line 63, layouts.scss */
+.discounts-wrap .title {
+    font-family: "PF Din Text Comp Pro";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2; }
+
+/* line 69, layouts.scss */
+.discounts-wrap .title p {
+    margin: 0; }
+
+/* line 72, layouts.scss */
+.discounts-wrap i {
+    font-size: 42px; }
+
+/* line 75, layouts.scss */
+.discounts-wrap .title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px; }
+
+/* line 93, layouts.scss */
+.discounts-wrap input {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 1, 1, 0.12);
+    box-shadow: inset 0 0 5px rgba(0, 1, 1, 0.12);
+    background-color: #edbe00;
+    height: 44px;
+    width: 100%;
+    padding: 0 45% 0 15px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 0; }
+
+/* line 104, layouts.scss */
+.discount-form {
+    position: relative; }
+
+/* line 107, layouts.scss */
+.discount-form button {
+    position: absolute;
+    right: 20px;
+    font-family: "PF Din Text Comp Pro";
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    height: 44px;
+    line-height: 46px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    color: #fff;
+    top: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    margin: 0;
+    outline: none; }
+
+/* line 130, layouts.scss */
+.discount-form button:hover, .discount-form button:hover i {
+    color: #000000; }
+
+/* line 133, layouts.scss */
+.discount-form button i {
+    font-size: 17px;
+    color: #fff;
+    position: relative;
+    top: -2px;
+    margin-right: 10px; }
+
+/* line 140, layouts.scss */
+.discounts-notice {
+    padding-top: 5px;
+    display: block; }
+
+/* line 144, layouts.scss */
+.cart-total {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+    color: #ffcc00; }
+
+/* line 150, layouts.scss */
+.cart-total-no-discount {
+    color: #9E9E9E;
+    font-size: 24px;
+    line-height: 1;
+    text-decoration: line-through; }
+
+/* line 156, layouts.scss */
+.cart-weight {
+    color: #ffffff;
+    font-family: "PF Din Text Comp Pro";
+    font-size: 16px;
+    font-weight: 400;
+    display: block; }
+
+/* line 163, layouts.scss */
+.cart-weight i {
+    color: #ffcc00;
+    margin-right: 10px; }
+
+/* line 167, layouts.scss */
+.cart-footer {
+    background-color: #111111;
+    padding: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    overflow: hidden; }
+
+/* line 184, layouts.scss */
+.cart-footer > div {
+    padding: 0px 1.5%; }
+
+/* line 187, layouts.scss */
+.cart-submit.button {
+    border: 2px solid #ffcc00;
+    color: #ffcc00;
+    background: transparent;
+    padding-bottom: 2px; }
+
+/* line 193, layouts.scss */
+.cart-submit.button:hover {
+    color: #ffcc00; }
+
+/* line 196, layouts.scss */
+.button.button-fastbuy {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding-right: 12px;
+    margin-left: 20px;
+    position: relative; }
+
+/* line 204, layouts.scss */
+.button.button-fastbuy:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 26px 0 26px 16px;
+    border-color: transparent transparent transparent #ffffff;
+    position: absolute;
+    top: -2px;
+    left: -webkit-calc(100% + 2px);
+    left: -moz-calc(100% + 2px);
+    left: calc(100% + 2px);
+    z-index: 10; }
+
+/* line 218, layouts.scss */
+.button.button-fastbuy:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 24px 0 24px 16px;
+    border-color: transparent transparent transparent #111111;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    z-index: 20; }
+
+/* line 230, layouts.scss */
+.button.button-fastbuy:hover {
+    color: #fff; }
+
+/* line 233, layouts.scss */
+.cart-note {
+    width: 40%;
+    font-size: 24px;
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 84px;
+    line-height: 84px;
+    background: #ffcc00;
+    position: relative;
+    margin-right: 52px; }
+
+/* line 253, layouts.scss */
+.cart-note:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 42px 0 42px 32px;
+    border-color: transparent transparent transparent #ffcc00;
+    position: absolute;
+    top: 0;
+    left: -webkit-calc(100% - 1px);
+    left: -moz-calc(100% - 1px);
+    left: calc(100% - 1px); }
+
+/* line 266, layouts.scss */
+.cart-note i {
+    font-size: 28px;
+    position: relative;
+    top: -5px;
+    margin-right: 15px; }
+
+/* line 272, layouts.scss */
+.cart-note p {
+    margin: 0; }
+
+/* line 275, layouts.scss */
+.cart-note-text {
+    display: inline-block;
+    line-height: 1.4;
+    vertical-align: middle; }
+
+/* line 281, layouts.scss */
+.cart-totals {
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    height: 84px; }
+
+/* line 296, layouts.scss */
+body .cart-buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 40px; }
+
+/* line 310, layouts.scss */
+.cart-form + .cell-3 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+
+/* line 324, layouts.scss */
+.cart-info-block .common-label {
+    margin-bottom: 35px; }
+
+/* line 327, layouts.scss */
+.cart-info-block {
+    margin-bottom: -webkit-calc(30px + 3%);
+    margin-bottom: -moz-calc(30px + 3%);
+    margin-bottom: calc(30px + 3%); }
+
+/* line 332, layouts.scss */
+.cart-similar-wrap {
+    padding-top: -webkit-calc(20px + 4%);
+    padding-top: -moz-calc(20px + 4%);
+    padding-top: calc(20px + 4%);
+    -webkit-box-shadow: inset 1px 5px 5px rgba(0, 1, 1, 0.1);
+    box-shadow: inset 1px 5px 5px rgba(0, 1, 1, 0.1); }
+
+/* line 339, layouts.scss */
+.cart-totals-label {
+    margin-right: 40px;
+    font-family: "PF Din Text Comp Pro";
+    font-size: 20px;
+    text-transform: uppercase; }
+
+/* line 345, layouts.scss */
+.cart-totals:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 46px 0 46px 32px;
+    border-color: transparent transparent transparent #ffffff;
+    position: absolute;
+    top: -4px;
+    left: -webkit-calc(100% + 3px);
+    left: -moz-calc(100% + 3px);
+    left: calc(100% + 3px);
+    z-index: 10; }
+
+/* line 359, layouts.scss */
+.cart-totals:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 46px 0 46px 32px;
+    border-color: transparent transparent transparent #111111;
+    position: absolute;
+    top: -4px;
+    left: 100%;
+    z-index: 20; }
+
+/* line 371, layouts.scss */
+.cart-buttons button {
+    padding: 0 28px; }
+
+/* line 374, layouts.scss */
+.cart-item > div {
+    border: 1px solid #cccccc;
+    margin-right: -1px; }
+
+/* line 378, layouts.scss */
+.item-qty-cell {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 17%;
+    -webkit-flex-basis: 17%;
+    -ms-flex-preferred-size: 17%;
+    flex-basis: 17%; }
+
+/* line 402, layouts.scss */
+.item-qty-cell svg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; }
+
+/* line 411, layouts.scss */
+.item-quantity, .item-total_price {
+    position: relative;
+    z-index: 10; }
+
+/* line 415, layouts.scss */
+.item-total_price {
+    text-align: right; }
+
+/* line 418, layouts.scss */
+.item-image {
+    max-width: 20%;
+    -webkit-flex-basis: 20%;
+    -ms-flex-preferred-size: 20%;
+    flex-basis: 20%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+
+/* line 439, layouts.scss */
+.item-info {
+    max-width: 29%;
+    -webkit-flex-basis: 29%;
+    -ms-flex-preferred-size: 29%;
+    flex-basis: 29%; }
+
+/* line 445, layouts.scss */
+form[data-cart-form] .collection-text-block {
+    height: auto; }
+
+/* line 448, layouts.scss */
+.cart-items .product-icons li {
+    width: 100%;
+    display: block;
+    margin-left: 5px; }
+
+@media (max-width: 1200px) {
+    /* line 454, layouts.scss */
+    .discount-cell {
+        padding-left: 0; }
+
+    /* line 457, layouts.scss */
+    .cart-sidebar {
+        margin-top: 20px; }
+
+    /* line 460, layouts.scss */
+    .discounts-wrap {
+        height: -webkit-calc(100% - 10px);
+        height: -moz-calc(100% - 10px);
+        height: calc(100% - 10px); }
+
+    /* line 465, layouts.scss */
+    .cart-footer {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+
+    /* line 470, layouts.scss */
+    .cart-note {
+        width: 100%;
+        position: relative;
+        z-index: 50;
+        margin-right: 0; }
+
+    /* line 476, layouts.scss */
+    .cart-note:after {
+        display: none; } }
+@media (max-width: 1024px) {
+    /* line 483, layouts.scss */
+    .item-money, .item-total_price {
+        font-size: 20px; }
+
+    /* line 486, layouts.scss */
+    .item-image {
+        max-width: 18%;
+        -webkit-flex-basis: 18%;
+        -ms-flex-preferred-size: 18%;
+        flex-basis: 18%; }
+
+    /* line 492, layouts.scss */
+    .item-info {
+        max-width: 27%;
+        -webkit-flex-basis: 27%;
+        -ms-flex-preferred-size: 27%;
+        flex-basis: 27%; }
+
+    /* line 498, layouts.scss */
+    .item-price-cell, .item-props {
+        max-width: 13%;
+        -webkit-flex-basis: 13%;
+        -ms-flex-preferred-size: 13%;
+        flex-basis: 13%; }
+
+    /* line 504, layouts.scss */
+    .item-qty-cell {
+        max-width: 19%;
+        -webkit-flex-basis: 19%;
+        -ms-flex-preferred-size: 19%;
+        flex-basis: 19%; } }
+@media (max-width: 768px) {
+    /* line 513, layouts.scss */
+    .item-quantity, .item-total_price {
+        padding: 10px; }
+
+    /* line 516, layouts.scss */
+    .item-qty-cell {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
+
+    /* line 530, layouts.scss */
+    .payment-info {
+        margin-bottom: 30px; }
+
+    /* line 533, layouts.scss */
+    .cart-totals {
+        width: 100%;
+        margin: 0;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between; }
+
+    /* line 542, layouts.scss */
+    .cart-totals:after, .cart-totals:before {
+        display: none; }
+
+    /* line 545, layouts.scss */
+    .cart-note {
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center; }
+
+    /* line 552, layouts.scss */
+    body .cart-buttons {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center; }
+
+    /* line 562, layouts.scss */
+    .item-image {
+        max-width: 25%;
+        -webkit-flex-basis: 25%;
+        -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+        margin-bottom: -1px; }
+
+    /* line 569, layouts.scss */
+    .item-info {
+        max-width: 49%;
+        -webkit-flex-basis: 49%;
+        -ms-flex-preferred-size: 49%;
+        flex-basis: 49%;
+        margin-bottom: -1px; }
+
+    /* line 576, layouts.scss */
+    .item-props {
+        max-width: 25%;
+        -webkit-flex-basis: 25%;
+        -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+        margin-bottom: -1px; }
+
+    /* line 583, layouts.scss */
+    .item-price-cell {
+        max-width: 30%;
+        -webkit-flex-basis: 30%;
+        -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+        display: none; }
+
+    /* line 590, layouts.scss */
+    .item-qty-cell {
+        max-width: -webkit-calc(74% - 1px);
+        max-width: -moz-calc(74% - 1px);
+        max-width: calc(74% - 1px);
+        -webkit-flex-basis: -webkit-calc(74% - 1px);
+        -ms-flex-preferred-size: calc(74% - 1px);
+        flex-basis: -moz-calc(74% - 1px);
+        flex-basis: calc(74% - 1px); }
+
+    /* line 599, layouts.scss */
+    .item-info .item-title, .item-variant {
+        height: auto;
+        padding: 10px; }
+
+    /* line 605, layouts.scss */
+    .cart-form .cart-item {
+        margin-bottom: 20px; }
+
+    /* line 608, layouts.scss */
+    .item-remove {
+        max-width: 25%;
+        -webkit-flex-basis: 25%;
+        -ms-flex-preferred-size: 25%;
+        flex-basis: 25%; }
+
+    /* line 614, layouts.scss */
+    .item-qty-cell svg {
+        display: none; } }
+@media (max-width: 480px) {
+    /* line 619, layouts.scss */
+    .cart-buttons button {
+        padding: 0 18px; }
+
+    /* line 622, layouts.scss */
+    .cart-heading {
+        font-size: 20px; } }
+/* line 627, layouts.scss */
+.collection-head {
+    background-image: url(collection.jpg);
+    background-position: center center;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    padding: 97px 0 32px 0;
+    margin-bottom: 10px; }
+
+/* line 637, layouts.scss */
+.collection-head:before {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6); }
+
+/* line 647, layouts.scss */
+.collection-head-inner {
+    position: relative;
+    z-index: 20;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+
+/* line 666, layouts.scss */
+.collection-head h1 {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    color: #ffffff;
+    font-family: "PF Din Text Comp Pro";
+    font-size: 49px;
+    font-weight: 400;
+    line-height: 49px;
+    text-transform: uppercase; }
+
+/* line 677, layouts.scss */
+.collection-head .counter {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -12px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff; }
+
+/* line 687, layouts.scss */
+.collection-description {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: -webkit-calc(20px + 3%);
+    padding: -moz-calc(20px + 3%);
+    padding: calc(20px + 3%); }
+
+/* line 696, layouts.scss */
+.collection-description-text {
+    padding: 30px 60px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    margin: 0 auto;
+    max-width: 730px;
+    font-size: 22px;
+    text-align: center; }
+
+/* line 705, layouts.scss */
+.collection-description-text p {
+    margin: 0; }
+
+/* line 708, layouts.scss */
+.collection-banner-block {
+    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%; }
+
+/* line 717, layouts.scss */
+.collection-banner-block:hover .text {
+    color: #ffcc00; }
+
+/* line 720, layouts.scss */
+.collection-banner-block .text {
+    padding: 30px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+
+/* line 746, layouts.scss */
+.collection-banner-block .text p {
+    margin: 0; }
+
+/* line 749, layouts.scss */
+.collection-block {
+    margin-bottom: 15px; }
+
+/* line 752, layouts.scss */
+.collection-text-block {
+    position: relative;
+    display: block;
+    height: 100%; }
+
+/* line 757, layouts.scss */
+.collection-text-block:hover .text {
+    color: #ffcc00; }
+
+/* line 760, layouts.scss */
+.collection-text-block img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover; }
+
+/* line 767, layouts.scss */
+.collection-text-block .text {
+    position: absolute;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    padding-bottom: 18px;
+    text-align: center;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #ffffff;
+    font-family: "PF Din Text Comp Pro";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    line-height: 1.2; }
+
+/* line 790, layouts.scss */
+.collection-recepe-block {
+    -webkit-box-shadow: 0 0 9px 1px rgba(0, 1, 1, 0.2);
+    box-shadow: 0 0 9px 1px rgba(0, 1, 1, 0.2);
+    background-color: #ffffff;
+    display: block;
+    color: #000000;
+    padding: 30px 20px 20px; }
+
+/* line 798, layouts.scss */
+.collection-recepe-block .title {
+    font-family: "PF Din Text Comp Pro";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 10px;
+    display: block; }
+
+/* line 806, layouts.scss */
+.collection-recepe-block .text {
+    display: block;
+    margin-bottom: 15px; }
+
+/* line 810, layouts.scss */
+.collection-recepe-block .product-icons {
+    text-align: left; }
+
+/* line 813, layouts.scss */
+.collection-recepe-block .product-icons li {
+    margin-left: 0;
+    margin-right: 10px; }
+
+/* line 817, layouts.scss */
+.show-all {
+    color: #ffcc00;
+    font-family: "PF Din Text Comp Pro";
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: block;
+    padding: 15px 0; }
+
+/* line 826, layouts.scss */
+.show-all i {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    position: relative;
+    top: -2px; }
+
+/* line 833, layouts.scss */
+.filter-title a {
+    color: #000000;
+    text-transform: uppercase; }
+/* line 837, layouts.scss */
+.filter-title a span {
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 6px; }
+
+/* line 844, layouts.scss */
+.collection-filter {
+    border-bottom: 3px solid #efefef;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 11px 0;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+
+/* line 856, layouts.scss */
+.filter-title a {
+    white-space: nowrap; }
+
+/* line 859, layouts.scss */
+.filter {
+    margin-right: 30px;
+    position: relative; }
+
+/* line 863, layouts.scss */
+.filter-label {
+    font-family: "PF Din Text Comp Pro";
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 5px; }
+
+/* line 870, layouts.scss */
+.filter-item:last-child .filter-label {
+    margin-bottom: 0; }
+
+/* line 873, layouts.scss */
+.filter-items-wrapper {
+    padding: 20px;
+    min-width: 250px;
+    max-height: 285px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background: #fff;
+    overflow: auto;
+    z-index: 50;
+    -webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2); }
+
+/* line 887, layouts.scss */
+.filter-items-wrapper.opened {
+    display: block; }
+
+/* line 890, layouts.scss */
+.filter.is-active .filter-title a {
+    color: #ffcc00; }
+
+/* line 893, layouts.scss */
+.prod-block {
+    margin-bottom: -webkit-calc(20px + 2%);
+    margin-bottom: -moz-calc(20px + 2%);
+    margin-bottom: calc(20px + 2%);
+    padding: 0 20px; }
+
+/* line 899, layouts.scss */
+.random-product .img {
+    width: 30%;
+    height: 0;
+    padding-bottom: 30%;
+    border: 2px solid #fff;
+    display: block;
+    margin: 0 auto;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    position: relative; }
+
+/* line 910, layouts.scss */
+.random-product {
+    color: #fff;
+    background: #ffcc00;
+    position: relative;
+    top: 10px;
+    padding: 40px 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s; }
+
+/* line 945, layouts.scss */
+.random-product:hover .img {
+    border-color: #000000; }
+
+/* line 948, layouts.scss */
+.random-product:after {
+    content: '';
+    height: 10px;
+    background: url(decor-y.png) top center repeat-x;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0; }
+
+/* line 957, layouts.scss */
+.random-product .img i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 34px; }
+
+/* line 968, layouts.scss */
+.random-product .title {
+    font-size: 25px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block; }
+
+/* line 974, layouts.scss */
+.random-product .text {
+    font-size: 18px;
+    display: block;
+    max-width: 100%; }
+
+/* line 979, layouts.scss */
+.random-product-wrap:hover .random-product {
+    color: #000000; }
+
+@media (max-width: 1024px) {
+    /* line 983, layouts.scss */
+    .collection-description-text {
+        font-size: 16px;
+        padding: 4% 7%; }
+
+    /* line 987, layouts.scss */
+    .collection-head h1 {
+        font-size: 30px; }
+
+    /* line 990, layouts.scss */
+    .collection-page > .cell-3 {
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1; }
+
+    /* line 997, layouts.scss */
+    .collection-blocks {
+        margin-top: 20px; }
+
+    /* line 1000, layouts.scss */
+    .prod-block {
+        padding: 0 10px; } }
+@media (max-width: 768px) {
+    /* line 1006, layouts.scss */
+    .collection-head {
+        padding: -webkit-calc(10px + 5%) 0 5% 0;
+        padding: -moz-calc(10px + 5%) 0 5% 0;
+        padding: calc(10px + 5%) 0 5% 0; }
+
+    /* line 1011, layouts.scss */
+    .filter-items-wrapper {
+        padding: 10px;
+        min-width: 220px; }
+
+    /* line 1015, layouts.scss */
+    .collection-filter {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+
+    /* line 1020, layouts.scss */
+    .filter-items-wrapper {
+        left: 0; }
+
+    /* line 1023, layouts.scss */
+    .collection-filter .filter {
+        width: 50%;
+        margin-right: 0; }
+
+    /* line 1027, layouts.scss */
+    .collection-head-inner {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+
+    /* line 1032, layouts.scss */
+    .collection-head .counter {
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 13px; } }
+@media (max-width: 480px) {
+    /* line 1047, layouts.scss */
+    .collection-filter .filter {
+        width: 100%;
+        margin-right: 0; }
+
+    /* line 1051, layouts.scss */
+    .filter-items-wrapper {
+        padding: 10px;
+        min-width: 100%; } }
+/* line 1056, layouts.scss */
+.collection-wrapper {
+    padding-top: 20px; }
+
+/* line 1060, layouts.scss */
+body {
+    margin: 0;
+    background: #fff; }
+
+/* line 1064, layouts.scss */
+#mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -305px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 5050;
+    height: 100%;
+    overflow-y: auto;
+    width: 300px;
+    border-right: 2px solid #fc0;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s; }
+
+/* line 1081, layouts.scss */
+#mobile-menu ul li {
+    display: block; }
+
+/* line 1084, layouts.scss */
+#mobile-menu ul.level-2, #mobile-menu ul.level-3 {
+    display: none;
+    top: 0;
+    padding: 40px 0px;
+    margin: 0;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 300px;
+    z-index: 45; }
+
+/* line 1096, layouts.scss */
+#mobile-menu ul.level-3 {
+    z-index: 65; }
+
+/* line 1099, layouts.scss */
+.mobile-menu-marker.level-2 {
+    display: none; }
+
+/* line 1102, layouts.scss */
+#mobile-menu li.is-open > ul.level-2 {
+    display: block; }
+
+/* line 1105, layouts.scss */
+#mobile-menu li.is-open > ul.level-3 {
+    display: block; }
+
+/* line 1108, layouts.scss */
+.mobile-menu-marker {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 30px;
+    color: #fff;
+    position: relative;
+    top: -4px;
+    outline: 0;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s; }
+
+/* line 1122, layouts.scss */
+.mobile-menu-marker:after {
+    content: '+'; }
+
+/* line 1126, layouts.scss */
+.mobile-menu.level-1 {
+    padding: 40px 0; }
+
+/* line 1129, layouts.scss */
+#mobile-menu a {
+    color: #fff; }
+
+/* line 1132, layouts.scss */
+#mobile-menu:focus, #mobile-menu .is-curren > a {
+    color: #ffcc00; }
+
+/* line 1135, layouts.scss */
+#mobile-menu ul li {
+    height: 20px;
+    line-height: 20px;
+    padding: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+
+/* line 1157, layouts.scss */
+.mobile-menu-icon {
+    display: none; }
+
+/* line 1160, layouts.scss */
+.mobile-menu-marker.is-active {
+    position: absolute;
+    z-index: 50;
+    right: 8px;
+    top: 4px;
+    /*transform: rotate(45deg);*/
+    font-size: 56px;
+    color: #ffcc00; }
+
+/* line 1169, layouts.scss */
+.mobile-menu-marker.is-active:after {
+    content: "-"; }
+
+/* line 1172, layouts.scss */
+body.menu-opened {
+    overflow: hidden; }
+
+/* line 1175, layouts.scss */
+body .opaco {
+    content: '';
+    z-index: -100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0; }
+
+/* line 1186, layouts.scss */
+body.menu-opened .opaco {
+    opacity: 1;
+    transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    z-index: 5000; }
+
+/* line 1194, layouts.scss */
+#mobile-menu .mobile-menu {
+    position: relative; }
+
+/* line 1197, layouts.scss */
+body.menu-opened #mobile-menu {
+    left: 0; }
+
+/* line 1200, layouts.scss */
+.mobile-menu-close {
+    position: absolute;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 400;
+    color: #ffcc00;
+    text-transform: uppercase;
+    top: 10px;
+    left: 15px;
+    z-index: 100;
+    padding: 0;
+    line-height: 1.2;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border: 0; }
+
+/* line 1221, layouts.scss */
+.mobile-menu-close span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 19px;
+    margin-right: 3px;
+    vertical-align: baseline;
+    border: 2px solid #ffcc00;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    font-size: 12px;
+    position: relative;
+    top: -1px; }
+
+/* line 1236, layouts.scss */
+#mobile-menu .is-current > span + a, #mobile-menu .is-current > a {
+    color: #ffcc00; }
+
+/* line 1239, layouts.scss */
+#mobile-menu a:focus, #mobile-menu a:active {
+    color: #ffcc00; }
+
+/* line 1242, layouts.scss */
+.notice--warning {
+    padding: 12px 20px;
+    margin: 55px 0;
+    border: 2px solid #ffcc00;
+    padding-top: 15px;
+    font-size: 18px; }
+
+/* line 1249, layouts.scss */
+.m-modal-wrapper {
+    padding: 24px; }
+
+/* line 1252, layouts.scss */
+.m-modal {
+    -webkit-border-radius: 0;
+    border-radius: 0; }
+
+/* line 1256, layouts.scss */
+.m-modal-heading {
+    font-size: 3rem;
+    font-family: "PF Din Text Comp Pro", sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 20px; }
+
+/* line 1264, layouts.scss */
+.m-modal-footer {
+    text-align: left; }
+
+/* line 1270, layouts.scss */
+.button.m-button.m-modal-close:after {
+    content: 'х';
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    color: #fff;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-family: arial, sans-serif; }
+
+/* line 1284, layouts.scss */
+.button:hover {
+    color: #000; }
+
+/* line 1287, layouts.scss */
+.button.in-product:hover {
+    color: #fff; }
+
+/* line 1290, layouts.scss */
+.page-wrapper {
+    padding-top: 20px;
+    overflow: hidden; }

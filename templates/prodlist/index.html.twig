@@ -2,100 +2,55 @@
 
 
 {% block body %}
-{#    <section>#}
-{#        <div class="container bg-center zaebal">#}
-{#            #}{#    {{ dump((list|first)) }} #}
-{#            <nav aria-label="breadcrumb">#}
-{#                <ol class="breadcrumb">#}
-{#                    <li class="breadcrumb-item">#}
-{#                        <a href="{{ path('app_home') }}" title="Accueil">#}
-{#                            Accueil#}
-{#                        </a>#}
-{#                    </li>#}
-{#                    {% if (list|first) %}#}
-{#                    <li class="breadcrumb-item">#}
-{#                        <a href="{{ path('subcatlist', { id: (list|first).subcat.category.id}) }}">#}
-{#                            {{ (list|first).subcat.category.name }}#}
-{#                        </a>#}
-{#                    </li>#}
-{#                    <li class="breadcrumb-item active" aria-current="page">#}
-{#                        {{ (list|first).subcat.name }}#}
-{#                    </li>#}
-{#                    {% else %}#}
-{#                </ol>#}
-{#            </nav>#}
-{#            <h3 style="text-align: center">Ce produit n'exist pas</h3>#}
-{#            {% endif %}#}
-
-{#            <div id="results" class="container-fluid pb-4">#}
-{#                {% for product in list %}#}
-{#                    <article class="results_product_item">#}
-{#                        <a href=""#}
-{#                        <a href="{{ path('prod_details',{id : product.id}) }}"#}
-{#                           class="results_product_item_image_container">#}
-{#                            <img src="http://localhost/assets/images/PRODUCTS/{{ product.picture }}"#}
-{#                                 alt="{{ product.picture }}"#}
-{#                                 class="results_product_item_image lazyload"/>#}
-{#                        </a>#}
-{#                        <div class="results_product_item_content">#}
-{#                            <div class="results_product_item_category">#}
-{#                                {{ product.label }}#}
-{#                            </div>#}
-{#                            <a href=""#}
-{#                               class="results_product_item_name">#}
-{#                                {{ product.name }}#}
-{#                            </a>#}
-{#                            <div class="results_product_item_price">#}
-{#                                &euro;{{ product.price }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </article>#}
-{#                {% endfor %}#}
-{#            </div>#}
-
-{#            <div>#}
-{#                {{ knp_pagination_render(list) }}#}
-{#            </div>#}
-{#        </div>#}
-{#    </section>#}
-
-
-    <div class="products-list row zaebal">
-        <div class="product-card cell-xl-3 cell-lg-4 cell-sm-6 cell-xs-12">
-            <div class="card-inner">
-                <div class="product-photo">
-                    <a href="/product/klubnika-podushechki-vkusti-hrusti" title="Клубничные подушечки Вкусти Хрусти" class="product-link with-object-fit">
-                        <img src="https://static.insales-cdn.com/images/products/1/7569/325008785/large_large_вкусти_клубника.png" alt="Клубничные подушечки Вкусти Хрусти" title="Клубничные подушечки Вкусти Хрусти" class="product-image">
+    <div id="results" class="container-fluid zaebal">
+        {% for product in list %}
+            <article class="results_product_item product-card mb-4">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <a class="results_product_item_image_container">
+                        <img src="http://localhost:8000/assets/images/PRODUCTS/{{ product.picture }}"
+                             alt="{{ product.picture }}"
+                             class="img-fluid results_product_item_image lazyload">
                     </a>
-                </div><!-- /.product-photo -->
+                </div>
                 <div class="product-caption">
                     <div class="product-title">
-                        <a href="/product/klubnika-podushechki-vkusti-hrusti" class="product-link" title="/product/klubnika-podushechki-vkusti-hrusti">
-                            Клубничные подушечки Вкусти Хрусти
-                        </a>
+                        {{ product.name }}
                     </div>
-                    <div class="product-introtext">Любимое лакомство многих - это многозерновые подушечки с клубничной начинкой. Производитель поста...</div>
-                </div><!-- /.product-caption -->
-                <div class="product-prices">
-        <span class="price">
-          90,-
-        </span>
-                </div><!-- /.product-prices -->
-                <form class="product-control without-old-price without-sku is-available" method="post" action="/cart_items" data-product-id="92805930">
-                    <input type="hidden" name="variant_id" value="157976238">
-                    <div class="counter" data-quantity="" data-quantity-change-init="true">
-                        <button class="button button-number count-down" type="button" data-quantity-change="-1">
-                            <i class="icon ion-ios-minus-empty"></i></button>
-                        <input type="text" value="1" min="1" max="1000" name="quantity" class="input-number input-field">
-                        <button class="button button-number count-up" type="button" data-quantity-change="1">
-                            <i class="icon ion-ios-plus-empty"></i></button>
-                    </div><!-- /.counter -->
-                    <div class="buy text-right-xl">
-                        <button class="button button-buy button-primary" type="submit" data-item-add="">
-                            <i class="icon icon-cart" style="font-size: 25px"></i></button>
-                    </div><!-- /.buy -->
-                </form><!-- /.product-control -->
-            </div><!-- /.card-inner -->
-        </div><!-- /.product-card -->
+                    <div class="product-description">
+                        {{ product.description | raw }}
+                    </div>
+                    <div class="product-prices">
+                        <span class="price">&euro; {{ product.price }}  </span>
+                    </div>
+                    {#                <div class="justify-content-end"> #}
+                    <form class="product-control" method="post"
+                          action="" data-product-id="">
+                        <input type="hidden" name="" value="">
+                        <div class="quantity_inner">
+                            <button class="bt_minus">
+                                <svg viewBox="0 0 24 24" class="feather feather-minus">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </button>
+                            <input type="text" value="1" size="2" class="quantity"
+                                   data-max-count="{{ product.stock }}"/>
+                            <button class="bt_plus">
+                                <svg viewBox="0 0 24 24" class="feather feather-plus">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </button>
+                            <button class="bt_buy">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </article>
+        {% endfor %}
     </div>
 {% endblock %}

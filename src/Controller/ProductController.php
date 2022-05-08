@@ -85,14 +85,24 @@ class ProductController extends AbstractController
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
+        $product->setPicture($product->getPicture());
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $aMimeTypes = array("image/gif", "image/jpeg", "image/jpg", "image/png", "image/x-png", "image/tiff");
+            //   $img = ['products']['photo'];
+            $objfichier = $request->files->get('product');
+
+            $fichier = $objfichier['picture'];
+            if (!empty($fichier)&& in_array($fichier->getClientmimeType(), $aMimeTypes)) {
+                if ($fichier->move('assets/images/PRODUCTS/', $fichier->getClientOriginalName())) {
+                    $product->setPicture($fichier->getClientOriginalName());
+                }
+            }
             $product->setDateUpdate(new \DateTime());
             $entityManager->flush();
             $this->addFlash('success', 'Produit est edité');
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }
-
         $categories = $repocat->findAll();
         return $this->renderForm('product/edit.html.twig', [
             'product' => $product,

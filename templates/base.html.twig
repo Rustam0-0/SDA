@@ -14,29 +14,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {#    icons#}
     <link rel="icon" type="image/vnd.microsoft.icon"
           href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon"
           href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.ico">
-    <link rel="shortcut icon" type="image/png"
-          href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.png">
-    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> #}
     <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet"
           type="text/css">
-    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.css" rel="stylesheet"
-          type="text/css">
+
+{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.css" rel="stylesheet" type="text/css">#}
+    <link href="https://localhost:8000/assets/theme.css" type="text/css" rel="stylesheet">
+
+{#    <link href="https://static.insales-cdn.com/assets/1/4808/1471176/1600673381/theme.css" rel="stylesheet" type="text/css">#}
+{#    <link href="https://localhost:8000/assets/theme_key.css" type="text/css" rel="stylesheet">#}
+
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+    {#    logo#}
+    <link rel="shortcut icon" type="image/png" href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.png">
+
+    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> #}
 
     {# pour js-mobile-catalog-toggle #}
-    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/base.css" rel="stylesheet"
-          type="text/css">
-    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.css" rel="stylesheet"
-          type="text/css">
-    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.css" rel="stylesheet"
-          type="text/css">
+{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/base.css" rel="stylesheet" type="text/css">#}
+    <link href="https://localhost:8000/assets/base.css" type="text/css" rel="stylesheet">
+
+{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.css" rel="stylesheet"#}
+{#          type="text/css">#}
+    <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet">
+
+{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.css" rel="stylesheet"#}
+{#          type="text/css">#}
+    <link href="https://localhost:8000/assets/layouts.css" type="text/css" rel="stylesheet">
+
     {#    ////////////////////// #}
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="/assets/style.css" type="text/css" rel="stylesheet">
+    <link href="https://localhost:8000/assets/style.css" type="text/css" rel="stylesheet">
 
     <script src="https://cdn.tiny.cloud/1/f7nrvb0b2s521028a10roouemfhy288eiu43bb2vnnrcqelq/tinymce/5/tinymce.min.js"
             referrerpolicy="origin"></script>
@@ -66,12 +81,12 @@
             </ul>
             <ul class="social clear-list">
                 <li>
-                    <a href="https://www.instagram.com/saveursdarmenie/">
+                    <a href="https://instagram.com/saveursdarmenie/">
                         <i class="fa fa-instagram"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/nazelie.hunanyan">
+                    <a href="https://facebook.com/nazelie.hunanyan">
                         <i class="fa-brands fa-facebook">
                         </i>
                     </a>
@@ -82,7 +97,7 @@
     <div class="header-content">
         <div class="container">
             <a href="/" class="logo" title="Saveurs d'Arménie">
-                <img class="img-fluid w-50" src="/assets/images/logo/gold.jpg">
+                <img class="img-fluid w-50" src="https://localhost:8000/assets/images/logo/gold.jpg">
             </a>
         </div>
     </div>
@@ -98,7 +113,9 @@
                         <ul class="level-2">
                             {% for subcat in category.subcats %}
                                 <li class="" data-handle="">
-                                    <a title="{{ subcat.name }}" href="{{path('prodlist2', {id:subcat.id})}}" class="menu-link">
+                                    <a title="{{ subcat.name }}"
+                                       href="{{path('prodlist2', {id:subcat.id})}}"
+                                       class="menu-link">
                                         <span class="link-text">{{ subcat.name }}</span>
                                     </a>
                                 </li>
@@ -121,15 +138,15 @@
 <footer>
     <div class="container">
         <div class="d-flex flex-wrap">
-            <div class="col-lg-3 col-md-5 col-sm-4 hide-xs">
+            <div class="col-lg-3 col-md-5 col-sm-5 hide-xs">
                 <a href="/" title="">
-                    <img class="img-fluid w-100" src="/assets/images/logo/black.jpg">
+                    <img class="img-fluid w-100" src="https://localhost:8000/assets/images/logo/black.jpg">
                 </a>
                 <div class="">
                     <p><span>SAS "Saveurs d'Armenie", 2017<br> Tous les droits sont réservés</span></p>
                 </div>
             </div>
-            <div class="col-lg-4 offset-1 col-sm-8 col-md-7 col-xs-12 foot-menus">
+            <div class="col-lg-4 offset-1 col-md-6 col-sm-6 col-xs-12 foot-menus">
                 <div class="foot-contacts-inner">
                     <div class="phone">
                         <i class="icon-phone icon"></i>
@@ -143,18 +160,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-xs-12 foot-contacts">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 foot-contacts">
                 <div class="foot-social">
                     <div class="">
                         <div class="hide-xs" style="opacity: 0.2">Dans les réseaux sociaux:</div>
                         <ul class="social clear-list">
                             <li>
-                                <a href="https://www.instagram.com/saveursdarmenie/">
+                                <a href="https://instagram.com/saveursdarmenie/">
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.facebook.com/nazelie.hunanyan">
+                                <a href="https://facebook.com/nazelie.hunanyan">
                                     <i class="fa-brands fa-facebook">
                                     </i>
                                 </a>
@@ -167,13 +184,15 @@
     </div>
 </footer>
 
-{# pour js-mobile-catalog-toggle #}
-<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/jquery.min.js"></script>
-<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.js"></script>
+{# pour js-mobile-catalog-toggle ????????  #}
+{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/jquery.min.js"></script>#}
+{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.js"></script>#}
+<script type="text/javascript" src="https://localhost:8000/assets/jquery.min.js"></script>
+<script type="text/javascript" src="https://localhost:8000/assets/layouts.js"></script>
 {# ////////////////////////////// #}
 
-<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.js"></script>
-<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.js"></script>
+{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.js"></script>#}
+{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.js"></script>#}
 
 <div id="mobile-menu">
     <button class="mobile-menu-close js-mobile-catalog-toggle"><span>х</span>Fermer le catalogue</button>
@@ -186,9 +205,11 @@
                        style="font-size: 20px; text-transform: uppercase;">
                         {{ category.name }}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #ffcc00">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #fff3dd">
                         {% for subcat in category.subcats %}
-                            <a href="" style="color: #080809; font-size: 20px" class="dropdown-item">
+                            <a href="{{path('prodlist2', {id:subcat.id})}}"
+                               style="color: #080809; font-size: 20px"
+                               class="dropdown-item">
                                 {{ subcat.name }}
                             </a>
                         {% endfor %}
@@ -207,4 +228,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>
 
-{# <script type="text/javascript" src="/assets/script.js"></script> #}
+<script type="text/javascript" src="/assets/script.js"></script>
+
