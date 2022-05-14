@@ -19,28 +19,52 @@
                     <div class="product-description">
                         {{ product.description | raw }}
                     </div>
-                    <div class="product-prices">
-                        <span class="price">&euro; {{ product.price }}  </span>
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <div class="product-prices">
+                            <span class="price">&euro; {{ product.price }}  </span>
+                        </div>
+                        <p class="pt-2">{{ product.stock }} piéces disponible</p>
                     </div>
-                    {#                <div class="justify-content-end"> #}
-                    <form class="product-control" method="post"
-                          action="" data-product-id="">
-                        <input type="hidden" name="" value="">
+                    <form method="post"
+{#                          action="{{ path("cart_add") }}">#}
+                            action="">
+                        {# data-product-id="{{ product.id }}" #}
+                        <input type="hidden" name="id" value="{{ product.id }}">
+                        <input type="hidden" name="name" value="{{ product.name }}">
+                        <input type="hidden" name="picture" value="{{ product.picture }}">
+                        <input type="hidden" name="description" value="{{ product.description }}">
                         <div class="quantity_inner">
-                            <button class="bt_minus">
+                            <a class="bt_minus">
                                 <svg viewBox="0 0 24 24" class="feather feather-minus">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                 </svg>
-                            </button>
-                            <input type="text" value="1" size="2" class="quantity"
+                            </a>
+                            <input name="qty" id="qty" type="text"
+                                   value="{% if product.id in app.session.get('cart')|keys %}{{ app.session.get('cart')[product.id]['qty'] }}{% else %}1{% endif %}"
+                                   size="2" class="quantity"
                                    data-max-count="{{ product.stock }}"/>
-                            <button class="bt_plus">
+                            <a class="bt_plus">
                                 <svg viewBox="0 0 24 24" class="feather feather-plus">
                                     <line x1="12" y1="5" x2="12" y2="19"></line>
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                 </svg>
-                            </button>
-                            <button class="bt_buy">
+                            </a>
+{#                            <button class="bt_buy" type="submit" name="bt_buy">#}
+{#                                <svg viewBox="0 0 24 24">#}
+{#                                    <circle cx="9" cy="21" r="1"></circle>#}
+{#                                    <circle cx="20" cy="21" r="1"></circle>#}
+{#                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>#}
+{#                                </svg>#}
+{#                            </button>#}
+                            <button name="bt_buy"
+{#                                    type="submit"#}
+                                    class="bt_buy"
+                                    data-productid="{{product.id}}"
+                                    data-productname="{{product.name}}"
+                                    data-productdescription="{{product.description}}"
+                                    data-productpicture="{{product.picture}}"
+                                    data-producprice="{{product.price}}">
+{#                                    data-quantity="{{ app.session.get('cart')[product.id]['qty'] }}"#}
                                 <svg viewBox="0 0 24 24">
                                     <circle cx="9" cy="21" r="1"></circle>
                                     <circle cx="20" cy="21" r="1"></circle>
@@ -52,5 +76,6 @@
                 </div>
             </article>
         {% endfor %}
+        {{ dump(app.session.get('cart')) }}
     </div>
 {% endblock %}

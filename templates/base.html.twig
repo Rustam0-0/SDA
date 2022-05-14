@@ -14,38 +14,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>
+
+    <link href="https://localhost:8000/assets/fonts.css" type="text/css" rel="stylesheet">
+    <link href="https://localhost:8000/assets/theme.css" type="text/css" rel="stylesheet">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous" rel="stylesheet" />
+{#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">#}
+
     {#    icons#}
-    <link rel="icon" type="image/vnd.microsoft.icon"
-          href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon"
-          href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.ico">
+{#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/6.1.1/css/font-awesome.min.css" rel="stylesheet">#}
+
     <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet"
           type="text/css">
+{#    <link href="https://localhost:8000/assets/fonts_icons.css" type="text/css" rel="stylesheet">#}
 
-{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.css" rel="stylesheet" type="text/css">#}
-    <link href="https://localhost:8000/assets/theme.css" type="text/css" rel="stylesheet">
-
-{#    <link href="https://static.insales-cdn.com/assets/1/4808/1471176/1600673381/theme.css" rel="stylesheet" type="text/css">#}
-{#    <link href="https://localhost:8000/assets/theme_key.css" type="text/css" rel="stylesheet">#}
-
-    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous" rel="stylesheet" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
-
-    {#    logo#}
-    <link rel="shortcut icon" type="image/png" href="https://static.insales-cdn.com/assets/1/7151/850927/v_1639401906/favicon.png">
-
-    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> #}
+    {#  logo icon in browser  #}
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
 
     {# pour js-mobile-catalog-toggle #}
-{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/base.css" rel="stylesheet" type="text/css">#}
     <link href="https://localhost:8000/assets/base.css" type="text/css" rel="stylesheet">
-
-{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.css" rel="stylesheet"#}
-{#          type="text/css">#}
     <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet">
-
-{#    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.css" rel="stylesheet"#}
-{#          type="text/css">#}
     <link href="https://localhost:8000/assets/layouts.css" type="text/css" rel="stylesheet">
 
     {#    ////////////////////// #}
@@ -87,7 +81,7 @@
                 </li>
                 <li>
                     <a href="https://facebook.com/nazelie.hunanyan">
-                        <i class="fa-brands fa-facebook">
+                        <i class="fa fa-facebook">
                         </i>
                     </a>
                 </li>
@@ -102,7 +96,7 @@
         </div>
     </div>
     <div class="catalog d-none d-lg-block">
-        <div class="container">
+        <div>
             <ul class="main-menu">
                 {% for category in categories %}
                     <li class="separator"></li>
@@ -172,7 +166,7 @@
                             </li>
                             <li>
                                 <a href="https://facebook.com/nazelie.hunanyan">
-                                    <i class="fa-brands fa-facebook">
+                                    <i class="fa fa-facebook">
                                     </i>
                                 </a>
                             </li>
@@ -184,15 +178,9 @@
     </div>
 </footer>
 
-{# pour js-mobile-catalog-toggle ????????  #}
-{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/jquery.min.js"></script>#}
-{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/layouts.js"></script>#}
+{# pour js-mobile-catalog-toggle #}
 <script type="text/javascript" src="https://localhost:8000/assets/jquery.min.js"></script>
 <script type="text/javascript" src="https://localhost:8000/assets/layouts.js"></script>
-{# ////////////////////////////// #}
-
-{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/plugins.js"></script>#}
-{#<script src="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/theme.js"></script>#}
 
 <div id="mobile-menu">
     <button class="mobile-menu-close js-mobile-catalog-toggle"><span>х</span>Fermer le catalogue</button>
@@ -220,13 +208,10 @@
     </nav>
 </div>
 <div class="opaco js-mobile-catalog-toggle"></div>
+<script type="text/javascript" src="/assets/script.js"></script>
 </body>
 </html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>
+{#<script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>#}
 
-<script type="text/javascript" src="/assets/script.js"></script>
 
