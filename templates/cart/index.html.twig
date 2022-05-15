@@ -24,76 +24,78 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-<div class="zaebal">
-    {% for flash_success in app.flashes('danger') %}
-        <div class="alert alert-danger" role="alert">{{ flash_success }}</div>
-    {% endfor %}
-    <div class="container py-2">
-        {% if cart %}
-        {#        {{ dump(app.session.get('cart')) }} #}
-        <table class="table table-responsive">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th></th>
-            </tr>
-            </thead>
-            {% set total =0 %}
-            {% set quantity =0 %}
-            {% for  key,row in cart %}
-                {% if key matches '/^\\d+$/' %}
-                    <tr>
-                        <td><img class="img-fluid img_cart" src="/assets/images/PRODUCTS/{{ row.picture }}"></td>
-                        <td>{{ row.name }}</td>
-                        <td>{{ row.description | raw }}</td>
-                        <td>{{ row.price }}</td>
-                        <form action="{{ path('cart_update') }}" method="POST">
-                            <td>
+    <div class="zaebal">
+        {% for flash_success in app.flashes('danger') %}
+            <div class="alert alert-danger" role="alert">{{ flash_success }}</div>
+        {% endfor %}
+        <div class="container py-2">
+            {% if cart %}
+            {#        {{ dump(app.session.get('cart')) }} #}
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th></th>
+                </tr>
+                </thead>
+                {% set total =0 %}
+                {% set quantity =0 %}
+                {% for  key,row in cart %}
+                    {% if key matches '/^\\d+$/' %}
+                        <tr>
+                            <td><img class="img-fluid img_cart" src="/assets/images/PRODUCTS/{{ row.picture }}"></td>
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.description | raw }}</td>
+                            <td>{{ row.price }}</td>
+                            <form action="{{ path('cart_update') }}" method="POST">
+                                <td>
+                                    <input hidden name="id" value="{{ key }}">
+                                    <input type="number" class="form-control" name="qty" id="qty[{{ key }}]"
+                                           value="{{ row.qty }}" min="0" max="{{ row.stock }}"
+                                           onchange="this.form.submit()">
+                                    <p style="font-size: smaller" class="pt-2">{{ row.stock }} piéces disponible</p>
+                                </td>
+                            </form>
+                            <form action="{{ path('cart_update') }}" method="POST">
                                 <input hidden name="id" value="{{ key }}">
-                                <input type="number" class="form-control" name="qty" id="qty[{{ key }}]"
-                                       value="{{ row.qty }}" min="0" max="{{ row.stock }}"
-                                       onchange="this.form.submit()">
-                                <p style="font-size: smaller" class="pt-2">{{ row.stock }} piéces disponible</p>
-                            </td>
-                        </form>
-                        <form action="{{ path('cart_update') }}" method="POST">
-                            <input hidden name="id" value="{{ key }}">
-                            <input hidden class="form-control" name="qty" id="qty[{{ key }}]" value="0">
-                            <td><button type="submit" id="button_del">Supprimer</button></td>
-                        </form>
-                    </tr>
-                    {% set total = total + row.qty*row.price %}
-                    {% set quantity = quantity + row.qty %}
-                {% endif %}
-            {% endfor %}
-            <tr>
-                <td colspan="3">
-                    <h3>Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :</h3>
-                </td>
-                <td colspan="2" class="text-success">
-                    <h3>{{ total }} €</h3>
-                </td>
-                <td>
-                    {% if app.user %}
-                        <a href="{{ path('valid') }}" class="add_cart">Valider</a>
-                    {% else %}
-                        {#                        <a href="{{ path('app_login') }}" class="add_cart">Valider</a> #}
+                                <input hidden class="form-control" name="qty" id="qty[{{ key }}]" value="0">
+                                <td>
+                                    <button type="submit" id="button_del">Supprimer</button>
+                                </td>
+                            </form>
+                        </tr>
+                        {% set total = total + row.qty*row.price %}
+                        {% set quantity = quantity + row.qty %}
                     {% endif %}
-                </td>
-            </tr>
-            {% else %}
-                <div class="col-sm-12 text-center p-4">
-                    <span class=""></span>
-                    <p>Votre panier est vide</p>
-                    <p><a href="{{ path('prodlist') }}">Commencez à le remplir!</a></p>
-                    <img class="img-fluid" width="400" src="/assets/images/BODY/empty_cart.jpg">
-                </div>
-            {% endif %}
-        </table>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">
+                        <h3>Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :</h3>
+                    </td>
+                    <td colspan="2" class="text-success">
+                        <h3>{{ total }} €</h3>
+                    </td>
+                    <td>
+                        {% if app.user %}
+                            <a href="{{ path('valid') }}" class="add_cart">Valider</a>
+                        {% else %}
+                            {#                        <a href="{{ path('app_login') }}" class="add_cart">Valider</a> #}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                    <div class="col-sm-12 text-center p-4">
+                        <span class=""></span>
+                        <p>Votre panier est vide</p>
+                        <p><a href="{{ path('prodlist') }}">Commencez à le remplir!</a></p>
+                        <img class="img-fluid" width="400" src="/assets/images/BODY/empty_cart.jpg">
+                    </div>
+                {% endif %}
+            </table>
+        </div>
     </div>
-    {% endblock %}
-</div>
+{% endblock %}

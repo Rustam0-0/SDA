@@ -38,29 +38,54 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CartController extends AbstractController
 {
-//    /**
-//     * @Route("/cart/add", name="cart_add")
-//     */
-//    public function cartAdd(SessionInterface $session, ProductRepository $prod, Request $request): Response
-//    {
-//        $cart = $session->get("cart", []);
-//
-//        if ($request->getMethod() == 'POST') {
-//            $product = $prod->find($request->get('id'));
-//            $cart[$request->get('id')] = [
-//                "name" => $request->get('name'),
-//                "description" => $request->get('description'),
-//                "picture" => $request->get('picture'),
-//                "qty" => $request->get('qty'),
-//                "stock" => $product->getStock()
-//            ];
-//            $session->set("cart", $cart);
-//        }
-//        dump($cart);
-//
+    /**
+     * @Route("/cart/add", name="cart_add")
+     */
+    public function cartAdd(SessionInterface $session, ProductRepository $prod, Request $request): Response
+    {
+        $cart = $session->get("cart", []);
+
+        if ($request->getMethod() == 'POST') {
+            $product = $prod->find($request->get('id'));
+            $cart[$request->get('id')] = [
+                "name" => $request->get('name'),
+                "description" => $request->get('description'),
+                "picture" => $request->get('picture'),
+                "qty" => $request->get('qty'),
+                "stock" => $product->getStock()
+            ];
+            $session->set("cart", $cart);
+        }
+        dump($cart);
+
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+    }
+
+    /**
+     * @Route("/cart/add/json", name="cart_add_json")
+     */
+    public function cartAddJson(SessionInterface $session, ProductRepository $prod, Request $request): Response
+    {
+        $cart = $session->get("cart", []);
+
+        if ($request->getMethod() == 'POST') {
+            $product = $prod->find($request->get('id'));
+            $cart[$request->get('id')] = [
+                "name" => $request->get('name'),
+                "description" => $request->get('description'),
+                "picture" => $request->get('picture'),
+                "qty" => $request->get('qty'),
+                "stock" => $product->getStock()
+            ];
+            $session->set("cart", $cart);
+        }
+        dump($cart);
+
 //        $referer = $request->headers->get('referer');
 //        return new RedirectResponse($referer);
-//    }
+        return $this->json($cart,201,[]);
+    }
 
     /**
      * @Route("/cart/update", name="cart_update")

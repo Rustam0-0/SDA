@@ -65,33 +65,41 @@ $('.quantity_inner .quantity').bind("change keyup input click", function () {
 //     });
 // });
 
-    $('.bt_buy').click(function(){
-        let product_id = $(this).data("productid");
-        let product_name = $(this).data("productname");
-        let product_description = $(this).data("producdescription");
-        let product_picture = $(this).data("producpicture");
-        let product_price = $(this).data("producprice");
-        let quantity = $(this).data("qty");
-        // let quantity = $('#' + product_id).val();
-        // if(quantity != '' && quantity > 0)
-        // {
+function updateCart(count) {
+    let cart = document.getElementsByClassName('badge badge-pill badge-danger');
+    for (let i = 0; i < cart.length; i += 1) {
+
+        console.log(parseInt(cart[i].innerHTML))
+        cart[i].innerHTML = count;
+    }
+}
+
+$('form').submit(function (event) {
+    ///cart/add
+    const regex = "/cart/add";
+    const found = event.target.action.match(regex);
+    if (found) {
+        event.preventDefault();
+        // if (window.prompt())
+        let formData = $(this).serialize();
         $.ajax({
-            url: url,
-            method:"POST",
-            data:{product_id:product_id, product_name:product_name, product_description:product_description, product_picture:product_picture, product_price:product_price, quantity:quantity},
-            success:function(data)
-            {
-            alert("Product Added into Cart");
-            $('#cart').html(data);
-            $('#' + product_id).val('');
-            }
+            url: event.target.action + '/json',
+            type: "POST",
+            dataType: 'json',
+            data: formData
+        }).done(function (response) {
+            let result = 0;
+            $.each(response, function (key, val) {
+                console.log(val.qty);
+                result += parseInt(val.qty);
+            });
+            console.log(response);
+            console.log(result);
+            updateCart(result)
         });
-        // }
-        // else
-        // {
-        // alert("Please Enter quantity");
-        // }
-    });
+    }
+});
+
 //
 //     // confirmation de supprision de produit
 //     $(document).on('click', '.button_del', function()

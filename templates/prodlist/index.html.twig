@@ -25,9 +25,8 @@
                         </div>
                         <p class="pt-2">{{ product.stock }} piéces disponible</p>
                     </div>
-                    <form method="post"
-{#                          action="{{ path("cart_add") }}">#}
-                            action="">
+                    <form method="post" class="my_form"
+                          action="{{ path('cart_add') }}">
                         {# data-product-id="{{ product.id }}" #}
                         <input type="hidden" name="id" value="{{ product.id }}">
                         <input type="hidden" name="name" value="{{ product.name }}">
@@ -56,14 +55,14 @@
 {#                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>#}
 {#                                </svg>#}
 {#                            </button>#}
-                            <button name="bt_buy"
-{#                                    type="submit"#}
-                                    class="bt_buy"
-                                    data-productid="{{product.id}}"
-                                    data-productname="{{product.name}}"
-                                    data-productdescription="{{product.description}}"
-                                    data-productpicture="{{product.picture}}"
-                                    data-producprice="{{product.price}}">
+                            <button type="submit"
+                                    class="bt_buy">
+{#                                    name="submit"#}
+{#                                    data-productid="{{product.id}}"#}
+{#                                    data-productname="{{product.name}}"#}
+{#                                    data-productdescription="{{product.description}}"#}
+{#                                    data-productpicture="{{product.picture}}"#}
+{#                                    data-producprice="{{product.price}}">#}
 {#                                    data-quantity="{{ app.session.get('cart')[product.id]['qty'] }}"#}
                                 <svg viewBox="0 0 24 24">
                                     <circle cx="9" cy="21" r="1"></circle>

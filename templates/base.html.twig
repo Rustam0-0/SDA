@@ -75,6 +75,16 @@
             </ul>
             <ul class="social clear-list">
                 <li>
+                        {% if app.session.get('cart') %}
+                            {% set total = 0 %}
+                            {% for key,row in app.session.get('cart') %}
+
+                                {% set total = total + app.session.get('cart')[key]["qty"] %}
+                            {% endfor %}
+                            <span class="badge badge-pill badge-danger">{{ total }}</span>
+                        {% endif %}
+                </li>
+                <li>
                     <a href="https://instagram.com/saveursdarmenie/">
                         <i class="fa fa-instagram"></i>
                     </a>
