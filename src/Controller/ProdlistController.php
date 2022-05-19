@@ -67,4 +67,25 @@ class ProdlistController extends AbstractController
             'list' => $list,
         ]);
     }
+
+    /**
+     * @Route("/search", name="prodlist4")
+     */
+    public function index4(ProductRepository $repo, CategoryRepository $cat, Request $request): Response
+    {
+        $name = $request->get('q');
+        //   dump($name);
+        //   dump($repo->findBySearch($name));
+
+        if ($repo->findBySearch($name)) {
+            $this->addFlash('success', 'Resultat de votre recherche pour ');
+        }
+        else {
+            $this->addFlash('success', "Oups, on n'a rien trouvé pour: ");
+        }
+        return $this->render('prodlist/index.html.twig', [
+            'categories'=> $cat->findAll(),
+            'list' => $repo->findBySearch($name)
+        ]);
+    }
 }

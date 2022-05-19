@@ -73,4 +73,18 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findBySearch($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name Like :val')
+            ->orWhere('p.description Like :value')
+            ->setParameter('val', '%'.$value.'%')
+            ->setParameter('value', '%'.$value.'%')
+            ->orderBy('p.id', 'ASC')
+            //    ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

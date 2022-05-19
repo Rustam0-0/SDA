@@ -21,15 +21,16 @@
 
     <link href="https://localhost:8000/assets/fonts.css" type="text/css" rel="stylesheet">
     <link href="https://localhost:8000/assets/theme.css" type="text/css" rel="stylesheet">
-    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous" rel="stylesheet" />
-{#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">#}
+    {#    <link href="https://localhost:8000/assets/theme_key.css" type="text/css" rel="stylesheet"> #}
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous"
+          rel="stylesheet"/>
+    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> #}
 
-    {#    icons#}
-{#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/6.1.1/css/font-awesome.min.css" rel="stylesheet">#}
-
+    {#    icons #}
+    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/6.1.1/css/font-awesome.min.css" rel="stylesheet"> #}
     <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet"
           type="text/css">
-{#    <link href="https://localhost:8000/assets/fonts_icons.css" type="text/css" rel="stylesheet">#}
+    {#    <link href="https://localhost:8000/assets/fonts_icons.css" type="text/css" rel="stylesheet"> #}
 
     {#  logo icon in browser  #}
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
@@ -75,16 +76,6 @@
             </ul>
             <ul class="social clear-list">
                 <li>
-                        {% if app.session.get('cart') %}
-                            {% set total = 0 %}
-                            {% for key,row in app.session.get('cart') %}
-
-                                {% set total = total + app.session.get('cart')[key]["qty"] %}
-                            {% endfor %}
-                            <span class="badge badge-pill badge-danger">{{ total }}</span>
-                        {% endif %}
-                </li>
-                <li>
                     <a href="https://instagram.com/saveursdarmenie/">
                         <i class="fa fa-instagram"></i>
                     </a>
@@ -98,11 +89,63 @@
             </ul>
         </div>
     </div>
-    <div class="header-content">
-        <div class="container">
+    <div class="header-content d-flex flex-wrap justify-content-between">
+        <div class="container col-lg-4">
             <a href="/" class="logo" title="Saveurs d'Arménie">
-                <img class="img-fluid w-50" src="https://localhost:8000/assets/images/logo/gold.jpg">
+                <img class="img-fluid w-70" src="https://localhost:8000/assets/images/header/gold.jpg">
             </a>
+        </div>
+        <div class="container-fluid col-lg-4 offset-4 pr-5">
+            <ul class=" clear-list d-flex flex-wrap justify-content-between">
+                {#                <li class="search-widget dropdown"> #}
+                <li>
+                    <form action="{{ path('prodlist4') }}" method="get" class="search-widget-form">
+                        <input id="search-widget-input" class="input-field search-input"
+                               type="text" placeholder="Que recherchez-vous?" name="q">
+                        <button class="button-circle is-primary" type="submit">
+                            <i class="icon ion-ios-search"></i>
+                        </button>
+                        {% if app.request.query.get('q') %}
+                            {% for flash_success in app.flashes('success') %}
+                                <p class="alert alert-success" role="alert">
+                                    {{ flash_success }}
+                                    <span class="text-success">{{ app.request.query.get('q') }}
+                                </p>
+                            {% endfor %}
+                        {% else %}
+                            {% for flash_success in app.flashes('success') %}
+                                <p class="alert alert-success" role="alert">
+                                    {{ app.request.query.get('q') }}
+                                </p>
+                            {% endfor %}
+{#                            <p>Aucun paramettre de recherche indiqué</p>#}
+                        {% endif %}
+                    </form>
+{#                    <div class="row p-4">#}
+{#                    </div>#}
+                </li>
+                <li>
+                    <a title="Copmte" href="" class="">
+                        <ion-icon class="button-person" name="person-circle-outline"></ion-icon>
+                    </a>
+                </li>
+                <li class="shopcart-widget pt-2">
+                    <a title="Panier" href="{{ path('cart') }}"
+                       class="button-circle is-primary">
+                        <i class="icon shopcart-icon ion-ios-cart-outline"></i>
+                        {% if app.session.get('cart') %}
+                            {% set total = 0 %}
+                            {% for key,row in app.session.get('cart') %}
+                                {% set total = total + app.session.get('cart')[key]["qty"] %}
+                            {% endfor %}
+                            {# <span class="shopcart-counter active">{{ total }}</span> #}
+                            <span class="badge badge-pill badge-danger shopcart-counter active">
+                            {{ total }}
+                        </span>
+                        {% endif %}
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="catalog d-none d-lg-block">
@@ -118,7 +161,7 @@
                             {% for subcat in category.subcats %}
                                 <li class="" data-handle="">
                                     <a title="{{ subcat.name }}"
-                                       href="{{path('prodlist2', {id:subcat.id})}}"
+                                       href="{{ path('prodlist2', {id:subcat.id}) }}"
                                        class="menu-link">
                                         <span class="link-text">{{ subcat.name }}</span>
                                     </a>
@@ -144,7 +187,7 @@
         <div class="d-flex flex-wrap">
             <div class="col-lg-3 col-md-5 col-sm-5 hide-xs">
                 <a href="/" title="">
-                    <img class="img-fluid w-100" src="https://localhost:8000/assets/images/logo/black.jpg">
+                    <img class="img-fluid w-100" src="https://localhost:8000/assets/images/footer/black.jpg">
                 </a>
                 <div class="">
                     <p><span>SAS "Saveurs d'Armenie", 2017<br> Tous les droits sont réservés</span></p>
@@ -205,7 +248,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #fff3dd">
                         {% for subcat in category.subcats %}
-                            <a href="{{path('prodlist2', {id:subcat.id})}}"
+                            <a href="{{ path('prodlist2', {id:subcat.id}) }}"
                                style="color: #080809; font-size: 20px"
                                class="dropdown-item">
                                 {{ subcat.name }}
@@ -218,10 +261,13 @@
     </nav>
 </div>
 <div class="opaco js-mobile-catalog-toggle"></div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script type="text/javascript" src="/assets/script.js"></script>
 </body>
 </html>
 
-{#<script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>#}
+{# <script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script> #}
 
 
