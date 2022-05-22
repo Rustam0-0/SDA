@@ -66,7 +66,7 @@ $('.quantity_inner .quantity').bind("change keyup input click", function () {
 // });
 
 function updateCart(count) {
-    let cart = document.getElementsByClassName('badge badge-pill badge-danger');
+    let cart = document.getElementsByClassName('shopcart-counter');
     for (let i = 0; i < cart.length; i += 1) {
 
         console.log(parseInt(cart[i].innerHTML))
@@ -100,6 +100,58 @@ $('form').submit(function (event) {
     }
 });
 
+
+$('form').submit(function (event) {
+    ///cart/update
+    const regex = "/cart/update";
+    const found = event.target.action.match(regex);
+    if (found) {
+        event.preventDefault();
+        // if (window.prompt())
+        let formData = $(this).serialize();
+        $.ajax({
+            url: event.target.action + '/json',
+            type: "POST",
+            dataType: 'json',
+            data: formData
+        }).done(function (response) {
+            let result = 0;
+            $.each(response, function (key, val) {
+                console.log(val.qty);
+                result += parseInt(val.qty);
+            });
+            console.log(response);
+            console.log(result);
+            updateCart(result)
+        });
+    }
+});
+
+$('form').submit(function (event) {
+    ///cart/update
+    const regex = "/cart/delete";
+    const found = event.target.action.match(regex);
+    if (found) {
+        event.preventDefault();
+        // if (window.prompt())
+        let formData = $(this).serialize();
+        $.ajax({
+            url: event.target.action + '/json',
+            type: "POST",
+            dataType: 'json',
+            data: formData
+        }).done(function (response) {
+            let result = 0;
+            $.each(response, function (key, val) {
+                console.log(val.qty);
+                result += parseInt(val.qty);
+            });
+            console.log(response);
+            console.log(result);
+            updateCart(result)
+        });
+    }
+});
 //
 //     // confirmation de supprision de produit
 //     $(document).on('click', '.button_del', function()

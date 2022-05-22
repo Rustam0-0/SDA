@@ -2,9 +2,37 @@
 
 
 {% block body %}
-    <div id="results" class="container-fluid zaebal">
-        {% for product in list %}
+    <div class="zaebal">
+        {% if (list|first) %}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('home') }}" title="Accueil">
+                            Accueil
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('subcatlist', { id: (list|first).subcat.category.id}) }}">
+                            {{ (list|first).subcat.category.name }}
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ (list|first).subcat.name }}
+                    </li>
+                </ol>
+            </nav>
+        {% else %}
+            <div class="text-center pl-3 pr-3"
+                 style="height: 80px; background-color: #989100; vertical-align: middle; display: table-cell">
+                <h1>Il n'y a pas encore de produits dans cette catégorie.
+                    Nous y travaillons.</h1>
+            </div>
+        {% endif %}
+
+        <div id="results" class="container-fluid">
+            {% for product in list %}
             <article class="results_product_item product-card mb-4">
+                {# col-xl-3 col-lg-3 col-md-6 col-sm-12 #}
                 <div class="d-flex flex-wrap justify-content-center">
                     <a class="results_product_item_image_container">
                         <img src="http://localhost:8000/assets/images/PRODUCTS/{{ product.picture }}"
@@ -32,6 +60,7 @@
                         <input type="hidden" name="name" value="{{ product.name }}">
                         <input type="hidden" name="picture" value="{{ product.picture }}">
                         <input type="hidden" name="description" value="{{ product.description }}">
+                        <input type="hidden" name="price" value="{{ product.price }}">
                         <div class="quantity_inner">
                             <a class="bt_minus">
                                 <svg viewBox="0 0 24 24" class="feather feather-minus">
@@ -60,7 +89,8 @@
                     </form>
                 </div>
             </article>
-        {% endfor %}
-        {{ dump(app.session.get('cart')) }}
+            {% endfor %}
+                {#            {{ dump(app.session.get('cart')) }} #}
+        </div>
     </div>
 {% endblock %}

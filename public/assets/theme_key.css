@@ -4944,28 +4944,28 @@
     font-size: 16px; }
 
 /* line 140, _scaffolding.scss */
-.button-circle {
-    border-radius: 50%;
-    font-size: 24px;
-    height: 50px;
-    padding: 11px 8px;
-    width: 50px; }
-/* line 147, _scaffolding.scss */
-.button-circle.is-gray {
-    background: #eeeeee;
-    color: #000; }
-/* line 151, _scaffolding.scss */
-.button-circle.is-gray:hover {
-    background: #000;
-    color: #fff; }
-/* line 157, _scaffolding.scss */
-.button-circle.is-primary {
-    background: #989100;
-    color: #ffffff; }
-/* line 161, _scaffolding.scss */
-.button-circle.is-primary:hover {
-    background: #000;
-    color: #fff; }
+/*.button-circle {*/
+/*    border-radius: 50%;*/
+/*    font-size: 24px;*/
+/*    height: 50px;*/
+/*    padding: 11px 8px;*/
+/*    width: 50px; }*/
+/*!* line 147, _scaffolding.scss *!*/
+/*.button-circle.is-gray {*/
+/*    background: #eeeeee;*/
+/*    color: #000; }*/
+/*!* line 151, _scaffolding.scss *!*/
+/*.button-circle.is-gray:hover {*/
+/*    background: #000;*/
+/*    color: #fff; }*/
+/*!* line 157, _scaffolding.scss *!*/
+/*.button-circle.is-primary {*/
+/*    background: #989100;*/
+/*    color: #ffffff; }*/
+/*!* line 161, _scaffolding.scss *!*/
+/*.button-circle.is-primary:hover {*/
+/*    background: #000;*/
+/*    color: #fff; }*/
 
 /* line 168, _scaffolding.scss */
 .button-grey {

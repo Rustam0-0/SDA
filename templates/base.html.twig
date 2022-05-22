@@ -40,7 +40,7 @@
 
     {# pour js-mobile-catalog-toggle #}
     <link href="https://localhost:8000/assets/base.css" type="text/css" rel="stylesheet">
-    <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet">
+{#    <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet">#}
     <link href="https://localhost:8000/assets/layouts.css" type="text/css" rel="stylesheet">
 
     {#    ////////////////////// #}
@@ -90,58 +90,50 @@
         </div>
     </div>
     <div class="header-content d-flex flex-wrap justify-content-between">
-        <div class="container col-lg-4">
+        <div class="container col-xl-4 col-lg-4 col-md-8 col-sm-8 col-7">
             <a href="/" class="logo" title="Saveurs d'Arménie">
                 <img class="img-fluid w-70" src="https://localhost:8000/assets/images/header/gold.jpg">
             </a>
         </div>
-        <div class="container-fluid col-lg-4 offset-4 pr-5">
-            <ul class=" clear-list d-flex flex-wrap justify-content-between">
-                {#                <li class="search-widget dropdown"> #}
-                <li>
-                    <form action="{{ path('prodlist4') }}" method="get" class="search-widget-form">
+        <div class="container offset-1 col-xl-7 col-lg-7 col-md-3 col-sm-3 col-4">
+            <ul class="clear-list d-flex">
+                <li class="pr-3">
+                    <form action="{{ path('prodlist4') }}" method="get"
+                          class="search-widget-form d-none d-lg-block">
                         <input id="search-widget-input" class="input-field search-input"
                                type="text" placeholder="Que recherchez-vous?" name="q">
-                        <button class="button-circle is-primary" type="submit">
-                            <i class="icon ion-ios-search"></i>
+                        <button class="button-circle is-primary shadow-none" type="submit">
+                            <ion-icon name="search-outline"></ion-icon>
                         </button>
                         {% if app.request.query.get('q') %}
-                            {% for flash_success in app.flashes('success') %}
-                                <p class="alert alert-success" role="alert">
-                                    {{ flash_success }}
-                                    <span class="text-success">{{ app.request.query.get('q') }}
-                                </p>
+                            {% for label, messages in app.flashes(['success', 'warning']) %}
+                                {% for message in messages %}
+                                    <div class="flash-{{ label }}">
+                                        {{ message }} {{ app.request.query.get('q') }}
+                                    </div>
+                                {% endfor %}
                             {% endfor %}
-                        {% else %}
-                            {% for flash_success in app.flashes('success') %}
-                                <p class="alert alert-success" role="alert">
-                                    {{ app.request.query.get('q') }}
-                                </p>
-                            {% endfor %}
-{#                            <p>Aucun paramettre de recherche indiqué</p>#}
                         {% endif %}
                     </form>
-{#                    <div class="row p-4">#}
-{#                    </div>#}
                 </li>
-                <li>
-                    <a title="Copmte" href="" class="">
-                        <ion-icon class="button-person" name="person-circle-outline"></ion-icon>
-                    </a>
-                </li>
-                <li class="shopcart-widget pt-2">
+                {#                <li>#}
+                {#                    <a title="Copmte" href="" class="">#}
+                {#                        <ion-icon class="button-person" name="person-circle-outline"></ion-icon>#}
+                {#                    </a>#}
+                {#                </li>#}
+                <li class="shopcart-widget pt-1">
                     <a title="Panier" href="{{ path('cart') }}"
                        class="button-circle is-primary">
-                        <i class="icon shopcart-icon ion-ios-cart-outline"></i>
+                        <i class="icon ion-ios-cart-outline"></i>
                         {% if app.session.get('cart') %}
                             {% set total = 0 %}
                             {% for key,row in app.session.get('cart') %}
                                 {% set total = total + app.session.get('cart')[key]["qty"] %}
                             {% endfor %}
-                            {# <span class="shopcart-counter active">{{ total }}</span> #}
-                            <span class="badge badge-pill badge-danger shopcart-counter active">
-                            {{ total }}
-                        </span>
+                            {# <span class="badge badge-pill badge-danger shopcart-counter active">{{ total }}</span> #}
+                            <span class="shopcart-counter active">
+                                {{ total }}
+                            </span>
                         {% endif %}
                     </a>
                 </li>
@@ -183,7 +175,7 @@
 {% block body %}{% endblock %}
 
 <footer>
-    <div class="container">
+    <div class="container-fluid">
         <div class="d-flex flex-wrap">
             <div class="col-lg-3 col-md-5 col-sm-5 hide-xs">
                 <a href="/" title="">
@@ -239,6 +231,22 @@
     <button class="mobile-menu-close js-mobile-catalog-toggle"><span>х</span>Fermer le catalogue</button>
     <nav class="navbar">
         <ul class="mobile-menu clear-list menu level-1 navbar-nav">
+            <form action="{{ path('prodlist4') }}" method="get" class="search-widget-form">
+                <input id="search-widget-input" class="input-field search-input"
+                       type="text" placeholder="Que recherchez-vous?" name="q">
+                <button class="button-circle is-primary" type="submit">
+                    <i class="icon ion-ios-search"></i>
+                </button>
+                {% if app.request.query.get('q') %}
+                    {% for label, messages in app.flashes(['success', 'warning']) %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                {{ message }} {{ app.request.query.get('q') }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </form>
             {% for category in categories %}
                 <div class="dropdown py-3">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"

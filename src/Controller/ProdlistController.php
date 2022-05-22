@@ -78,10 +78,10 @@ class ProdlistController extends AbstractController
         //   dump($repo->findBySearch($name));
 
         if ($repo->findBySearch($name)) {
-            $this->addFlash('success', 'Resultat de votre recherche pour ');
+            $this->addFlash('success', 'Resultat de votre recherche pour: ');
         }
         else {
-            $this->addFlash('success', "Oups, on n'a rien trouvé pour: ");
+            $this->addFlash('warning', "Oups, on n'a rien trouvé pour: ");
         }
         return $this->render('prodlist/index.html.twig', [
             'categories'=> $cat->findAll(),

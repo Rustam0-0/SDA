@@ -52,6 +52,7 @@ class CartController extends AbstractController
                 "description" => $request->get('description'),
                 "picture" => $request->get('picture'),
                 "qty" => $request->get('qty'),
+                "price" => $request->get('price'),
                 "stock" => $product->getStock()
             ];
             $session->set("cart", $cart);
@@ -115,6 +116,33 @@ class CartController extends AbstractController
     }
 
     /**
+     * @Route("/cart/update/json", name="cart_update_json")
+     */
+    public function cartUpdateJson(SessionInterface $session, ProductRepository $prod, Request $request): Response
+    {
+        $cart = $session->get("cart", []);
+        if ($request->getMethod() == 'POST') {
+            $product = $prod->find($request->get('id'));
+            $id = $request->get('id');
+
+            if ($request->get('qty') > $product->getStock()) {
+                $this->addFlash('danger', 'Attention le stock disponible!');
+                return $this->redirectToRoute("cart");
+            }
+
+            if ($request->get('qty') <= 0) {
+                unset($cart[$id]);
+            } else {
+                $cart[$id]["qty"] = $request->get('qty');
+            }
+        }
+        $session->set("cart", $cart);
+
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+    }
+
+    /**
      * @Route("/cart", name="cart")
      */
     public function index(CategoryRepository $repocat, SessionInterface $session, ProductRepository $prod): Response
@@ -133,6 +161,33 @@ class CartController extends AbstractController
             'categories' => $categories,
             'cart' => $cart,
         ]);
+    }
+
+    /**
+     * @Route("/cart/delete", name="cart_delete")
+     */
+    public function cartDelete(SessionInterface $session, ProductRepository $prod, Request $request): Response
+    {
+        $cart = $session->get("cart", []);
+        if ($request->getMethod() == 'POST') {
+            $product = $prod->find($request->get('id'));
+            $id = $request->get('id');
+
+            if ($request->get('qty') > $product->getStock()) {
+                $this->addFlash('danger', 'Attention le stock disponible!');
+                return $this->redirectToRoute("cart");
+            }
+
+            if ($request->get('qty') <= 0) {
+                unset($cart[$id]);
+            } else {
+                $cart[$id]["qty"] = $request->get('qty');
+            }
+        }
+        $session->set("cart", $cart);
+
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
     }
 
 
