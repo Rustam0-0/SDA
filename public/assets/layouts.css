@@ -51,16 +51,6 @@
     padding: 26px;
     margin-bottom: 15px; }
 
-/* line 54, layouts.scss */
-.discounts-wrap:after {
-    content: '';
-    height: 10px;
-    background: url(decor-y.png) top center repeat-x;
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0; }
-
 /* line 63, layouts.scss */
 .discounts-wrap .title {
     font-family: "PF Din Text Comp Pro";
@@ -685,16 +675,6 @@ form[data-cart-form] .collection-text-block {
     /* line 622, layouts.scss */
     .cart-heading {
         font-size: 20px; } }
-/* line 627, layouts.scss */
-.collection-head {
-    background-image: url(collection.jpg);
-    background-position: center center;
-    -o-background-size: cover;
-    background-size: cover;
-    position: relative;
-    z-index: 10;
-    padding: 97px 0 32px 0;
-    margin-bottom: 10px; }
 
 /* line 637, layouts.scss */
 .collection-head:before {
@@ -1035,16 +1015,6 @@ form[data-cart-form] .collection-text-block {
 /* line 945, layouts.scss */
 .random-product:hover .img {
     border-color: #000000; }
-
-/* line 948, layouts.scss */
-.random-product:after {
-    content: '';
-    height: 10px;
-    background: url(decor-y.png) top center repeat-x;
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0; }
 
 /* line 957, layouts.scss */
 .random-product .img i {

@@ -122,16 +122,17 @@
                 {#                    </a>#}
                 {#                </li>#}
                 <li class="shopcart-widget pt-1">
-                    <a title="Panier" href="{{ path('cart') }}"
+                    <a title="Panier"
+                       href="{{ path('cart') }}" {# onclick="openNav()"#}
                        class="button-circle is-primary">
                         <i class="icon ion-ios-cart-outline"></i>
+                        {# <i class="fa-shopping-cart"></i>#}
                         {% if app.session.get('cart') %}
                             {% set total = 0 %}
                             {% for key,row in app.session.get('cart') %}
                                 {% set total = total + app.session.get('cart')[key]["qty"] %}
                             {% endfor %}
-                            {# <span class="badge badge-pill badge-danger shopcart-counter active">{{ total }}</span> #}
-                            <span class="shopcart-counter active">
+                            <span class="shopcart-counter active" id="bought">
                                 {{ total }}
                             </span>
                         {% endif %}
@@ -166,6 +167,31 @@
         </div>
     </div>
 </header>
+
+{#<div id="sideNavigation" class="sidenav zaebal">#}
+{#    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>#}
+{#    <div id="contentcart">#}
+{#        {% if app.session.get('cart') %}#}
+{#            {% set TotalPanier =0 %}#}
+{#            {% for key,row in app.session.get('cart') %}#}
+{#                <p><img height='50px' src='/assets/images/PRODUCTS/{{ row.picture }}'#}
+{#                        alt='{{ row.name }}'> {{ row.name }}#}
+{#                </p>#}
+{#                <p>Quantité : <span class='text-success'>{{ row.qty }}</span>#}
+{#                    Prix : <span class='text-success'>{{ row.price }}€</span>#}
+{#                </p><hr>#}
+{#                {% if key matches '/^\\d+$/' %}#}
+{#                    {% set TotalPanier =  TotalPanier + app.session.get('cart')[key]["qty"]*row.price %}#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#            <p>Total : <span class='text-success'>  {{ TotalPanier }} €</span> </p>#}
+{#            <p> <a class="btn btn-success text-light" href="{{ path('cart') }}">Voir le panier</a></p>#}
+{#        {% else %}#}
+{#            <p><span class="text-light fw-bold">Votre panier est vide</span></p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
+
 {#    {{ dump(app.user) }} #}
 
 {# {% for flash_success in app.flashes('success') %} #}
@@ -228,7 +254,10 @@
 <script type="text/javascript" src="https://localhost:8000/assets/layouts.js"></script>
 
 <div id="mobile-menu">
-    <button class="mobile-menu-close js-mobile-catalog-toggle"><span>х</span>Fermer le catalogue</button>
+    <button class="mobile-menu-close js-mobile-catalog-toggle col-9 pb-4" style="align-self: start">
+        <span>х</span>
+        Fermer le catalogue
+    </button>
     <nav class="navbar">
         <ul class="mobile-menu clear-list menu level-1 navbar-nav">
             <form action="{{ path('prodlist4') }}" method="get" class="search-widget-form">
@@ -272,7 +301,7 @@
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script type="text/javascript" src="/assets/script.js"></script>
+<script type="text/javascript" src="/assets/script.js?id="></script>
 </body>
 </html>
 

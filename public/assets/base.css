@@ -378,9 +378,9 @@ textarea {
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 /* line 397, base.scss */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-    height: auto; }
+/*[type="number"]::-webkit-inner-spin-button,*/
+/*[type="number"]::-webkit-outer-spin-button {*/
+/*    height: auto; }*/
 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.

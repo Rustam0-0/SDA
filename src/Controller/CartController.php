@@ -39,8 +39,31 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class CartController extends AbstractController
 {
     /**
+     * @Route("/cart", name="cart")
+     */
+    public function index(CategoryRepository $repocat, SessionInterface $session, ProductRepository $prod): Response
+    {
+        $cart = $session->get("cart", []);
+
+        foreach ($cart as $key => $value) {
+            $product = $prod->find($key);
+            $cart[$key]['price'] = $product->getPrice();
+            $cart[$key]['stock'] = $product->getStock();
+        }
+
+//        dump($cart);
+
+        $categories = $repocat->findAll();
+        return $this->render('cart/index.html.twig', [
+            'categories' => $categories,
+            'cart' => $cart,
+        ]);
+    }
+
+    /**
      * @Route("/cart/add", name="cart_add")
      */
+    // prodlist, class="my_form" action="{{ path('cart_add') }}"
     public function cartAdd(SessionInterface $session, ProductRepository $prod, Request $request): Response
     {
         $cart = $session->get("cart", []);
@@ -81,8 +104,7 @@ class CartController extends AbstractController
             ];
             $session->set("cart", $cart);
         }
-        dump($cart);
-
+//        dump($cart);
 //        $referer = $request->headers->get('referer');
 //        return new RedirectResponse($referer);
         return $this->json($cart,201,[]);
@@ -102,7 +124,6 @@ class CartController extends AbstractController
                 $this->addFlash('danger', 'Attention le stock disponible!');
                 return $this->redirectToRoute("cart");
             }
-
             if ($request->get('qty') <= 0) {
                 unset($cart[$id]);
             } else {
@@ -142,53 +163,32 @@ class CartController extends AbstractController
         return new RedirectResponse($referer);
     }
 
-    /**
-     * @Route("/cart", name="cart")
-     */
-    public function index(CategoryRepository $repocat, SessionInterface $session, ProductRepository $prod): Response
-    {
-        $cart = $session->get("cart", []);
-
-        foreach ($cart as $key => $value) {
-            $product = $prod->find($key);
-            $cart[$key]['price'] = $product->getPrice();
-        }
-
-        dump($cart);
-
-        $categories = $repocat->findAll();
-        return $this->render('cart/index.html.twig', [
-            'categories' => $categories,
-            'cart' => $cart,
-        ]);
-    }
-
-    /**
-     * @Route("/cart/delete", name="cart_delete")
-     */
-    public function cartDelete(SessionInterface $session, ProductRepository $prod, Request $request): Response
-    {
-        $cart = $session->get("cart", []);
-        if ($request->getMethod() == 'POST') {
-            $product = $prod->find($request->get('id'));
-            $id = $request->get('id');
-
-            if ($request->get('qty') > $product->getStock()) {
-                $this->addFlash('danger', 'Attention le stock disponible!');
-                return $this->redirectToRoute("cart");
-            }
-
-            if ($request->get('qty') <= 0) {
-                unset($cart[$id]);
-            } else {
-                $cart[$id]["qty"] = $request->get('qty');
-            }
-        }
-        $session->set("cart", $cart);
-
-        $referer = $request->headers->get('referer');
-        return new RedirectResponse($referer);
-    }
+//    /**
+//     * @Route("/cart/delete", name="cart_delete")
+//     */
+//    public function cartDelete(SessionInterface $session, ProductRepository $prod, Request $request): Response
+//    {
+//        $cart = $session->get("cart", []);
+//        if ($request->getMethod() == 'POST') {
+//            $product = $prod->find($request->get('id'));
+//            $id = $request->get('id');
+//
+//            if ($request->get('qty') > $product->getStock()) {
+//                $this->addFlash('danger', 'Attention le stock disponible!');
+//                return $this->redirectToRoute("cart");
+//            }
+//
+//            if ($request->get('qty') <= 0) {
+//                unset($cart[$id]);
+//            } else {
+//                $cart[$id]["qty"] = $request->get('qty');
+//            }
+//        }
+//        $session->set("cart", $cart);
+//
+//        $referer = $request->headers->get('referer');
+//        return new RedirectResponse($referer);
+//    }
 
 
 }

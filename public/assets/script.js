@@ -25,6 +25,277 @@ $('.quantity_inner .quantity').bind("change keyup input click", function () {
     }
 });
 
+
+function updateCountCart(count_items) {
+    let cart = document.getElementsByClassName('shopcart-counter active');
+    for (let i = 0; i < cart.length; i += 1) {
+        console.log(parseInt(cart[i].innerHTML))
+        cart[i].innerHTML = count_items;
+    }
+}
+
+$('form').submit(function (event) {
+    // prodlist->base->'shopcart-counter active'
+    const regex = "/cart/add";
+    const found = event.target.action.match(regex);
+    if (found) {
+        event.preventDefault();
+        // if (window.prompt())
+        let formData = $(this).serialize();
+        $.ajax({
+            url: event.target.action + '/json',
+            type: "POST",
+            dataType: 'json',
+            data: formData
+        }).done(function (response) {
+            let result = 0;
+            $.each(response, function (key, val) {
+                console.log(val.qty);
+                result += parseInt(val.qty);
+            });
+            console.log(response);
+            console.log(result);
+            updateCountCart(result)
+        });
+    }
+});
+
+$('form').submit(function (event) {
+    // cart
+    const regex = "/cart/update";
+    const found = event.target.action.match(regex);
+    if (found) {
+        event.preventDefault();
+        // if (window.prompt())
+        let formData = $(this).serialize();
+        $.ajax({
+            url: event.target.action + '/json',
+            type: "POST",
+            dataType: 'json',
+            data: formData
+        }).done(function (response) {
+            let result = 0;
+            $.each(response, function (key, val) {
+                console.log(val.qty);
+                result += parseInt(val.qty);
+            });
+            console.log(response);
+            console.log(result);
+            updateCart(result)
+        });
+    }
+});
+
+
+
+
+
+
+
+
+// function updateCountCart(count) {
+//     let cart = document.getElementsByClassName('shopcart-counter active');
+//     //console.log(cart.lenght);
+//     if(cart.length>0){
+//         for (let i = 0; i < cart.length; i += 1) {
+//             console.log(parseInt(cart[i].innerHTML))
+//             cart[i].innerHTML = count;
+//         }
+//     }
+//     else
+//     {
+//         let parentcart = document.getElementsByClassName('shopcart-counter active');
+//         for(let i = 0; i < parentcart.length; i += 1) {
+//
+//             // console.log(parseInt(panier[i].innerHTML))
+//             //   parentpanier[i].innerHTML = count;
+//             let newDiv = document.createElement("span");
+//             newDiv.className  ="shopcart-counter active";
+//
+//             // et lui donne un peu de contenu
+//             let newContent = document.createTextNode(count);
+//             // ajoute le nœud texte au nouveau div créé
+//             newDiv.appendChild(newContent);
+//
+//             // ajoute le nouvel élément créé et son contenu dans le DOM
+//             //   var currentDiv = document.getElementById('div1');
+//             parentcart[i].parentNode.insertBefore(newDiv, parentcart[i].nextSibling);
+//         }
+//     }
+// }
+
+
+// $(document).ready(function () {
+//     $('[data-toggle="popover"]').popover({trigger: "hover", container: 'body'});
+
+    // $("form").submit(function (event) {
+    //     console.log(event.target.action)
+    //     const regex = "/cart/add";
+    //     const found = event.target.action.match(regex);
+    //     console.log(found);
+    //     if (found) {
+    //         event.preventDefault();
+    //         // console.log(event.target.action)
+    //         let formData = $(this).serialize();
+    //
+    //         $.ajax({
+    //             url: event.target.action + '/json',
+    //             type: "POST",
+    //             dataType: 'json',
+    //             data: formData
+    //         }).done(function (response) {
+    //             let resultat = 0;
+    //             let prix = 0;
+    //             let temp = "";
+    //             $.each(response, function (key, val) {
+    //                 // console.log(val.qte);
+    //                 resultat += parseInt(val.qty);
+    //                 prix += parseFloat(val.price) * parseInt(val.qty);
+    //                 let teste = `<p><img height='50px' src='/assets/images/PRODUCTS/${val.picture}'
+//                                      alt='${val.name}'>${val.name}
+//                                  </p>
+    //                              <p>Quantité : <span class='text-success'>${val.qty}</span>
+    //                                 Prix : <span class='text-success'>${val.price}€</span>
+    //                              </p><hr>`
+    //                     temp += teste;
+    //             });
+    //             let total = `<p>Total : <span class='text-success'>  ${prix} €</span> </p>
+    //             <p><a class="btn btn-success text-light" href="/cart/">Voir le panier</a></p>`;
+    //             temp = temp + total;
+    //             // console.log(response);
+    //             // console.log(prix);
+    //             updateCountCart(resultat)
+    //             updateCart(temp)
+    //         });
+    //     }
+    // });
+// });
+
+
+//для боковой корзины
+// function updateCart(newData) {
+//     let objcart = document.getElementById('contentcart');
+//     objcart.innerHTML = newData;
+// }
+//
+// function openNav() {
+//     // document.getElementById("sideNavigation").style.width = "30%";
+//     document.getElementById("sideNavigation").classList.add("widthcart");
+// }
+//
+// function closeNav() {
+//     document.getElementById("sideNavigation").classList.remove("widthcart");
+//     //  document.getElementById("sideNavigation").style.width = "0";
+// }
+
+
+
+
+
+// function updateProduct(formproduitcc){
+//     //var dataToSend = document.querySelector("form").serialize();
+//     console.log(event.target.action)
+//     const dataz = new FormData(formproduitcc);
+//
+//     let formproduit = $(formproduitcc).serialize();
+//     // console.log(dataz);
+//     //   console.log(this.id);
+//     console.log(formproduitcc.elements.namedItem('id').value);
+//     const idprod = formproduitcc.elements.namedItem('id').value;
+//     const qteprod = parseInt(formproduitcc.elements.namedItem('qty['+idprod+']').value);
+//     console.log(formproduitcc.elements.namedItem('qty['+idprod+']').value);
+//     if(qteprod===0){
+//         document.getElementById('prod'+idprod).remove();
+//     }
+//
+//     $.ajax({
+//         url: formproduitcc.action+'/json' ,
+//         type: "POST",
+//         dataType: 'json',
+//         data: formproduit
+//     }).done(function (response) {
+//         let resultat = 0;
+//         let prix = 0;
+//         let temp = "";
+//         $.each(response, function (key, val) {
+//             // console.log(val.qty);
+//             resultat += parseInt(val.qty);
+//             prix += parseFloat(val.price) * parseInt(val.qty);
+//             let teste = `<p><img height='50px' src='/assets/images/PRODUCTS/${val.picture}' alt='${val.name}'> ${val.name}</p>
+//             <p>Quantité : <span class='text-success'>${val.qty}</span>
+//                 Prix : <span class='text-success'>${val.price}€</span>
+//             </p><hr>`
+//             temp += teste;
+//         });
+//         let total = `<p>Total : <span class='text-success'>  ${prix} €</span> </p>
+//         <p><a class="btn btn-success text-light" href="/cart/">Voir le panier</a></p>`;
+//         temp = temp + total;
+//         // console.log(response);
+//         // console.log(prix);
+//         updateCountCart(resultat)
+//         updateCart(temp)
+//         document.getElementById('totalpanier').innerHTML=prix+'€';
+//     });
+// }
+
+
+//
+// $('form').submit(function (event) {
+//     // cart
+//     const regex = "/cart/delete";
+//     const found = event.target.action.match(regex);
+//     if (found) {
+//         event.preventDefault();
+//         // if (window.prompt())
+//         let formData = $(this).serialize();
+//         $.ajax({
+//             url: event.target.action + '/json',
+//             type: "POST",
+//             dataType: 'json',
+//             data: formData
+//         }).done(function (response) {
+//             let result = 0;
+//             $.each(response, function (key, val) {
+//                 console.log(val.qty);
+//                 result += parseInt(val.qty);
+//             });
+//             console.log(response);
+//             console.log(result);
+//             updateCart(result)
+//         });
+//     }
+// });
+
+
+
+
+//
+//     // confirmation de supprision de produit
+//     $(document).on('click', '.button_del', function()
+//     {
+//         // var prod_id = $(this).attr("id");
+//         var prod_id = $('#id').val();
+//         if(confirm("Are you sure you want to remove this?"))
+//         {
+//             $.ajax(
+//             {
+//                 url:"<?php echo base_url(); ?>Pages/product_delete",
+//                 method:"POST",
+//                 data:{prod_id:prod_id},
+//                 success:function(data)
+//                 {
+//                     // alert("Product removed from Cart");
+//                     // $('#cart_details').html(data);
+//                 }
+//             });
+//         }
+//         else
+//         {
+//             return false;
+//         }
+//     });
+
+
 // Добавляем в корзину
 // $('.quantity_inner .bt_buy').click(function () {
 //
@@ -64,116 +335,54 @@ $('.quantity_inner .quantity').bind("change keyup input click", function () {
 //         }
 //     });
 // });
-
-function updateCart(count) {
-    let cart = document.getElementsByClassName('shopcart-counter');
-    for (let i = 0; i < cart.length; i += 1) {
-
-        console.log(parseInt(cart[i].innerHTML))
-        cart[i].innerHTML = count;
-    }
-}
-
-$('form').submit(function (event) {
-    ///cart/add
-    const regex = "/cart/add";
-    const found = event.target.action.match(regex);
-    if (found) {
-        event.preventDefault();
-        // if (window.prompt())
-        let formData = $(this).serialize();
-        $.ajax({
-            url: event.target.action + '/json',
-            type: "POST",
-            dataType: 'json',
-            data: formData
-        }).done(function (response) {
-            let result = 0;
-            $.each(response, function (key, val) {
-                console.log(val.qty);
-                result += parseInt(val.qty);
-            });
-            console.log(response);
-            console.log(result);
-            updateCart(result)
-        });
-    }
-});
-
-
-$('form').submit(function (event) {
-    ///cart/update
-    const regex = "/cart/update";
-    const found = event.target.action.match(regex);
-    if (found) {
-        event.preventDefault();
-        // if (window.prompt())
-        let formData = $(this).serialize();
-        $.ajax({
-            url: event.target.action + '/json',
-            type: "POST",
-            dataType: 'json',
-            data: formData
-        }).done(function (response) {
-            let result = 0;
-            $.each(response, function (key, val) {
-                console.log(val.qty);
-                result += parseInt(val.qty);
-            });
-            console.log(response);
-            console.log(result);
-            updateCart(result)
-        });
-    }
-});
-
-$('form').submit(function (event) {
-    ///cart/update
-    const regex = "/cart/delete";
-    const found = event.target.action.match(regex);
-    if (found) {
-        event.preventDefault();
-        // if (window.prompt())
-        let formData = $(this).serialize();
-        $.ajax({
-            url: event.target.action + '/json',
-            type: "POST",
-            dataType: 'json',
-            data: formData
-        }).done(function (response) {
-            let result = 0;
-            $.each(response, function (key, val) {
-                console.log(val.qty);
-                result += parseInt(val.qty);
-            });
-            console.log(response);
-            console.log(result);
-            updateCart(result)
-        });
-    }
-});
 //
-//     // confirmation de supprision de produit
-//     $(document).on('click', '.button_del', function()
-//     {
-//         // var prod_id = $(this).attr("id");
-//         var prod_id = $('#id').val();
-//         if(confirm("Are you sure you want to remove this?"))
-//         {
-//             $.ajax(
-//             {
-//                 url:"<?php echo base_url(); ?>Pages/product_delete",
-//                 method:"POST",
-//                 data:{prod_id:prod_id},
-//                 success:function(data)
-//                 {
-//                     // alert("Product removed from Cart");
-//                     // $('#cart_details').html(data);
-//                 }
-//             });
+// let cart = {
+//
+// };
+//
+// document.onclick = event => {
+//     console.log(event.target.classList);
+//     if (event.target.classList.contains('bt_buy')) {
+//         plusFunction(event.target.dataset.id);
+//     }
+// }
+//
+// const plusFunction = id => {
+//     cart[id] ++;
+//     renderCart();
+// }
+//
+// const renderCart = () => {
+//     console.log(cart);
+// }
+//
+// renderCart();
+
+// function updateCountCart(count) {
+//     let cart = document.getElementsByClassName('shopcart-counter active');
+//     //console.log(cart.lenght);
+//     if(cart.length>0){
+//         for (let i = 0; i < cart.length; i += 1) {
+//             console.log(parseInt(cart[i].innerHTML))
+//             cart[i].innerHTML = count;
 //         }
-//         else
-//         {
-//             return false;
+//     }else{
+//         let parentcart = document.getElementsByClassName('icon ion-ios-cart-outline');
+//         for(let i = 0; i < parentcart.length; i += 1) {
+//
+//             // console.log(parseInt(panier[i].innerHTML))
+//             //   parentpanier[i].innerHTML = count;
+//             let newDiv = document.createElement("span");
+//             newDiv.className  ="shopcart-counter";
+//
+//             // et lui donne un peu de contenu
+//             let newContent = document.createTextNode(count);
+//             // ajoute le nœud texte au nouveau div créé
+//             newDiv.appendChild(newContent);
+//
+//             // ajoute le nouvel élément créé et son contenu dans le DOM
+//             //   var currentDiv = document.getElementById('div1');
+//             parentcart[i].parentNode.insertBefore(newDiv, parentcart[i].nextSibling);
 //         }
-//     });
+//     }
+// }
