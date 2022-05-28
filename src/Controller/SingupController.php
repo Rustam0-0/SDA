@@ -53,9 +53,12 @@ class SingupController extends AbstractController
             $cli = new Client();
             $cli->setName($task["name"]);
             $cli->setSurname($task["surname"]);
+            $cli->setTel($task["tel"]);
             $cli->setAddress($task["address"]);
-            $cli->setZipcode($task["zipcode"]);
-            $cli->setCity($task["city"]);
+//            $cli->setZipcode($task["zipcode"]);
+//            $cli->setCity($task["city"]);
+            $cli->setZipcode("80000");
+            $cli->setCity("Amiens");
             $cli->setDateAdd(new \DateTime());
 
             $user = new User();

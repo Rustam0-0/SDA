@@ -1,52 +1,64 @@
-{#{% extends 'base.html.twig' %}#}
+{# {% extends 'base.html.twig' %} #}
 
-{#{% block title %}Hello SingupController!{% endblock %}#}
+{# {% block title %}Hello SingupController!{% endblock %} #}
 
-{#{% block body %}#}
-{#<style>#}
-{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
-{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
-{#</style>#}
+{# {% block body %} #}
+{# <style> #}
+{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; } #}
+{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; } #}
+{# </style> #}
 
-{#<div class="example-wrapper">#}
-{#    <h1>Hello {{ controller_name }}! ✅</h1>#}
+{# <div class="example-wrapper"> #}
+{#    <h1>Hello {{ controller_name }}! ✅</h1> #}
 
-{#    This friendly message is coming from:#}
-{#    <ul>#}
-{#        <li>Your controller at <code><a href="{{ '/home/rustam/sda/src/Controller/SingupController.php'|file_link(0) }}">src/Controller/SingupController.php</a></code></li>#}
-{#        <li>Your template at <code><a href="{{ '/home/rustam/sda/templates/singup/index.html.twig'|file_link(0) }}">templates/singup/index.html.twig</a></code></li>#}
-{#    </ul>#}
-{#</div>#}
-{#{% endblock %}#}
+{#    This friendly message is coming from: #}
+{#    <ul> #}
+{#        <li>Your controller at <code><a href="{{ '/home/rustam/sda/src/Controller/SingupController.php'|file_link(0) }}">src/Controller/SingupController.php</a></code></li> #}
+{#        <li>Your template at <code><a href="{{ '/home/rustam/sda/templates/singup/index.html.twig'|file_link(0) }}">templates/singup/index.html.twig</a></code></li> #}
+{#    </ul> #}
+{# </div> #}
+{# {% endblock %} #}
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Village Green{% endblock %}
+{% block title %}Saveurs d'Armenie{% endblock %}
 
 {% block body %}
-    <div class="container zaebal">
-        <div class="container-fluid text-center py-5">
-            <h2 class="font_color">Créez vos identifiants</h2>
-        </div>
+    <div class="registration">
+        <div class="container zaebal" style="font-size: large">
+            <div class="container-fluid text-center">
+                <h1 class="font_color">Créez vos identifiants</h1>
+            </div>
+            {{ form_start(form) }}
+            <div class="d-flex flex-wrap py-3">
+                <div class="col-lg-6 col-sm-12 px-5">
+                    {{ form_row(form.email) }}<br>
+                </div>
+                <div class="col-lg-6 col-sm-12 px-5">
+                    {{ form_row(form.password) }}<br>
+                </div>
+            </div>
 
-        {{ form_start(form) }}
-        <div class="d-flex flex-wrap py-3">
-            <div class="col-lg-6 col-sm-12 px-5">
-                {{ form_row(form.email) }}
-                {{ form_row(form.password) }}
-                {{ form_row(form.name) }}
-                {{ form_row(form.surname) }}
+            <div class="container-fluid text-center">
+                <h1 class="font_color">VOS COORDONNÉES DE FACTURATION</h1>
             </div>
-            <div class="col-lg-6 col-sm-12 px-5">
-                {{ form_row(form.address) }}
-                {{ form_row(form.zipcode) }}
-                {{ form_row(form.city) }}
+            <div class="d-flex flex-wrap py-3">
+                <div class="col-lg-6 col-sm-12 px-5">
+                    {{ form_row(form.surname) }}<br>
+                    {{ form_row(form.name) }}<br>
+                    {{ form_row(form.tel) }}
+                </div>
+                <div class="col-lg-6 col-sm-12 px-5">
+                    {{ form_row(form.address) }}<br>
+                    {{ form_row(form.zipcode) }}<br>
+                    {{ form_row(form.city) }}
+                </div>
             </div>
-        </div>
-        <div class="text-center py-5">
-            {#                <button type="submit" class="btn valider" name="save"> #}
-            {{ form_row(form.save) }}
-            {#                </button> #}
+            <div class="text-center py-5">
+                {#                <button type="submit" class="btn valider" name="save"> #}
+                {{ form_row(form.save) }}
+                {#                </button> #}
+            </div>
         </div>
     </div>
 

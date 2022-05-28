@@ -47,6 +47,11 @@ class Client
      */
     private $date_add;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $tel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -172,6 +177,18 @@ class Client
                 $order->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(?string $tel): self
+    {
+        $this->tel = $tel;
 
         return $this;
     }

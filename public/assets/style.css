@@ -351,7 +351,11 @@ body {
     color: #000;
 }
 
-.button-circle, button {
+button {
+    border: none;
+}
+
+.button-circle {
     border: none;
     border-radius: 50%;
     font-size: 30px;
@@ -369,6 +373,16 @@ body {
     background: #000;
     color: #fff;
 }
+
+.form-control {
+    /*height: 4em;*/
+    font-size: 1em;
+}
+
+.registration {
+    background-image: url(/assets/images/BODY/registration.jpg);
+}
+
 
 /* line 168, _scaffolding.scss */
 /*.button-grey {*/
