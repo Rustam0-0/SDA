@@ -40,7 +40,7 @@
 
     {# pour js-mobile-catalog-toggle #}
     <link href="https://localhost:8000/assets/base.css" type="text/css" rel="stylesheet">
-{#    <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet">#}
+    {#    <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet"> #}
     <link href="https://localhost:8000/assets/layouts.css" type="text/css" rel="stylesheet">
 
     {#    ////////////////////// #}
@@ -97,7 +97,7 @@
         </div>
         <div class="container offset-1 col-xl-7 col-lg-7 col-md-3 col-sm-3 col-4">
             <ul class="clear-list d-flex">
-                <li class="pr-3">
+                <li style="padding-top: 3px; padding-right: 11px">
                     <form action="{{ path('prodlist4') }}" method="get"
                           class="search-widget-form d-none d-lg-block">
                         <input id="search-widget-input" class="input-field search-input"
@@ -116,17 +116,17 @@
                         {% endif %}
                     </form>
                 </li>
-                {#                <li>#}
-                {#                    <a title="Copmte" href="" class="">#}
-                {#                        <ion-icon class="button-person" name="person-circle-outline"></ion-icon>#}
-                {#                    </a>#}
-                {#                </li>#}
-                <li class="shopcart-widget pt-1">
+                <li>
+                    <a title="Copmte" href="{{ path('singup') }}" class="">
+                        <ion-icon class="button-person" name="person-circle-outline"></ion-icon>
+                    </a>
+                </li>
+                <li class="shopcart-widget" style="padding-top: 7px; padding-left: 4px">
                     <a title="Panier"
-                       href="{{ path('cart') }}" {# onclick="openNav()"#}
+                       href="{{ path('cart') }}" {# onclick="openNav()" #}
                        class="button-circle is-primary">
                         <i class="icon ion-ios-cart-outline"></i>
-                        {# <i class="fa-shopping-cart"></i>#}
+                        {# <i class="fa-shopping-cart"></i> #}
                         {% if app.session.get('cart') %}
                             {% set total = 0 %}
                             {% for key,row in app.session.get('cart') %}
@@ -168,29 +168,29 @@
     </div>
 </header>
 
-{#<div id="sideNavigation" class="sidenav zaebal">#}
-{#    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>#}
-{#    <div id="contentcart">#}
-{#        {% if app.session.get('cart') %}#}
-{#            {% set TotalPanier =0 %}#}
-{#            {% for key,row in app.session.get('cart') %}#}
-{#                <p><img height='50px' src='/assets/images/PRODUCTS/{{ row.picture }}'#}
-{#                        alt='{{ row.name }}'> {{ row.name }}#}
-{#                </p>#}
-{#                <p>Quantité : <span class='text-success'>{{ row.qty }}</span>#}
-{#                    Prix : <span class='text-success'>{{ row.price }}€</span>#}
-{#                </p><hr>#}
-{#                {% if key matches '/^\\d+$/' %}#}
-{#                    {% set TotalPanier =  TotalPanier + app.session.get('cart')[key]["qty"]*row.price %}#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#            <p>Total : <span class='text-success'>  {{ TotalPanier }} €</span> </p>#}
-{#            <p> <a class="btn btn-success text-light" href="{{ path('cart') }}">Voir le panier</a></p>#}
-{#        {% else %}#}
-{#            <p><span class="text-light fw-bold">Votre panier est vide</span></p>#}
-{#        {% endif %}#}
-{#    </div>#}
-{#</div>#}
+{# <div id="sideNavigation" class="sidenav zaebal"> #}
+{#    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> #}
+{#    <div id="contentcart"> #}
+{#        {% if app.session.get('cart') %} #}
+{#            {% set TotalPanier =0 %} #}
+{#            {% for key,row in app.session.get('cart') %} #}
+{#                <p><img height='50px' src='/assets/images/PRODUCTS/{{ row.picture }}' #}
+{#                        alt='{{ row.name }}'> {{ row.name }} #}
+{#                </p> #}
+{#                <p>Quantité : <span class='text-success'>{{ row.qty }}</span> #}
+{#                    Prix : <span class='text-success'>{{ row.price }}€</span> #}
+{#                </p><hr> #}
+{#                {% if key matches '/^\\d+$/' %} #}
+{#                    {% set TotalPanier =  TotalPanier + app.session.get('cart')[key]["qty"]*row.price %} #}
+{#                {% endif %} #}
+{#            {% endfor %} #}
+{#            <p>Total : <span class='text-success'>  {{ TotalPanier }} €</span> </p> #}
+{#            <p> <a class="btn btn-success text-light" href="{{ path('cart') }}">Voir le panier</a></p> #}
+{#        {% else %} #}
+{#            <p><span class="text-light fw-bold">Votre panier est vide</span></p> #}
+{#        {% endif %} #}
+{#    </div> #}
+{# </div> #}
 
 {#    {{ dump(app.user) }} #}
 
@@ -254,10 +254,11 @@
 <script type="text/javascript" src="https://localhost:8000/assets/layouts.js"></script>
 
 <div id="mobile-menu">
-    <button class="mobile-menu-close js-mobile-catalog-toggle col-9 pb-4" style="align-self: start">
+    <button class="mobile-menu-close js-mobile-catalog-toggle" style="align-self: start">
         <span>х</span>
         Fermer le catalogue
     </button>
+    <br>
     <nav class="navbar">
         <ul class="mobile-menu clear-list menu level-1 navbar-nav">
             <form action="{{ path('prodlist4') }}" method="get" class="search-widget-form">
@@ -276,6 +277,7 @@
                     {% endfor %}
                 {% endif %}
             </form>
+            <br>
             {% for category in categories %}
                 <div class="dropdown py-3">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"

@@ -33,7 +33,9 @@
 namespace App\Form;
 
 
+use PharIo\Manifest\Email;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -55,6 +57,7 @@ class ClientType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
+
                     new NotBlank(),
                     new Regex(['pattern' => '/[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/'])
                 ],
@@ -62,20 +65,22 @@ class ClientType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Veuillez indiquez le même mot de passe',
+                'invalid_message' => 'Indiquez le même mot de passe',
                 'options' => ['attr' => ['class' => 'form-control']],
                 'required' => true,
                 'first_options' => ['label' => 'Mot de passe', 'attr' => ['placeholder' => '8 caractéres minimum', 'class' => 'form-control']],
                 'second_options' => ['label' => 'Retapez votre mot de passe', 'attr' => ['placeholder' => 'Confirmation du mot de passe', 'class' => 'form-control']],
                 'mapped' => false,
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => 'Entrez un mot de passe ',
+                    ]),
 //                    new Regex(['pattern' => '/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$/',
 //                        'match' => true,
 //                        'message' => 'Veuillez indiquez le même mot de passe et mettre 8 caractéres dont une majuscule et un symbole']),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Veuillez entrer minimum {{ limit }} caractéres',
+                        'minMessage' => 'Entrez minimum {{ limit }} caractéres',
                         'max' => 4096,
                     ]),
                 ],
@@ -100,7 +105,13 @@ class ClientType extends AbstractType
                 'label' => 'Numéro de téléphone',
                 'constraints' => [
                     new NotBlank(),
-                    new Regex('/[0-9]{10,10}$/')
+                    new Regex('/[0-9]{10,10}$/'),
+                    new Length([
+                        'min' => 10,
+                        'minMessage' => 'Entrez {{ limit }} caractéres',
+                        'max' => 10,
+                        'maxMessage' => 'Entrez {{ limit }} caractéres',
+                    ]),
                 ],
                 'attr' => ['class' => 'form-control'], 'required' => true
             ])
