@@ -49,6 +49,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\Unique;
 
 class ClientType extends AbstractType
 {
@@ -57,7 +58,7 @@ class ClientType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-
+                    //new Unique([]),
                     new NotBlank(),
                     new Regex(['pattern' => '/[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/'])
                 ],

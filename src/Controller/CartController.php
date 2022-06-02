@@ -160,35 +160,36 @@ class CartController extends AbstractController
         $session->set("cart", $cart);
 
         $referer = $request->headers->get('referer');
-        return new RedirectResponse($referer);
+        //return new RedirectResponse($referer);
+        return $this->json($cart,201,[]);
     }
 
-//    /**
-//     * @Route("/cart/delete", name="cart_delete")
-//     */
-//    public function cartDelete(SessionInterface $session, ProductRepository $prod, Request $request): Response
-//    {
-//        $cart = $session->get("cart", []);
-//        if ($request->getMethod() == 'POST') {
-//            $product = $prod->find($request->get('id'));
-//            $id = $request->get('id');
-//
-//            if ($request->get('qty') > $product->getStock()) {
-//                $this->addFlash('danger', 'Attention le stock disponible!');
-//                return $this->redirectToRoute("cart");
-//            }
-//
-//            if ($request->get('qty') <= 0) {
-//                unset($cart[$id]);
-//            } else {
-//                $cart[$id]["qty"] = $request->get('qty');
-//            }
-//        }
-//        $session->set("cart", $cart);
-//
-//        $referer = $request->headers->get('referer');
-//        return new RedirectResponse($referer);
-//    }
+    /**
+     * @Route("/cart/delete", name="cart_delete")
+     */
+    public function cartDelete(SessionInterface $session, ProductRepository $prod, Request $request): Response
+    {
+        $cart = $session->get("cart", []);
+        if ($request->getMethod() == 'POST') {
+            $product = $prod->find($request->get('id'));
+            $id = $request->get('id');
+
+            if ($request->get('qty') > $product->getStock()) {
+                $this->addFlash('danger', 'Attention le stock disponible!');
+                return $this->redirectToRoute("cart");
+            }
+
+            if ($request->get('qty') <= 0) {
+                unset($cart[$id]);
+            } else {
+                $cart[$id]["qty"] = $request->get('qty');
+            }
+        }
+        $session->set("cart", $cart);
+
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+    }
 
 
 }

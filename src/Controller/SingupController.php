@@ -41,9 +41,11 @@ class SingupController extends AbstractController
     public function singup(UserPasswordHasherInterface $passwordHasher, CategoryRepository $repocat, Request $request, EntityManagerInterface $em): Response
     {
         $categories = $repocat->findAll();
-        $form = $this->createForm(ClientType::class);
 
+        $form = $this->createForm(ClientType::class);
         $form->handleRequest($request);
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 

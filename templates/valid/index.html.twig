@@ -1,0 +1,160 @@
+{# {% extends 'base.html.twig' %} #}
+
+{# {% block title %}Hello ValidController!{% endblock %} #}
+
+{# {% block body %} #}
+{# <style> #}
+{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; } #}
+{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; } #}
+{# </style> #}
+
+{# <div class="example-wrapper"> #}
+{#    <h1>Hello {{ controller_name }}! ✅</h1> #}
+
+{#    This friendly message is coming from: #}
+{#    <ul> #}
+{#        <li>Your controller at <code><a href="{{ '/home/rustam/sda/src/Controller/ValidController.php'|file_link(0) }}">src/Controller/ValidController.php</a></code></li> #}
+{#        <li>Your template at <code><a href="{{ '/home/rustam/sda/templates/valid/index.html.twig'|file_link(0) }}">templates/valid/index.html.twig</a></code></li> #}
+{#    </ul> #}
+{# </div> #}
+{# {% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ValidController!{% endblock %}
+
+{% block body %}
+    <div class="zaebal">
+        <div class="container-fluid text-center py-2">
+            <h3 class="font_color">Adresse de livraison</h3>
+        </div>
+
+        <form action="" method="post" accept-charset="utf-8">
+            <div class="d-flex flex-wrap py-3">
+                <div class="col-lg-6 col-sm-12 px-5">
+
+                    <input type="hidden" name="id" value="{{ user.client.id }}">
+
+                    <div class="form-group d-flex flex-wrap">
+                        <label class="control-label col-lg-3 col-sm-12"
+                               for="name">Prénom</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input class="form-control" type="text"
+                                   value="{{ user.client.name }}"
+                                   name="name" id="name">
+                            <div class="text-danger">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex flex-wrap">
+                        <label class="control-label col-lg-3 col-sm-12"
+                               for="surname">Nom</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input class="form-control" type="text"
+                                   value="{{ user.client.surname }}"
+                                   name="surname" id="surname">
+                            <div class="text-danger">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex flex-wrap">
+                        <label class="control-label col-lg-3 col-sm-12"
+                               for="address">Adresse</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input class="form-control" type="text"
+                                   value="{{ user.client.address }}"
+                                   name="address" id="address">
+                            <div class="text-danger">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 px-5">
+                    <div class="form-group d-flex flex-wrap">
+                        <label class="control-label col-lg-3 col-sm-12"
+                               for="zipcode">Code postal</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input readonly class="form-control" type="text"
+                                   value="{{ user.client.zipcode }}"
+                                   name="zipcode" id="zipcode">
+                            <div class="text-danger">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex flex-wrap">
+                        <label class="control-label col-lg-3 col-sm-12"
+                               for="city">Ville</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input readonly class="form-control" type="text"
+                                   value="{{ user.client.city }}"
+                                   name="city" id="city">
+                            <div class="text-danger">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid text-center py-2">
+                <h3 class="font_color">Produits commandés</h3>
+            </div>
+
+            <div class="container d-flex flex-wrap">
+                {% if cart %}
+                {#        {{ dump(app.session.get('cart')) }} #}
+                <div class="col-sm-3 d-none d-sm-block">
+                    <strong>Image</strong>
+                </div>
+                <div class="col-sm-3 d-none d-sm-block">
+                    <strong>Nom</strong>
+                </div>
+                <div class="col-sm-2 d-none d-sm-block">
+                    <strong>Prix</strong>
+                </div>
+                <div class="col-sm-1 d-none d-sm-block">
+                    <strong>Quantité</strong>
+                </div>
+                <hr class="my-4 w-100">
+                {% set total =0 %}
+                {% set quantity =0 %}
+                {% for  key,row in cart %}
+                    <div class="col-sm-3 col-12 text">
+                        <a
+                                {#                            href="{{ path('prod_details', {id : key}) }}" #}
+                        >
+                            <img class="img-fluid img_cart" src="/assets/images/PRODUCTS/{{ row.picture }}"
+                                 alt="{{ row.picture }}">
+                        </a>
+                    </div>
+                    <div class="col-sm-3  col-12">
+                        {{ row.name }}
+                    </div>
+                    <div class="col-sm-2 col-12">
+                        {{ row.price }} €
+                    </div>
+                    {% set total = total + row.qty*row.price %}
+                    {% set quantity = quantity + row.qty %}
+                    <div class="col-sm-1 col-12">
+                        {{ row.qty }}
+                    </div>
+                    <hr class="my-4 w-100">
+                {% endfor %}
+            </div>
+            <div class="container d-flex flex-wrap py-2">
+                <div class="col-sm-6">
+                    <h3> Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :</h3>
+                </div>
+                <div class="text-success offset-3 col-sm-3"><h3>{{ total }} €</h3></div>
+            </div>
+
+            {% endif %}
+
+            <div class="text-center py-5">
+                <button type="submit" class="btn valider"
+                        name="save">Payer la commande
+                </button>
+            </div>
+        </form>
+    </div>
+    </div>
+{% endblock %}
