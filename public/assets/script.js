@@ -58,6 +58,41 @@ function updateCountCart(myForm, prod_id, increment = 0) {
 
 }
 
+$('form').submit(function (event) {
+    // event.preventDefault();
+    console.log(event.target.action);
+    // cart
+    const cartadd = "/cart/add";
+    const cartupdate = "/cart/update";
+    const found = (event.target.action.match(cartadd) || event.target.action.match(cartupdate));
+    if (found) {
+        event.preventDefault();
+        // if (window.prompt())
+        let formData = $(this).serialize();
+        $.ajax({
+            url: event.target.action + '/json',
+            type: "POST",
+            dataType: 'json',
+            data: formData
+        }).done(function (response) {
+            let result = 0;
+            let prix = 0;
+            $.each(response, function (key, val) {
+                // console.log(val.qty);
+                result += parseInt(val.qty);
+                prix += parseFloat(val.price) * parseInt(val.qty);
+            });
+            // console.log(response);
+            // console.log(result);
+            $("#bought").html(result);
+            console.log(response);
+            console.log(prix);
+            // document.getElementById('total').innerHTML=prix+'€';
+            $("#total").html(prix);
+        });
+    }
+});
+
 // $('form').submit(function (event) {
 //     // event.preventDefault();
 //     console.log(event.target.action);
@@ -85,35 +120,6 @@ function updateCountCart(myForm, prod_id, increment = 0) {
 //         });
 //     }
 // });
-
-$('form').submit(function (event) {
-    // event.preventDefault();
-    console.log(event.target.action);
-    // cart
-    const cartadd = "/cart/add";
-    const cartupdate = "/cart/update";
-    const found = (event.target.action.match(cartadd) || event.target.action.match(cartupdate));
-    if (found) {
-        event.preventDefault();
-        // if (window.prompt())
-        let formData = $(this).serialize();
-        $.ajax({
-            url: event.target.action + '/json',
-            type: "POST",
-            dataType: 'json',
-            data: formData
-        }).done(function (response) {
-            let result = 0;
-            $.each(response, function (key, val) {
-                console.log(val.qty);
-                result += parseInt(val.qty);
-            });
-            console.log(response);
-            console.log(result);
-            $("#bought").html(result);
-        });
-    }
-});
 
 
 

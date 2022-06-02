@@ -100,6 +100,7 @@ class CartController extends AbstractController
                 "description" => $request->get('description'),
                 "picture" => $request->get('picture'),
                 "qty" => $request->get('qty'),
+                "price" => $request->get('price'),
                 "stock" => $product->getStock()
             ];
             $session->set("cart", $cart);

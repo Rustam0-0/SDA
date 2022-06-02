@@ -51,7 +51,7 @@
                 {% set quantity =0 %}
                 {% for  key,row in cart %}
                     {% if key matches '/^\\d+$/' %}
-                        <tr  id="prod{{ key }}">
+                        <tr id="prod{{ key }}">
                             <td style="vertical-align: middle"><img class="img-fluid img_cart" alt="{{ row.name }}"
                                      src="/assets/images/PRODUCTS/{{ row.picture }}"></td>
                             <td style="vertical-align: middle">{{ row.name }}</td>
@@ -62,7 +62,7 @@
                                     <input hidden name="id" id="{{ key }}" value="{{ key }}">
                                     <div class="d-flex">
                                         <button class="btn btn-link px-2" style="height: 25px"
-{#                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()"#}
+                                            {# onclick="this.parentNode.querySelector('input[type=number]').stepDown()"#}
                                              onclick="updateCountCart(this.form, {{ key }}, -1)"
                                         >
                                             <i class="fas fa-minus"></i>
@@ -70,27 +70,24 @@
                                         <input type="number" class="form-control-xl" name="qty" id="qty[{{ key }}]"
                                                value="{{ row.qty }}" min="1" max="{{ row.stock }}"
                                                onchange="this.form.submit()"
-{#                                               onchange="updateProduct(this.form)"#}
-                                               style="width: 30px; border: none">
+                                            {# onchange="updateProduct(this.form)"#}
+                                               style="width: 40px; border: none">
                                         <button class="btn btn-link px-2" style="height: 25px"
-{#                                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()"#}
+                                            {# onclick="this.parentNode.querySelector('input[type=number]').stepUp()"#}
                                              onclick="updateCountCart(this.form, {{ key }}, 1)"
                                         >
                                             <i class="fas fa-plus"></i>
                                         </button>
-{#                                        <input type="number" class="form-control" name="qty" id="qty[{{ key }}]"#}
-{#                                               value="{{ row.qty }}" min="0" max="{{ row.stock }}"#}
-{#                                               onchange="updateProduct(this.form)">#}
                                     </div>
                                 </form>
-                                {# <p style="font-size: smaller" class="pt-2">{{ row.stock }} piéces disponible</p> #}
+                                 <span style="font-size: xx-small" class="pt-2">{{ row.stock }} piéces dispo</span>
                             </td>
-                            <td style="vertical-align: middle">
+                            <td style="vertical-align: bottom">
                                 <form action="{{ path('cart_delete') }}" method="POST">
                                     <input hidden name="id" value="{{ key }}">
                                     <input hidden class="form-control" name="qty" id="qty[{{ key }}]" value="0">
                                     <button type="submit">
-                                        <i class="fas fa-trash fa-xs" style="color: #B0413E"></i>
+                                        <i class="fas fa-trash fa-sm" style="color: #B0413E"></i>
                                     </button>
                                 </form>
                             </td>
@@ -104,7 +101,7 @@
                         <h3>Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :</h3>
                     </td>
                     <td colspan="2" class="text-success">
-                        <h3>{{ total }} €</h3>
+                        <h3 id="total">{{ total }} €</h3>
                     </td>
                     <td>
                         {% if app.user %}
@@ -116,12 +113,12 @@
                 </tr>
             </table>
         {% else %}
-            <div class="text-center pl-3 pr-3"
+            <div class="text-center pl-3 pr-3 d-flex flex-wrap justify-content-center"
                  style="height: 80px; background-color: #989100;
                  vertical-align: middle; display: table-cell">
-                <h1>Votre panier est vide.
+                <h1 class="pt-3">Votre panier est vide.<br>
                     <a href="{{ path('prodlist') }}">
-                        Bienvenue à le remplir
+                        Cliquez ici pour commencer à le remplir
                     </a>
                 </h1>
             </div>
