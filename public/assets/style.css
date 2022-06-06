@@ -10,6 +10,10 @@ body {
     /*background-image: url(/assets/images/BACKGROUND/);*/
 }
 
+.admin_prod {
+    font-size: 27px !important;
+}
+
 .quantity_inner * {
     box-sizing: border-box;
 }
@@ -968,14 +972,14 @@ button {
     margin: auto;
 }
 
-.registration button, .login button {
+.registration button, .login button, .cart_button {
     background-color: #989100;
     width: 95%;
     height: 40px;
     border-radius: 10px;
     font-weight: 900;
 }
-.registration button:hover , .login button:hover {
+.registration button:hover , .login button:hover, .cart_button:hover {
     color: #edbe00;
 }
 
@@ -4060,6 +4064,17 @@ li.separator {
     transform: scale(1, 1);
 }
 
+.login-icon-drop {
+    background: rgba(0, 0, 0, 0.9);
+}
+.login-icon-drop a {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 300;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
 /* line 1719, theme.scss */
 .catalog li ul.level-2, .catalog li ul.level-3 {
     display: block;
@@ -4079,7 +4094,7 @@ li.separator {
     height: auto;
     padding: 10px 0;
     z-index: 200000;
-    text-align: center;
+    text-align: left;
 }
 
 /* line 1740, theme.scss */

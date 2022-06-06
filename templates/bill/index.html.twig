@@ -1,0 +1,194 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Hello BillController!{% endblock %}#}
+
+{#{% block body %}#}
+{#<style>#}
+{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+{#</style>#}
+
+{#<div class="example-wrapper">#}
+{#    <h1>Hello {{ controller_name }}! ✅</h1>#}
+
+{#    This friendly message is coming from:#}
+{#    <ul>#}
+{#        <li>Your controller at <code><a href="{{ '/home/rustam/sda/src/Controller/BillController.php'|file_link(0) }}">src/Controller/BillController.php</a></code></li>#}
+{#        <li>Your template at <code><a href="{{ '/home/rustam/sda/templates/bill/index.html.twig'|file_link(0) }}">templates/bill/index.html.twig</a></code></li>#}
+{#    </ul>#}
+{#</div>#}
+{#{% endblock %}#}
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> #}
+    <link href="/assets/style.css" type="text/css" rel="stylesheet">
+</head>
+<style>
+    .table {
+        width: 100%;
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .table thead th {
+        font-weight: bold;
+        text-align: left;
+        border: none;
+        padding: 10px 15px;
+        background: #d8d8d8;
+        font-size: 14px;
+        /*border-left: 1px solid #ddd;*/
+        /*border-right: 1px solid #ddd;*/
+    }
+
+    .table tbody td {
+        text-align: left;
+        /*border-left: 1px solid #ddd;*/
+        /*border-right: 1px solid #ddd;*/
+        padding: 10px 15px;
+        font-size: 14px;
+        vertical-align: top;
+    }
+
+    .table thead tr th:first-child, .table tbody tr td:first-child {
+        border-left: none;
+    }
+
+    .table thead tr th:last-child, .table tbody tr td:last-child {
+        border-right: none;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background: #f3f3f3;
+    }
+</style>
+{#    {{ dump(order) }} #}
+
+{#<div class="container d-flex flex-wrap">#}
+{#    <div class="col-6 align-self-start">#}
+{#        #}{#            <img src="/assets/images/HEADER/logo.png"> #}
+{#        <img src="{{ asset('/assets/images/HEADER/logo.png') }}">#}
+{#    </div>#}
+{#    <div class="col-4 offset-2">#}
+{#        <h1>Facture N° {{ order.id }}</h1>#}
+{#        <p>Date de facturation: {{ order.date|date('Y-m-d') }}</p>#}
+{#    </div>#}
+{#</div>#}
+{#<div class="container d-flex flex-wrap">#}
+{#    <div class="col-6">#}
+{#        <p>DESTINATAIRE</p>#}
+{#        #}{# {{  }} #}
+{#    </div>#}
+{#    <div class="col-4 offset-2">#}
+{#        <p>VILLAGE GREEN</p>#}
+{#        <p></p>#}
+{#    </div>#}
+{#</div>#}
+
+<table class="table">
+    <tr>
+        <td width="60%">
+            <img width="200" src="{{ absolute_url('/assets/images/HEADER/logo.png') }}">
+        </td>
+        <td>
+            <h2>Facture N° {{ order.id }}</h2>
+            <h3>Date de facturation: {{ order.date|date('Y-m-d') }}</h3>
+        </td>
+    </tr>
+    <tr>
+        <td width="60%">
+            <h3>DESTINATAIRE</h3>
+            <p>{{ order.client.name }} {{ order.client.surname }}</p>
+            <p>{{ order.client.address }}, {{ order.client.zipcode }} {{ order.client.city }}</p>
+        </td>
+        <td>
+            <h3>Saveurs d'Armenie</h3>
+            <p>80000, France,
+                Amiens, 219 Av. Louis Blanc</p>
+            <p>SIRET: [SIRET]</p>
+            <p>No de TVA: [Numéro de TVA]</p>
+            <p>0617336170</p>
+        </td>
+    </tr>
+</table>
+
+
+<div class="container">
+    {#    <caption> Facture N°{{ order.id }}</caption> #}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th width="15%">Nom</th>
+            <th>Quantité</th>
+            <th>
+                <nobr>Prix HT,€</nobr>
+            </th>
+            <th>
+                <nobr>TVA, €</nobr>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set total = 0 %}
+        {% set total_cart = 0 %}
+        {% set total_tva = 0 %}
+        {#        {% set total_ttc = 0 %} #}
+        {% set quantity = 0 %}
+        {% set row_count = 0 %}
+        {% for od in order.orderDetails %}
+            <tr>
+                <td>{{ od.id }}</td>
+                <td>{{ od.product.name }}</td>
+                <td style="text-align: center">{{ od.quantity }}</td>
+                <td style="text-align: right">
+                    <nobr>{{ od.price|number_format(2, '.', ' ') }}</nobr>
+                </td>
+                {% set total = od.price * od.quantity %}
+                {% set tva = total *0.2 %}
+                <td style="text-align: right">
+                    <nobr>{{ tva|number_format(2, '.', ' ') }}</nobr>
+                </td>
+                {% set total_cart = total_cart + total %}
+                {% set total_tva = total_tva + tva %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="table">
+        <tr>
+            <td width="80%" style="text-align: right">TOTAL</td>
+            <td style="text-align: right">
+                <nobr>{{ total_cart|number_format(2, '.', ' ') }} €</nobr>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right">TVA</td>
+            <td style="text-align: right">
+                <nobr>{{ total_tva|number_format(2, '.', ' ') }} €</nobr>
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right">TOTAL TTC</th>
+            <td style="text-align: right">
+                <strong>
+                    <nobr>{{ (total_cart+total_tva)|number_format(2, '.', ' ') }} €</nobr>
+                </strong>
+            </td>
+        </tr>
+    </table>
+    <table class="table">
+        <tr>
+            <td width="50%">
+                <p>[Nom de la banque]</p>
+                <p>SWIFT/BIC: [SWIFT/BIC]</p>
+                <p>Numéro de compte bancaire: [Compte bancaire (IBAN)]</p>
+            </td>
+        </tr>
+    </table>
+</div>
+</html>

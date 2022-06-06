@@ -84,14 +84,13 @@ $('form').submit(function (event) {
             });
             // console.log(response);
             // console.log(result);
+            // console.log(prix);
             $("#bought").html(result);
-            console.log(response);
-            console.log(prix);
-            // document.getElementById('total').innerHTML=prix+'€';
             $("#total").html(prix);
         });
     }
 });
+
 
 // $('form').submit(function (event) {
 //     // event.preventDefault();

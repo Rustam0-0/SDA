@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    {# <style> #}
+    {#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; } #}
+    {#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; } #}
+    {# </style> #}
+
+    {# <div class="example-wrapper"> #}
+    {#    <h1>Hello {{ controller_name }}! ✅</h1> #}
+
+    {#    This friendly message is coming from: #}
+    {#    <ul> #}
+    {#        <li>Your controller at <code><a href="{{ '/home/rustam/sda/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li> #}
+    {#        <li>Your template at <code><a href="{{ '/home/rustam/sda/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li> #}
+    {#    </ul> #}
+    {# </div> #}
+
+    <div class="zaebal" style="font-size: 17px">
+        {#        {% for cli in clients %} #}
+        {{ dump(orders) }}
+        {#        {% endfor %} #}
+        <div class="container-fluid text-center py-4">
+            <h1>Commandes</h1>
+        </div>
+
+        <div class="container d-flex flex-wrap">
+            {#        {{ dump(app.session.get('cart')) }} #}
+            <div class="col-sm-1 d-none d-sm-block">
+                <strong>N° com</strong>
+            </div>
+            <div class="col-sm-2 d-none d-sm-block">
+                <strong>Date</strong>
+            </div>
+            <div class="col-sm-2 d-none d-sm-block">
+                <strong>Nom, prénom</strong>
+            </div>
+            <div class="col-sm-2 d-none d-sm-block">
+                <strong>Adresse</strong>
+            </div>
+            <div class="col-sm-2 d-none d-sm-block">
+                <strong>Téléphone</strong>
+            </div>
+            <div class="col-sm-1 d-none d-sm-block">
+                <strong>Payer</strong>
+            </div>
+            <div class="col-sm-1 d-none d-sm-block">
+                <strong>Action</strong>
+            </div>
+            <hr class="my-4 w-100">
+
+            {% for row in orders %}
+                <div class="col-sm-1 d-none d-sm-block">
+                    <h3>{{ row.id }}</h3>
+                    <a href="#com_{{ row.id }}" data-toggle="collapse">
+                        Details
+                    </a>
+                </div>
+                <div class="col-sm-2  col-12">
+                    {{ row.date |date('d-m-Y H:m:s') }}
+                </div>
+                <div class="col-sm-2  col-12">
+                    {{ row.shipname }} {{ row.shipsurname }}
+                </div>
+                <div class="col-sm-2 col-12">
+                    {{ row.shipaddress }}
+                </div>
+                <div class="col-sm-2 col-12">
+                    {{ row.shiptel }}
+                </div>
+                <div class="col-sm-1 col-12">
+                    {% if (row.payer == 0) %}
+                        espèces
+                    {% else %}
+                        carte
+                    {% endif %}
+                </div>
+                {#                    {% set total = total + row.qty*row.price %} #}
+                {#                    {% set quantity = quantity + row.qty %} #}
+                <div class="col-sm-1 col-12">
+                    <button>accepter</button>
+                </div>
+                <div class="collapse" id="com_{{ row.id }}">
+                    <div class="card card-body">
+                        <div class="container d-flex flex-wrap" style="background-color: #989100">
+                            <div class="col-sm-2 d-none d-sm-block">
+                                <strong>N° prod</strong>
+                            </div>
+                            <div class="col-sm-3 d-none d-sm-block">
+                                <strong>Nom de produit</strong>
+                            </div>
+                            <div class="col-sm-3 d-none d-sm-block">
+                                <strong>Description</strong>
+                            </div>
+                            <div class="col-sm-2 d-none d-sm-block">
+                                <strong>Quantité</strong>
+                            </div>
+                            <div class="col-sm-2 d-none d-sm-block">
+                                <strong>Prix</strong>
+                            </div>
+                        </div>
+                        <hr class="my-4 w-100">
+                        {% for ode in row.orderDetails %}
+                            <div class="container d-flex flex-wrap">
+                                <div class="col-sm-2 d-none d-sm-block">
+                                    {{ ode.product.id }}
+                                </div>
+                                <div class="col-sm-3 d-none d-sm-block">
+                                    {{ ode.product.name }}
+                                </div>
+                                <div class="col-sm-3 d-none d-sm-block">
+                                    {{ ode.product.description | raw }}
+                                </div>
+                                <div class="col-sm-2 d-none d-sm-block">
+                                    {{ ode.quantity }}
+                                </div>
+                                <div class="col-sm-2 d-none d-sm-block">
+                                    {{ ode.price }} €
+                                </div>
+                                {#                    {% set total = total + row.qty*row.price %} #}
+                                {#                    {% set quantity = quantity + row.qty %} #}
+                                {#                        {{ ode.id }} #}
+                                {#                       {{  dump(ode) }} #}
+                            </div>
+                            <hr class="my-4 w-100">
+                        {% endfor %}
+                        <a href="{{ path('ord_det', {'order': row.id}) }}"
+                           style="color: #989100;">
+                            Facture
+                        </a>
+                    </div>
+                </div>
+                <hr class="my-4 w-100">
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

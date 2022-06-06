@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrdDetController!{% endblock %}
+
+{% block body %}
+    {#    {{ dump(order) }} #}
+    <div class="container zaebal">
+
+        <h3> Facture N°{{ order.id }}</h3>
+
+        <a href="{{ path('bill', {order:order.id}) }}">La facture en PDF</a>
+        <table class="table table-responsive py-2">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th width="15%">Nom</th>
+                <th>
+                    <nobr>Prix HT,€</nobr>
+                </th>
+                <th>Quantité</th>
+                <th>
+                    <nobr>Total HT,€</nobr>
+                </th>
+                <th>
+                    <nobr>TVA, €</nobr>
+                </th>
+                <th>
+                    <nobr>Total TTC,€</nobr>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set total = 0 %}
+            {% set total_cart = 0 %}
+            {% set total_tva = 0 %}
+            {#        {% set total_ttc = 0 %} #}
+            {% set quantity = 0 %}
+            {% set row_count = 0 %}
+            {% for od in order.orderDetails %}
+                <tr>
+                    <td>{{ od.id }}</td>
+                    <td>{{ od.product.name }}</td>
+                    <td style="text-align: center">
+                        <nobr>{{ (od.price - od.price * 0.2)|number_format(2, '.', ' ') }}</nobr>
+                    </td>
+                    <td style="text-align: center">{{ od.quantity }}</td>
+
+                    {% set total = (od.price - od.price * 0.2) * od.quantity %}
+                    <td style="text-align: center">
+                        <nobr>{{ total|number_format(2, '.', ' ') }}</nobr>
+                    </td>
+
+                    {% set tva = od.price *0.2 %}
+                    <td style="text-align: center">
+                        <nobr>{{ tva|number_format(2, '.', ' ') }}</nobr>
+                    </td>
+
+                    <td style="text-align: center">
+                        <nobr>{{ (total + tva)|number_format(2, '.', ' ') }}</nobr>
+                    </td>
+
+                    {% set total_cart = total_cart + total %}
+                    {% set total_tva = total_tva + tva %}
+                    {#                {% set total_ttc = total_ttc + (total + tva) %} #}
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <th style="text-align: right" colspan="4">TOTAL</th>
+            <td style="text-align: center">
+                <strong><nobr>{{ total_cart|number_format(2, '.', ' ') }}</nobr></strong>
+            </td>
+            <td style="text-align: center">
+                <strong><nobr>{{ total_tva|number_format(2, '.', ' ') }}</nobr></strong>
+            </td>
+            <td style="text-align: center">
+                <strong><nobr>{{ (total_cart+total_tva)|number_format(2, '.', ' ') }}</nobr></strong>
+            </td>
+            </tr>
+            </tfoot>
+
+        </table>
+    </div>
+{% endblock %}

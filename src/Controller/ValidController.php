@@ -65,10 +65,9 @@ class ValidController extends AbstractController
             $surname = $request->get("surname");
             $address = $request->get("address");
             $zipcode = $request->get("zipcode");
-//            $zipcode = "80000";
             $city = $request->get("city");
-//            $city = "Amiens";
             $tel = $request->get("tel");
+            $payer = $request->get("payer");
 
             $ord = new Order();
             $ord->setClient($id);
@@ -79,6 +78,9 @@ class ValidController extends AbstractController
             $ord->setShipCity($city);
             $ord->setShipTel($tel);
             $ord->setDate(new \DateTime());
+
+            $ord->setPayer($payer);
+
             $em->persist($ord);
 
 //            $total =0;

@@ -35,13 +35,13 @@
             </ol>
         </nav>
         {% if cart %}
-            {{ dump(app.session.get('cart')) }}
+            {#            {{ dump(app.session.get('cart')) }} #}
             <table class="table-responsive-sm col-10" style="margin: auto">
                 <thead>
                 <tr>
-                    <th>Image</th>
+                    <th class="first">Image</th>
                     <th>Nom</th>
-                    <th>Description</th>
+                    <th class="third">Description</th>
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th></th>
@@ -52,35 +52,38 @@
                 {% for  key,row in cart %}
                     {% if key matches '/^\\d+$/' %}
                         <tr id="prod{{ key }}">
-                            <td style="vertical-align: middle"><img class="img-fluid img_cart" alt="{{ row.name }}"
-                                     src="/assets/images/PRODUCTS/{{ row.picture }}"></td>
+                            <td class="first justify-content-center d-flex"
+                                style="vertical-align: middle">
+                                <img class="img-fluid img_cart" alt="{{ row.name }}"
+                                     src="/assets/images/PRODUCTS/{{ row.picture }}">
+                            </td>
                             <td style="vertical-align: middle">{{ row.name }}</td>
-                            <td style="vertical-align: middle">{{ row.description | raw }}</td>
+                            <td class="third" style="vertical-align: middle">{{ row.description | raw }}</td>
                             <td style="vertical-align: middle">{{ row.price }}</td>
                             <td style="vertical-align: middle">
                                 <form action="{{ path('cart_update') }}" method="POST">
                                     <input hidden name="id" id="{{ key }}" value="{{ key }}">
                                     <div class="d-flex">
                                         <button class="btn btn-link px-2" style="height: 25px"
-                                            {# onclick="this.parentNode.querySelector('input[type=number]').stepDown()"#}
-                                             onclick="updateCountCart(this.form, {{ key }}, -1)"
+                                                {# onclick="this.parentNode.querySelector('input[type=number]').stepDown()" #}
+                                                onclick="updateCountCart(this.form, {{ key }}, -1)"
                                         >
                                             <i class="fas fa-minus"></i>
                                         </button>
                                         <input type="number" class="form-control-xl" name="qty" id="qty[{{ key }}]"
                                                value="{{ row.qty }}" min="1" max="{{ row.stock }}"
                                                onchange="this.form.submit()"
-                                            {# onchange="updateProduct(this.form)"#}
+                                                {# onchange="updateProduct(this.form)" #}
                                                style="width: 40px; border: none">
                                         <button class="btn btn-link px-2" style="height: 25px"
-                                            {# onclick="this.parentNode.querySelector('input[type=number]').stepUp()"#}
-                                             onclick="updateCountCart(this.form, {{ key }}, 1)"
+                                                {# onclick="this.parentNode.querySelector('input[type=number]').stepUp()" #}
+                                                onclick="updateCountCart(this.form, {{ key }}, 1)"
                                         >
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
                                 </form>
-                                 <span style="font-size: xx-small" class="pt-2">{{ row.stock }} piéces dispo</span>
+                                <span style="font-size: xx-small" class="pt-2">{{ row.stock }} piéces dispo</span>
                             </td>
                             <td style="vertical-align: bottom">
                                 <form action="{{ path('cart_delete') }}" method="POST">
@@ -96,22 +99,40 @@
                         {% set quantity = quantity + row.qty %}
                     {% endif %}
                 {% endfor %}
-                <tr>
-                    <td colspan="3">
-                        <h3>Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :</h3>
-                    </td>
-                    <td colspan="2" class="text-success">
-                        <h3 id="total">{{ total }} €</h3>
-                    </td>
-                    <td>
-                        {% if app.user %}
-                            <a href="{{ path('valid') }}" class="add_cart">Valider</a>
-                        {% else %}
-                            <a href="{{ path('app_login') }}" class="add_cart">Valider</a>
-                        {% endif %}
-                    </td>
-                </tr>
+                {#                <tr> #}
+                {#                    <td colspan="6"> #}
+                {#                        <h3 style="font-size: 3rem">Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) : #}
+                {#                            <span style="font-weight: bold; font-size: 3rem" id="total">{{ total }} €</span> #}
+                {#                        </h3> #}
+                {#                    </td> #}
+                {#                </tr> #}
+                {#                <tr> #}
+                {#                    <td colspan="6"> #}
+                {#                        {% if app.user %} #}
+                {#                            <button onclick="window.location.href='{{ path('valid') }}'" class="cart_button">Valider #}
+                {#                            </button> #}
+                {#                        {% else %} #}
+                {#                            <button onclick="window.location.href='{{ path('app_login') }}'" class="cart_button"> #}
+                {#                                Valider #}
+                {#                            </button> #}
+                {#                        {% endif %} #}
+                {#                    </td> #}
+                {#                </tr> #}
             </table>
+            <hr>
+            <div class="container d-flex justify-content-center">
+                <h3 style="font-size: 3rem">Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :
+                    <span style="font-weight: bold; font-size: 3rem" id="total">{{ total }} €</span>
+                </h3>
+            </div>
+            <div class="container d-flex justify-content-center py-5">
+                {% if app.user %}
+                    <button onclick="window.location.href='{{ path('valid') }}'" class="cart_button">Valider</button>
+                {% else %}
+                    <button onclick="window.location.href='{{ path('app_login') }}'" class="cart_button">Valider
+                    </button>
+                {% endif %}
+            </div>
         {% else %}
             <div class="text-center pl-3 pr-3 d-flex flex-wrap justify-content-center"
                  style="height: 80px; background-color: #989100;
@@ -123,6 +144,5 @@
                 </h1>
             </div>
         {% endif %}
-    </div>
     </div>
 {% endblock %}

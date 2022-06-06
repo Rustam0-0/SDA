@@ -142,7 +142,8 @@ class ClientType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
-            ]);
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

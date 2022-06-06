@@ -385,6 +385,36 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 
+/*@media only screen and (max-width: 900px) {*/
+/*    th:nth-child(1) {*/
+/*        display:none;*/
+/*    }*/
+/*    td:nth-child(1) {*/
+/*        display:none;*/
+/*    }*/
+/*}*/
+
+/*@media only screen and (max-width: 500px) {*/
+
+/*    th:nth-child(3) {*/
+/*        display:none;*/
+/*    }*/
+/*    td:nth-child(3) {*/
+/*        display:none;*/
+/*    }*/
+/*}*/
+
+@media only screen and (max-width: 900px) {
+    .first{
+        display: none;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .third{
+        display: none;
+    }
+}
+
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
@@ -677,7 +707,9 @@ table td {
 
 /* line 688, base.scss */
 table th {
-    color: #000; }
+    color: #000;
+    /*background-color: #989100;*/
+}
 
 /* line 690, base.scss */
 table caption + thead tr:first-child th,
@@ -697,9 +729,9 @@ table table table {
     background-color: #fff; }
 
 /* line 703, base.scss */
-table tbody > tr:nth-child(odd) > td,
-table tbody > tr:nth-child(odd) > th {
-    background-color: #f6f6f6; }
+/*table tbody > tr:nth-child(odd) > td,*/
+/*table tbody > tr:nth-child(odd) > th {*/
+/*    background-color: #fff3dd; }*/
 
 /* line 709, base.scss */
 table.plain tbody > tr:nth-child(odd) > td,
