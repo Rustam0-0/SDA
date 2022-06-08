@@ -54,28 +54,42 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
+                'required' => true,
                 'label' => 'Nom',
-                'attr' => ['class' => 'form-control', 'required' => true]
+                'attr' => ['class' => 'form-control']
             ])
             ->add('subcat', null, ['attr' => ['class' => 'custom-select']])
             ->add('description', TextareaType::class, ['required' => false])
             ->add('picture', FileType::class, [
                 'label' => 'Image',
-                'mapped' => false, 'required' => false,
+                'mapped' => false,
+                'required' => false,
                 'attr' => ['accept' => 'image/*', 'class' => 'form-control-file'],
                 'data_class' => null
             ])
             ->add('price', TextType::class, [
+                'required' => true,
                 'label' => 'Prix',
                 'constraints' => [
                     new NotBlank(),
                     new Regex('/[0-9]{1,10}/')
                 ],
-                'attr' => ['class' => 'form-control', 'required' => true]
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('promo', TextType::class, [
+                'required' => false,
+                'data_class' => null,
+//                'mapped' => false,
+                'label' => 'Promo',
+                'constraints' => [
+                    new Regex('/[0-9]{1,10}/')
+                ],
+                'attr' => ['class' => 'form-control']
             ])
             ->add('stock', IntegerType::class, [
+                'required' => true,
                 'label' => 'Stock',
-                'attr' => ['class' => 'form-control', 'required' => true]
+                'attr' => ['class' => 'form-control']
             ])
             ->add('date_add', HiddenType::class, ['mapped' => false, 'data_class' => null])
             ->add('date_update', HiddenType::class, ['mapped' => false, 'data_class' => null]);

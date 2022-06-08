@@ -19,15 +19,13 @@
     {# </div> #}
 
     <div class="zaebal" style="font-size: 17px">
-        {#        {% for cli in clients %} #}
+
         {{ dump(orders) }}
-        {#        {% endfor %} #}
+
         <div class="container-fluid text-center py-4">
             <h1>Commandes</h1>
         </div>
-
         <div class="container d-flex flex-wrap">
-            {#        {{ dump(app.session.get('cart')) }} #}
             <div class="col-sm-1 d-none d-sm-block">
                 <strong>N° com</strong>
             </div>
@@ -80,7 +78,7 @@
                 {#                    {% set total = total + row.qty*row.price %} #}
                 {#                    {% set quantity = quantity + row.qty %} #}
                 <div class="col-sm-1 col-12">
-                    <button>accepter</button>
+                    <button style="background-color: #989100">Valider</button>
                 </div>
                 <div class="collapse" id="com_{{ row.id }}">
                     <div class="card card-body">
@@ -88,10 +86,10 @@
                             <div class="col-sm-2 d-none d-sm-block">
                                 <strong>N° prod</strong>
                             </div>
-                            <div class="col-sm-3 d-none d-sm-block">
+                            <div class="col-sm-2 d-none d-sm-block">
                                 <strong>Nom de produit</strong>
                             </div>
-                            <div class="col-sm-3 d-none d-sm-block">
+                            <div class="col-sm-2 d-none d-sm-block">
                                 <strong>Description</strong>
                             </div>
                             <div class="col-sm-2 d-none d-sm-block">
@@ -100,17 +98,22 @@
                             <div class="col-sm-2 d-none d-sm-block">
                                 <strong>Prix</strong>
                             </div>
+                            <div class="col-sm-2 d-none d-sm-block">
+                                <strong>Total</strong>
+                            </div>
                         </div>
                         <hr class="my-4 w-100">
+                        {% set tm = 0 %}
                         {% for ode in row.orderDetails %}
+                            {% set total = 0 %}
                             <div class="container d-flex flex-wrap">
                                 <div class="col-sm-2 d-none d-sm-block">
                                     {{ ode.product.id }}
                                 </div>
-                                <div class="col-sm-3 d-none d-sm-block">
+                                <div class="col-sm-2 d-none d-sm-block">
                                     {{ ode.product.name }}
                                 </div>
-                                <div class="col-sm-3 d-none d-sm-block">
+                                <div class="col-sm-2 d-none d-sm-block">
                                     {{ ode.product.description | raw }}
                                 </div>
                                 <div class="col-sm-2 d-none d-sm-block">
@@ -119,21 +122,35 @@
                                 <div class="col-sm-2 d-none d-sm-block">
                                     {{ ode.price }} €
                                 </div>
-                                {#                    {% set total = total + row.qty*row.price %} #}
-                                {#                    {% set quantity = quantity + row.qty %} #}
-                                {#                        {{ ode.id }} #}
-                                {#                       {{  dump(ode) }} #}
+                                {% set total = (ode.quantity*ode.price)|number_format(2, '.', ' ') %}
+                                {# {% set quantity = quantity + row.qty %} #}
+                                {# {{ ode.id }} #}
+                                {# {{  dump(ode) }} #}
+                                <div class="col-sm-2 d-none d-sm-block">
+                                    {{ total }} €
+                                </div>
                             </div>
                             <hr class="my-4 w-100">
+                            {% set tm = tm+total %}
                         {% endfor %}
-                        <a href="{{ path('ord_det', {'order': row.id}) }}"
-                           style="color: #989100;">
-                            Facture
-                        </a>
+                        <div class="container d-flex flex-wrap">
+                            <div class="col-sm-2 d-none d-sm-block">
+                                <a href="{{ path('ord_det', {'order': row.id}) }}"
+                                   style="color: #989100;">
+                                    Facture
+                                </a>
+                            </div>
+                            <div class="offset-6 col-sm-2 d-none d-sm-block">
+                                <strong>Total</strong>
+                            </div>
+                            <div class="col-sm-2 d-none d-sm-block">
+                                <strong>{{ tm }} €</strong>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <hr class="my-4 w-100">
-
             {% endfor %}
         </div>
     </div>

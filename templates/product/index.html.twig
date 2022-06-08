@@ -18,6 +18,7 @@
                 <th>Description</th>
                 <th>Picture</th>
                 <th>Price</th>
+                <th>Promo</th>
                 <th>Stock</th>
                 <th>Date_add</th>
                 <th>Date_update</th>
@@ -32,6 +33,7 @@
                     <td>{{ product.description | raw }}</td>
                     <td><img class="img-fluid" width="10%" src="/assets/images/PRODUCTS/{{ product.picture }}"></td>
                     <td>{{ product.price }}</td>
+                    <td>{{ product.promo }}</td>
                     <td>{{ product.stock }}</td>
                     <td>{{ product.dateAdd ? product.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
                     <td>{{ product.dateUpdate ? product.dateUpdate|date('Y-m-d H:i:s') : '' }}</td>

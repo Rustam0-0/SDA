@@ -89,6 +89,23 @@ body {
     /*vertical-align: bottom;*/
 }
 
+.price-block {
+    background: url(/assets/images/BODY/b_price.png) no-repeat 0 0;
+    width: 95px;
+    height: 30px;
+    position: absolute;
+    right: -27px;
+    top: 4px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 .product-title {
     font-size: 2em;
     margin-bottom: 10px;
@@ -113,7 +130,7 @@ body {
 .product-card {
     /*display: block;*/
     /*height: inherit;*/
-    max-height: 500px;
+    max-height: 480px;
     background: #fff;
     box-shadow: 0 0 2px 0 rgb(0 0 0 / 30%);
     border: 1px solid #f2f2f2;
@@ -185,7 +202,7 @@ body {
 
 .product-card .product-prices {
     font-size: 2em;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
 }
 
 .product-card .product-prices .price {

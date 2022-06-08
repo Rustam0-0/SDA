@@ -88,4 +88,19 @@ class ProdlistController extends AbstractController
             'list' => $repo->findBySearch($name)
         ]);
     }
+
+    /**
+     * @Route("/prodlist5", name="prodlist5")
+     */
+    public function index5(CategoryRepository $repocat, ProductRepository $repoprod, Request $request): Response
+    {
+        $categories = $repocat->findAll();
+//        $list = $repoprod->findBy(array('promo' => Null));
+        $list = $repoprod->findByPromo();
+
+        return $this->render('prodlist/index.html.twig', [
+            'categories' => $categories,
+            'list' => $list
+        ]);
+    }
 }

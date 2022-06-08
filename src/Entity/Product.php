@@ -65,6 +65,11 @@ class Product
      */
     private $orderDetails;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $promo;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -202,6 +207,18 @@ class Product
                 $orderDetail->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPromo(): ?string
+    {
+        return $this->promo;
+    }
+
+    public function setPromo(?string $promo): self
+    {
+        $this->promo = $promo;
 
         return $this;
     }

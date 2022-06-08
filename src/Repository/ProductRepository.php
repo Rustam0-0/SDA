@@ -87,4 +87,14 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+
+    public function findByPromo()
+    {
+        return $this->createQueryBuilder('p')
+            ->Where('p.promo is not null')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
