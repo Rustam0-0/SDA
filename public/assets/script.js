@@ -1,3 +1,4 @@
+
 // Убавляем кол-во по клику
 $('.quantity_inner .bt_minus').click(function () {
     let $input = $(this).parent().find('.quantity');

@@ -73,4 +73,13 @@ class SubcatRepository extends ServiceEntityRepository
         ;
     }
     */
+//    public function findByPromo()
+//    {
+//        return $this->createQueryBuilder('p')
+//            ->join("subcat", "p.subcat_id")
+//            ->Where('p.promo is not null')
+//            ->getQuery()
+////            ->getResult()
+//            ;
+//    }
 }

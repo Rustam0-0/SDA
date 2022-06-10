@@ -14,10 +14,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://localhost:8000/assets/fonts.css" type="text/css" rel="stylesheet">
     <link href="https://localhost:8000/assets/theme.css" type="text/css" rel="stylesheet">
@@ -28,8 +28,7 @@
 
     {#    icons #}
     {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/6.1.1/css/font-awesome.min.css" rel="stylesheet"> #}
-    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet"
-          type="text/css">
+    <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet" type="text/css">
     {#    <link href="https://localhost:8000/assets/fonts_icons.css" type="text/css" rel="stylesheet"> #}
 
     {#  logo icon in browser  #}
@@ -61,7 +60,7 @@
             toolbar: 'numlist bullist'
         });</script>
 </head>
-<body>
+<body style="max-width: 1920px">
 <header class="main-header">
     <div class="top-header">
         <div class="container">
@@ -308,6 +307,52 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script type="text/javascript" src="/assets/script.js?id="></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/10efd45e1d.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    $('.slider').slick({
+        vertical: true,
+        verticalSwiping: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        responsive: [
+            // {
+            //     breakpoint: 1024,
+            //     settings: {
+            //         slidesToShow: 1,
+            //         // slidesToScroll: 4,
+            //         vertical: false,
+            //         verticalSwiping: false,
+            //     }
+            // },
+            // {
+            //     breakpoint: 760,
+            //     settings: {
+            //     slidesToShow: 1,
+            //     // slidesToScroll: 2,
+            //     vertical: false,
+            //     verticalSwiping: false,
+            //     }
+            // },
+            {
+                breakpoint: 1000,
+                settings: {
+                    slidesToShow: 2,
+                    // slidesToScroll: 2,
+                    vertical: false,
+                    verticalSwiping: false,
+                }
+            }
+        ]
+    });
+</script>
 
 </body>
 </html>

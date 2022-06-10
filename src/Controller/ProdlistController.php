@@ -36,10 +36,11 @@ class ProdlistController extends AbstractController
     /**
      * @Route("/prodlist2/{id}", name="prodlist2")
      */
-    public function index2(CategoryRepository $repocat, SubcatRepository $repoprod, PaginatorInterface $paginator, Request $request, $id): Response
+    public function index2(CategoryRepository $repocat, SubcatRepository $repoprod, ProductRepository $repopromo, PaginatorInterface $paginator, Request $request, $id): Response
     {
         $categories = $repocat->findAll();
         $subcat = $repoprod->find($id);
+        $list_promos = $repopromo->findByPromo();
 //        $list = $subcat->getProducts();
 
         $list = $paginator->paginate(
@@ -51,6 +52,7 @@ class ProdlistController extends AbstractController
         return $this->render('prodlist/index.html.twig', [
             'categories' => $categories,
             'list' => $list,
+            'list_promos' => $list_promos
         ]);
     }
 
@@ -96,11 +98,11 @@ class ProdlistController extends AbstractController
     {
         $categories = $repocat->findAll();
 //        $list = $repoprod->findBy(array('promo' => Null));
-        $list = $repoprod->findByPromo();
+        $list_promos = $repoprod->findByPromo();
 
         return $this->render('prodlist/index.html.twig', [
             'categories' => $categories,
-            'list' => $list
+            'list_promos' => $list_promos
         ]);
     }
 }

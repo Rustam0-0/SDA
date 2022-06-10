@@ -107,14 +107,15 @@ body {
 }
 
 .product-title {
+    text-align: center;
     font-size: 2em;
     margin-bottom: 10px;
-    overflow: auto;
-    max-height: 2em;
+    /*overflow: auto;*/
+    /*max-height: 2em;*/
     /*font-weight: 50;*/
     /*height: 6em;*/
-    /*overflow: scroll;*/
-    /*overflow: hidden;*/
+    overflow: scroll;
+    overflow: hidden;
     /*text-overflow: ellipsis; ...*/
 }
 
@@ -1005,6 +1006,10 @@ button {
     font-weight: 900;
 }
 
+.home_slider {
+    margin: auto;
+}
+
 .registration_picture {
     background-image: url("https://localhost:8000/assets/images/BODY/registration.jpg");
     background-repeat: no-repeat;
@@ -1303,7 +1308,7 @@ button {
 }
 
 .results_product_item {
-    width: 95%;
+    width: 80%;
     /*margin-top: 30px;*/
 }
 
@@ -1316,7 +1321,7 @@ button {
 
 @media only screen and (min-width: 1300px) {
     .results_product_item {
-        width: 22%;
+        width: 30%;
     }
 }
 
@@ -1349,7 +1354,7 @@ button {
     /*padding-left: 10px !important;*/
     /*padding-right: 10px !important;*/
     padding-bottom: 50px !important;
-    padding-top: 100px !important;
+    padding-top: 70px !important;
 }
 
 @media only screen and (max-width: 900px) {
