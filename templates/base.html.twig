@@ -60,7 +60,7 @@
             toolbar: 'numlist bullist'
         });</script>
 </head>
-<body style="max-width: 1920px">
+<body style="max-width: 1300px">
 <header class="main-header">
     <div class="top-header">
         <div class="container">
@@ -100,7 +100,7 @@
         <div class="container offset-1 col-xl-7 col-lg-7 col-md-3 col-sm-3 col-5">
             <ul class="clear-list d-flex">
                 <li style="padding-top: 3px; padding-right: 11px">
-                    <form action="{{ path('prodlist4') }}" method="get"
+                    <form action="{{ path('prodlist_search') }}" method="get"
                           class="search-widget-form d-none d-lg-block">
                         <input id="search-widget-input" class="input-field search-input"
                                type="text" placeholder="Que recherchez-vous?" name="q">
@@ -144,8 +144,8 @@
                             </li>
                         </ul>
                     {% else %}
-                        <a title="Copmte" href="{{ path('app_login') }}">
-                            <ion-icon class="button-person" name="person-circle-outline"></ion-icon>
+                        <a href="{{ path('app_login') }}">
+                            <ion-icon title="Copmte"  class="button-person" name="person-circle-outline"></ion-icon>
                         </a>
                     {% endif %}
                 </li>
@@ -177,7 +177,7 @@
                 {% for category in categories %}
                     <li class="separator"></li>
                     <li class="level-1">
-                        <a href="">
+                        <a href="{{ path('subcatlist', {id:category.id}) }}">
                             {{ category.name }}
                         </a>
                         <ul class="level-2">
@@ -264,7 +264,7 @@
     <br>
     <nav class="navbar">
         <ul class="mobile-menu clear-list menu level-1 navbar-nav">
-            <form action="{{ path('prodlist4') }}" method="get" class="search-widget-form">
+            <form action="{{ path('prodlist_search') }}" method="get" class="search-widget-form">
                 <input id="search-widget-input" class="input-field search-input"
                        type="text" placeholder="Que recherchez-vous?" name="q">
                 <button class="button-circle is-primary" type="submit">
@@ -318,7 +318,7 @@
     $('.slider').slick({
         vertical: true,
         verticalSwiping: true,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -332,19 +332,19 @@
             //         verticalSwiping: false,
             //     }
             // },
-            // {
-            //     breakpoint: 760,
-            //     settings: {
-            //     slidesToShow: 1,
-            //     // slidesToScroll: 2,
-            //     vertical: false,
-            //     verticalSwiping: false,
-            //     }
-            // },
+            {
+                breakpoint: 760,
+                settings: {
+                slidesToShow: 2,
+                // slidesToScroll: 2,
+                vertical: false,
+                verticalSwiping: false,
+                }
+            },
             {
                 breakpoint: 1000,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     // slidesToScroll: 2,
                     vertical: false,
                     verticalSwiping: false,

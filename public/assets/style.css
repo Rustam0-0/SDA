@@ -82,6 +82,54 @@ body {
     stroke: #000;
 }
 
+.cathover {
+    opacity: 1;
+    color: #FFFF;
+    background-color: #3f3f3fad;
+    width: 100%;
+    height: 100%;
+    /*padding-top: 60px;*/
+    line-height: 183px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    text-size-adjust: auto;
+}
+
+.overlay-image {
+    position: relative;
+    width: 100%;
+}
+
+.overlay-image .hover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.overlay-image:hover .hover {
+    opacity: 1;
+}
+/*.cathover:hover {*/
+/*    opacity: 1;*/
+/*}*/
+
+.promo_item {
+    height: 190px;
+    width: 190px;
+}
+
+.product-title a {
+    color: #1a1a1a;
+}
+.product-title a:hover {
+    color: #edbe00;
+}
+
 .product-caption {
     overflow: hidden;
     /*position: absolute;*/
@@ -90,7 +138,7 @@ body {
 }
 
 .price-block {
-    background: url(/assets/images/BODY/b_price.png) no-repeat 0 0;
+    background: url(https://localhost:8000/assets/images/BODY/b_price.png) no-repeat 0 0;
     width: 95px;
     height: 30px;
     position: absolute;
@@ -110,12 +158,14 @@ body {
     text-align: center;
     font-size: 2em;
     margin-bottom: 10px;
+    margin-top: 10px;
+    font-family:  Stencil Std, fantasy;
+    max-height: 1.2em;
+    font-weight: 700;
     /*overflow: auto;*/
-    /*max-height: 2em;*/
-    /*font-weight: 50;*/
     /*height: 6em;*/
-    overflow: scroll;
-    overflow: hidden;
+    /*overflow: scroll;*/
+    /*overflow: hidden;*/
     /*text-overflow: ellipsis; ...*/
 }
 
@@ -348,6 +398,9 @@ body {
     height: 50px;
     padding: 12px 60px 12px 12px;
 }
+
+/*input[type="text"], input[type="password"], input[type="select"], textarea*/
+/*{font-size: 17px;}*/
 
 .input-field, .select-field, .textarea-field {
     background-image: none;
@@ -1337,6 +1390,8 @@ button {
     transition: 0.4s;
     position: relative;
     max-height: 240px;
+    border-radius: 5px;
+    /*height: 120px;*/
 }
 
 /*@media only screen and (min-width: 600px) {*/
@@ -3976,12 +4031,13 @@ a:hover {
 
 /* line 1632, theme.scss */
 .catalog .main-menu li.level-1 {
-    /*  -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1;  */
+    /*-webkit-box-flex: 1;*/
+    /*  -webkit-flex: 1;*/
+    /*     -moz-box-flex: 1;*/
+    /*      -ms-flex: 1;*/
+    /*          flex: 1; */
     height: 100%;
+
 }
 
 /* line 1640, theme.scss */

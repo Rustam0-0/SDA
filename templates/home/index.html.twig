@@ -7,8 +7,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/assets/images/home/home.jpg" class="d-block img-fluid home_slider"
-                     alt="home"
-                >
+                     alt="home">
                 <div class="carousel-caption">
                     <span class="promo-content">
                         <a href="">
@@ -92,4 +91,30 @@
     </div>
     <div class="banner-content"></div>
     {#    {{ dump(categories[2].subcats) }} #}
+
+    <div class="d-flex flex-wrap pt-2 pb-2">
+        {% set count = 0 %}
+        {% for category in categories %}
+            {% if count < 9 %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 p-1">
+                    <div class="overlay-image">
+                        <a href="{{ path('subcatlist', { id: category.id}) }}">
+{#                            {% if (category.subcats|first.products|first) %}#}
+                                <img class="w-100" src="/assets/images/cats/{{ category.picture }}"
+                                    {#"/assets/images/PRODUCTS/{{ (category.subcats|first.products|first).picture }}"#}
+                                     alt="{{ category.name }}" height="183"/>
+{#                            {% endif %}#}
+                            <div class="hover">
+                                <div class="cathover  border border-dark">
+                                    {{ category.name }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% set count = count+1 %}
+            {% endif %}
+{#            {{ dump(category.subcats) }}#}
+        {% endfor %}
+    </div>
 {% endblock %}

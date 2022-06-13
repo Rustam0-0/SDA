@@ -10,6 +10,26 @@
 
         <h1>Product index</h1>
 
+{#        <form action="{{ path('prodlist_search') }}" method="get" class="search-widget-form">#}
+{#            <input id="search-widget-input" class="input-field search-input"#}
+{#                   type="text" placeholder="Que recherchez-vous?" name="q">#}
+{#            <button class="button-circle is-primary" type="submit">#}
+{#                <i class="icon ion-ios-search"></i>#}
+{#            </button>#}
+{#            {% if app.request.query.get('q') %}#}
+{#                {% for label, messages in app.flashes(['success', 'warning']) %}#}
+{#                    {% for message in messages %}#}
+{#                        <div class="flash-{{ label }}">#}
+{#                            {{ message }} {{ app.request.query.get('q') }}#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
+{#        </form><br>#}
+
+{#        <a href="{{ path('app_product_new') }}">Create new</a>#}
+        <button onclick="window.location.href='{{ path('app_product_new') }}'" class="cart_button">Ajouter un produit</button>
+
         <table class="table">
             <thead>
             <tr>
@@ -31,14 +51,14 @@
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description | raw }}</td>
-                    <td><img class="img-fluid" width="10%" src="/assets/images/PRODUCTS/{{ product.picture }}"></td>
+                    <td style="width: 150px"><img class="img-fluid" width="20%" src="/assets/images/PRODUCTS/{{ product.picture }}"></td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.promo }}</td>
                     <td>{{ product.stock }}</td>
                     <td>{{ product.dateAdd ? product.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
                     <td>{{ product.dateUpdate ? product.dateUpdate|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
-                        <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+                        <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a><br>
                         <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
                     </td>
                 </tr>
@@ -49,7 +69,5 @@
             {% endfor %}
             </tbody>
         </table>
-
-        <a href="{{ path('app_product_new') }}">Create new</a>
     </div>
 {% endblock %}

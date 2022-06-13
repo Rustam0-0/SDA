@@ -17,7 +17,6 @@ class HomeController extends AbstractController
         $categories = $repocat->findAll();
         return $this->render('home/index.html.twig', [
             'categories' => $categories,
-            'controller_name' => 'HomeController',
         ]);
     }
 }

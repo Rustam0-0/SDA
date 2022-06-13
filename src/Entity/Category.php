@@ -29,6 +29,11 @@ class Category
      */
     private $subcats;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+
     public function __construct()
     {
         $this->subcats = new ArrayCollection();
@@ -77,6 +82,18 @@ class Category
                 $subcat->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }

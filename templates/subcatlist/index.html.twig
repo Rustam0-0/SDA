@@ -2,32 +2,41 @@
 
 
 {% block body %}
-
-{#        {{ dump(list) }}#}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('home') }}" title="Accueil">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ list[0].category.name }}</li>
-        </ol>
-    </nav>
-    <div id="results" class="container-fluid py-5">
-        {% for subcat in list %}
-            <article class="results_product_item">
-                <a href="{{ path('prodlist2', { id: subcat.id}) }}"
-                   class="results_product_item_image_container" title="">
-                    {#                    {{ dump(subcat.products|first).picture) }} #}
-                    {% if (subcat.products|first) %}
-                        <img src="/assets/images/PRODUCTS/{{ (subcat.products|first).picture }}"
-                             alt="" class="results_product_item_image lazyload"/>
-                    {% endif %}
-                </a>
-                <div class="results_product_item_content">
-                    <a href="{{ path('prodlist2', { id: subcat.id}) }}"
-                       class="results_product_item_name" title="">
-                        {{ subcat.name }}
-                    </a>
-                </div>
-            </article>
-        {% endfor %}
+    <div class="zaebal">
+{#                {{ dump(list) }}#}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home') }}" title="Accueil">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ list[0].category.name }}</li>
+            </ol>
+        </nav>
+        <div id="results" class="container-fluid py-5">
+            {% for subcat in list %}
+                <article class="results_product_item product-card mb-4">
+                    <div class="d-flex flex-wrap justify-content-center"
+                         style="border-radius: 10px">
+                        <a href="{{ path('prodlist2', { id: subcat.id}) }}"
+                           class="results_product_item_image_container" title="{{ subcat.name }}">
+                            {#                    {{ dump(subcat.products|first).picture) }} #}
+                            {% if (subcat.products|first) %}
+                                <img src="/assets/images/PRODUCTS/{{ (subcat.products|first).picture }}"
+                                     alt="" class="results_product_item_image lazyload"/>
+                            {% endif %}
+                        </a>
+                    </div>
+                    {#                <div class="results_product_item_content"> #}
+                    <div class="product-caption">
+                        <div class="product-title">
+                            <a href="{{ path('prodlist2', { id: subcat.id}) }}"
+                               class="results_product_item_name" title="{{ subcat.name }}"
+                               style="font-size: 25px">
+                                {{ subcat.name }}
+                            </a>
+                        </div>
+                    </div>
+                </article>
+{#                {{ dump(subcat) }}#}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
