@@ -29,9 +29,10 @@
             <div class="d-flex flex-wrap">
                 <div class="col-lg-2 col-md-12 col-sm-12">
                     <div class="slider">
+                        {% set promo_alc = false %}
                         {% for promos in list_promos %}
-                            <article class="results_product_item product-card promo_item mb-4"
-                                     style="background-color: #989100; border-radius: 10px">
+                            <article class="results_product_item product-card mb-4"
+                                     style="background-color: #989100; border-radius: 10px; height: 190px">
                                 <div class="d-flex flex-wrap justify-content-center"
                                      style="border-radius: 10px">
                                     <a class="results_product_item_image_container" href="{{ path('promo_list') }}"
@@ -59,12 +60,16 @@
                                     </div>
                                 </div>
                             </article>
+                            {% if (promos.subcat.category.id == 1) %}
+                                {% set promo_alc = true %}
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
 
 
                 <div id="results" class="container-fluid col-lg-10 col-md-12 col-sm-12">
+                    {% set alc = false %}
                     {% for product in list %}
                         <article class="results_product_item product-card mb-4" style="border-radius: 10px">
                             {# col-xl-3 col-lg-3 col-md-6 col-sm-12 #}
@@ -155,10 +160,19 @@
                                 {% endif %}
                             </div>
                         </article>
+                        {% if (product.subcat.category.id == 1) %}
+                            {% set alc = true %}
+                        {% endif %}
                     {% endfor %}
                     {#            {{ dump(app.session.get('cart')) }} #}
                 </div>
             </div>
+            {#{{ dump(list|first.subcat.category) }}#}
+            {% if (alc == true or promo_alc == true) %}
+                <div class="remind">
+                    Nous ne vendons pas d'alcool aux mineurs. CODE DE LA SANTÉ PUBLIQUE : ART. L. 3342-1. L. 3342-3
+                </div>
+            {% endif %}
         {% else %}
             <div class="text-center pl-3 pr-3 d-flex flex-wrap justify-content-center"
                  style="height: 80px; background-color: #989100; vertical-align: middle; display: table-cell">

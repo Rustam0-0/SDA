@@ -6,7 +6,7 @@
 
     <div class="zaebal">
 
-        {#        {{ dump(list_promos) }} #}
+        {#                {{ dump(list_promos) }} #}
 
         {% if (list_promos|first) %}
             <nav aria-label="breadcrumb" class="offset-2 col-10">
@@ -16,13 +16,8 @@
                             Accueil
                         </a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ path('subcatlist', { id: (list_promos|first).subcat.category.id}) }}">
-                            {{ (list_promos|first).subcat.category.name }}
-                        </a>
-                    </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        {{ (list_promos|first).subcat.name }}
+                        Nos promotions
                     </li>
                 </ol>
             </nav>
@@ -31,9 +26,11 @@
                     <div class="slider">
                         {% for promos in list_promos %}
                             <article class="results_product_item product-card mb-4"
-                                     style="background-color: #989100; border-radius: 10px">
+                                     style="background-color: #989100; border-radius: 10px; height: 190px">
                                 <div class="d-flex flex-wrap justify-content-center" style="background-color: #989100">
-                                    <a class="results_product_item_image_container">
+                                    <a class="results_product_item_image_container"
+                                       href="{{ path('prodlist2', {id:promos.subcat.id}) }}"
+                                       title="{{ promos.subcat.name }}">
                                         <img src="http://localhost:8000/assets/images/PRODUCTS/{{ promos.picture }}"
                                              alt="{{ promos.picture }}"
                                              class="img-fluid results_product_item_image lazyload"
@@ -50,7 +47,10 @@
                                 </div>
                                 <div class="product-caption">
                                     <div class="product-title">
-                                        {{ promos.name }}
+                                        <a href="{{ path('prodlist2', {id:promos.subcat.id}) }}"
+                                           title="{{ promos.subcat.name }}">
+                                            {{ promos.name }}
+                                        </a>
                                     </div>
                                 </div>
                             </article>
@@ -58,12 +58,13 @@
                     </div>
                 </div>
 
-
                 <div id="results" class="container-fluid col-lg-10 col-md-12 col-sm-12">
                     {% for product in list_promos %}
                         <article class="results_product_item product-card mb-4" style="border-radius: 10px">
                             <div class="d-flex flex-wrap justify-content-center">
-                                <a class="results_product_item_image_container">
+                                <a class="results_product_item_image_container"
+                                   href="{{ path('prodlist2', {id:product.subcat.id}) }}"
+                                   title="{{ product.subcat.name }}">
                                     <img src="http://localhost:8000/assets/images/PRODUCTS/{{ product.picture }}"
                                          alt="{{ product.picture }}"
                                          class="img-fluid results_product_item_image lazyload">
@@ -76,7 +77,10 @@
                             </div>
                             <div class="product-caption">
                                 <div class="product-title">
-                                    {{ product.name }}
+                                    <a href="{{ path('prodlist2', {id:product.subcat.id}) }}"
+                                       title="{{ product.subcat.name }}">
+                                        {{ product.name }}
+                                    </a>
                                 </div>
                                 <div class="product-description">
                                     {{ product.description | raw }}
@@ -85,9 +89,9 @@
                                 <div class="d-flex flex-wrap justify-content-between">
                                     {% if product.promo %}
                                         <div>
-                                            {#                                        <span class="badge badge-pill badge-danger" style="font-size: small"> #}
-                                            {#                                            -{{ (100-product.promo/product.price*100)|number_format(0, '.', ' ') }} % #}
-                                            {#                                        </span> #}
+                                            {# <span class="badge badge-pill badge-danger" style="font-size: small"> #}
+                                            {#- {{ (100-product.promo/product.price*100)|number_format(0, '.', ' ') }} % #}
+                                            {# </span> #}
                                             <div class="product-prices">
                                                 <span class="price">&euro; {{ product.promo }}  </span>
                                             </div>
