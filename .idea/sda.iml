@@ -228,5 +228,7 @@
     <orderEntry type="library" name="layouts" level="application" />
     <orderEntry type="library" name="plugins" level="application" />
     <orderEntry type="library" name="base" level="application" />
+    <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="slick-carousel" level="application" />
   </component>
 </module>

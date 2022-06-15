@@ -158,13 +158,13 @@
 //     return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
 // }
 
-
-$(function(e){
-    $('.js-mobile-catalog-toggle').on('click', function(e){
-        e.preventDefault();
-        $('body').toggleClass('menu-opened');
-    });
-});
+//
+// $(function(e){
+//     $('.js-mobile-catalog-toggle').on('click', function(e){
+//         e.preventDefault();
+//         $('body').toggleClass('menu-opened');
+//     });
+// });
 
 // Products.setConfig({
 //     initOption: true,

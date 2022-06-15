@@ -1,4 +1,11 @@
 
+$(function(e){
+    $('.js-mobile-catalog-toggle').on('click', function(e){
+        e.preventDefault();
+        $('body').toggleClass('menu-opened');
+    });
+});
+
 // Убавляем кол-во по клику
 $('.quantity_inner .bt_minus').click(function () {
     let $input = $(this).parent().find('.quantity');
