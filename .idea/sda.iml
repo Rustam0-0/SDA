@@ -230,5 +230,14 @@
     <orderEntry type="library" name="base" level="application" />
     <orderEntry type="library" name="ionicons" level="application" />
     <orderEntry type="library" name="slick-carousel" level="application" />
+    <orderEntry type="library" name="slick-carousel" level="application" />
+    <orderEntry type="library" name="fonts" level="application" />
+    <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="iconify" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="tinymce" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="10efd45e1d" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

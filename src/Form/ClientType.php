@@ -56,36 +56,36 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, [
-                'constraints' => [
-                    //new Unique([]),
-                    new NotBlank(),
-                    new Regex(['pattern' => '/[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/'])
-                ],
-                'attr' => ['class' => 'form-control'], 'required' => true
-            ])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'invalid_message' => 'Indiquez le même mot de passe',
-                'options' => ['attr' => ['class' => 'form-control']],
-                'required' => true,
-                'first_options' => ['label' => 'Mot de passe', 'attr' => ['placeholder' => '8 caractéres minimum', 'class' => 'form-control']],
-                'second_options' => ['label' => 'Retapez votre mot de passe', 'attr' => ['placeholder' => 'Confirmation du mot de passe', 'class' => 'form-control']],
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Entrez un mot de passe ',
-                    ]),
-//                    new Regex(['pattern' => '/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$/',
-//                        'match' => true,
-//                        'message' => 'Veuillez indiquez le même mot de passe et mettre 8 caractéres dont une majuscule et un symbole']),
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => 'Entrez minimum {{ limit }} caractéres',
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
+//            ->add('email', EmailType::class, [
+//                'constraints' => [
+//                    //new Unique([]),
+//                    new NotBlank(),
+//                    new Regex(['pattern' => '/[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/'])
+//                ],
+//                'attr' => ['class' => 'form-control'], 'required' => true
+//            ])
+//            ->add('password', RepeatedType::class, [
+//                'type' => PasswordType::class,
+//                'invalid_message' => 'Indiquez le même mot de passe',
+//                'options' => ['attr' => ['class' => 'form-control']],
+//                'required' => true,
+//                'first_options' => ['label' => 'Mot de passe', 'attr' => ['placeholder' => '8 caractéres minimum', 'class' => 'form-control']],
+//                'second_options' => ['label' => 'Retapez votre mot de passe', 'attr' => ['placeholder' => 'Confirmation du mot de passe', 'class' => 'form-control']],
+//                'mapped' => false,
+//                'constraints' => [
+//                    new NotBlank([
+//                        'message' => 'Entrez un mot de passe ',
+//                    ]),
+////                    new Regex(['pattern' => '/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$/',
+////                        'match' => true,
+////                        'message' => 'Veuillez indiquez le même mot de passe et mettre 8 caractéres dont une majuscule et un symbole']),
+//                    new Length([
+//                        'min' => 8,
+//                        'minMessage' => 'Entrez minimum {{ limit }} caractéres',
+//                        'max' => 4096,
+//                    ]),
+//                ],
+//            ])
             ->add('name', TextType::class, [
                 'label' => 'Prénom',
                 'constraints' => [

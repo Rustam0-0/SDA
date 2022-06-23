@@ -14,8 +14,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> #}
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
           integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -23,20 +21,14 @@
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    {#    <link href="https://localhost:8000/assets/fonts.css" type="text/css" rel="stylesheet"> #}
     <link href="https://localhost:8000/assets/theme.css" type="text/css" rel="stylesheet">
-    {#    <link href="https://localhost:8000/assets/theme_key.css" type="text/css" rel="stylesheet"> #}
-    {#    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> #}
 
     {#    icons #}
-    {#  <link href="//maxcdn.bootstrapcdn.com/font-awesome/6.1.1/css/font-awesome.min.css" rel="stylesheet"> #}
     <link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet"
           type="text/css">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous"
           rel="stylesheet"/>
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-    {#    <script src="https://kit.fontawesome.com/4058637fe8.js" crossorigin="anonymous"></script> #}
-    {#    <link href="https://localhost:8000/assets/fonts_icons.css" type="text/css" rel="stylesheet"> #}
 
     {#  logo icon in the top of browser  #}
     <link rel="apple-touch-icon" sizes="180x180" href="https://localhost:8000/assets/images/favicon/apple-touch-icon.png">
@@ -44,15 +36,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://localhost:8000/assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="https://localhost:8000/assets/images/favicon/site.webmanifest">
 
-    {#   login  #}
-    {#    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'> #}
-
     {# pour js-mobile-catalog-toggle #}
     <link href="https://localhost:8000/assets/base.css" type="text/css" rel="stylesheet">
-    {#    <link href="https://localhost:8000/assets/plugins.css" type="text/css" rel="stylesheet"> #}
     <link href="https://localhost:8000/assets/layouts.css" type="text/css" rel="stylesheet">
-
-    {#    ////////////////////// #}
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://localhost:8000/assets/style.css" type="text/css" rel="stylesheet">
@@ -125,11 +111,12 @@
                         {% endif %}
                     </form>
                 </li>
+{#                {% if app.user %}#}
                 <li>
-                    {# <a class="navbar-brand" title="Copmte" href="{{ path('app_login') }}"> #}
-                    {#      <ion-icon class="button-person" name="person-circle-outline"></ion-icon> #}
-                    {# </a> #}
-                    {% if app.user %}
+{#                     <a class="navbar-brand" title="Copmte" href="{{ path('app_login') }}"> #}
+{#                          <ion-icon class="button-person" name="person-circle-outline"></ion-icon> #}
+{#                     </a> #}
+                    {% if app.user and app.user.roles[0]=="ROLE_ADMIN" %}
                         <a href="#" id="navbaruserDropdown" data-toggle="dropdown">
                             <ion-icon class="button-person" name="person-circle-outline"></ion-icon>
                         </a>
@@ -158,11 +145,10 @@
                 </li>
                 <li class="shopcart-widget" style="padding-top: 7px; padding-left: 4px">
                     <a title="Panier"
-                       href="{{ path('cart') }}" {# onclick="openNav()" #}
+                       href="{{ path('cart') }}"  onclick="openNav()"
                        class="button-circle is-primary">
-                        <i class="icon ion-ios-cart-outline"></i>
-                        {# <i class="fa-shopping-cart"></i> #}
-                        {# <span class="iconify" data-icon="ion:cart-outline"></span> #}
+                        {#<i class="icon ion-ios-cart-outline"></i>#}
+                         <span class="iconify" data-icon="ion:cart-outline"></span>
                         {% if app.session.get('cart') %}
                             {% set total = 0 %}
                             {% for key,row in app.session.get('cart') %}
@@ -176,6 +162,7 @@
                         {% endif %}
                     </a>
                 </li>
+{#                {% endif %}#}
             </ul>
         </div>
     </div>
@@ -208,6 +195,36 @@
 
 {% block body %}{% endblock %}
 
+<div class="d-flex flex-wrap pt-2 pb-2">
+    {% set count = 0 %}
+    {% for category in categories %}
+        {% if count < 9 %}
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 p-1">
+                <div class="overlay-image">
+                    <a href="{{ path('subcatlist', { id: category.id}) }}">
+                        {#                            {% if (category.subcats|first.products|first) %} #}
+                        <img class="w-100" src="/assets/images/cats/{{ category.picture }}"
+                                {# "/assets/images/PRODUCTS/{{ (category.subcats|first.products|first).picture }}" #}
+                             alt="{{ category.name }}" height="210"/>
+                        {#                            {% endif %} #}
+                        <div class="hover">
+                            <div class="cathover border border-dark">
+                                    <span class="title" style="vertical-align: middle">
+                                        {{ category.name }}
+                                    </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% set count = count+1 %}
+        {% endif %}
+        {#            {{ dump(category.subcats) }} #}
+    {% endfor %}
+</div>
+<div class="remind">
+    Nous ne vendons pas d'alcool aux mineurs. CODE DE LA SANTÉ PUBLIQUE : ART. L. 3342-1. L. 3342-3
+</div>
 <footer>
     <div class="container-fluid">
         <div class="d-flex flex-wrap">
