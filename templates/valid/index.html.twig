@@ -25,7 +25,7 @@
 
 {% block body %}
     <div class="zaebal" style="font-size: 17px">
-        {% if app.user %}
+        {% if app.user.client %}
             <div class="container-fluid text-center py-2">
                 <h1 class="font_color">Adresse de livraison</h1>
             </div>
@@ -117,7 +117,7 @@
                             <label class="form-check-label" for="exampleRadios1">
                                 En espèces au coursier
                             </label>
-                            <img src="{{'/assets/images/BODY/cash.png'}}" width="80">
+                            <img src="{{ '/assets/images/BODY/cash.png' }}" width="80">
                         </div>
                     </div>
                     <div class="offset-2 col-lg-4 col-md-4 col-sm-10 px-5 py-3">
@@ -127,17 +127,27 @@
                             <label class="form-check-label" for="exampleRadios2">
                                 Par carte bancaire
                             </label>
-                            <img src="{{'/assets/images/BODY/cb.png'}}">
+                            <img src="{{ '/assets/images/BODY/cb.png' }}">
                         </div>
                     </div>
                 </div>
                 <div class="text-center py-5">
                     <button type="submit" class="cart_button" name="save">
-                        {# Procéder au paiement#}
+                        {# Procéder au paiement #}
                         Passer à l'étape suivante
                     </button>
                 </div>
             </form>
+        {% else %}
+            <div class="text-center pl-3 pr-3 d-flex flex-wrap justify-content-center"
+                 style="height: 80px; background-color: #989100;
+                 vertical-align: middle; display: table-cell">
+                <h1 class="pt-4">
+                    <a href="{{path("contacts")}}">
+                        Remplissez vos coordonnées s'il vous plaît!
+                    </a>
+                </h1>
+            </div>
         {% endif %}
     </div>
 {% endblock %}

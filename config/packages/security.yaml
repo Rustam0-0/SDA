@@ -37,20 +37,22 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/register, roles: ROLE_ADMIN }
-         - { path: ^/singup, roles: ROLE_ADMIN }
-         - { path: ^/admin_commandes, roles: ROLE_ADMIN }
-#         - { path: ^/my_orders, roles: ROLE_CLIENT }
-#         - { path: ^/profile, roles: ROLE_CLIENT }
-#         - { path: ^/valid, roles: ROLE_CLIENT }
-#         - { path: ^/ord_det, roles: ROLE_CLIENT }
-#         - { path: ^/bill, roles: ROLE_CLIENT }
-#         - { path: ^/cart, roles: ROLE_CLIENT }
-         - { path: ^/my_orders, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_ADMIN }
-         - { path: ^/valid, roles: ROLE_ADMIN }
-         - { path: ^/ord_det, roles: ROLE_ADMIN }
-         - { path: ^/bill, roles: ROLE_ADMIN }
-         - { path: ^/cart, roles: ROLE_ADMIN }
+         - { path: ^/admin_orders, roles: ROLE_ADMIN }
+         - { path: ^/contacts, roles: ROLE_CLIENT }
+         - { path: ^/my_orders, roles: ROLE_CLIENT }
+         - { path: ^/profile, roles: ROLE_CLIENT }
+         - { path: ^/valid, roles: ROLE_CLIENT }
+         - { path: ^/ord_det, roles: ROLE_CLIENT }
+         - { path: ^/bill, roles: ROLE_CLIENT }
+         - { path: ^/cart, roles: ROLE_CLIENT }
+
+#         - { path: ^/contacts, roles: ROLE_ADMIN }
+#         - { path: ^/my_orders, roles: ROLE_ADMIN }
+#         - { path: ^/profile, roles: ROLE_ADMIN }
+#         - { path: ^/valid, roles: ROLE_ADMIN }
+#         - { path: ^/ord_det, roles: ROLE_ADMIN }
+#         - { path: ^/bill, roles: ROLE_ADMIN }
+#         - { path: ^/cart, roles: ROLE_ADMIN }
 
 
 when@test:

@@ -6,22 +6,26 @@ $(function(e){
     });
 });
 
-// Убавляем кол-во по клику
+// diminuer la quantité au clique
 $('.quantity_inner .bt_minus').click(function () {
     let $input = $(this).parent().find('.quantity');
     let count = parseInt($input.val()) - 1;
     count = count < 1 ? 1 : count;
     $input.val(count);
 });
-// Прибавляем кол-во по клику
+
+// ajouter la quantité au clique
 $('.quantity_inner .bt_plus').click(function () {
     let $input = $(this).parent().find('.quantity');
     let count = parseInt($input.val()) + 1;
-    count = count > parseInt($input.data('max-count')) ? parseInt($input.data('max-count')) : count;
+    count = count > parseInt($input.data('max-count')) ?
+                    parseInt($input.data('max-count')) : count;
     $input.val(parseInt(count));
 });
-// Убираем все лишнее и невозможное при изменении поля
-$('.quantity_inner .quantity').bind("change keyup input click", function () {
+
+// On supprime tout ce qui est inutile et impossible lors de l'utilisation des champs
+$('.quantity_inner .quantity').bind("change keyup input click", function ()
+{
     if (this.value.match(/[^0-9]/g)) {
         this.value = this.value.replace(/[^0-9]/g, '');
     }
@@ -34,45 +38,20 @@ $('.quantity_inner .quantity').bind("change keyup input click", function () {
 });
 
 
-function updateCountCart(myForm, prod_id, increment = 0) {
+function updateCountCart(qqch, prod_id, increment = 0) {
 
     if (increment == 1) {
-        document.getElementById('qty['+prod_id+']').stepUp();
+        document.getElementById('qty[' + prod_id + ']').stepUp();
+    } else if (increment == -1) {
+        document.getElementById('qty[' + prod_id + ']').stepDown();
     }
-    else if (increment == -1) {
-        document.getElementById('qty['+prod_id+']').stepDown();
-    }
-
-    //myForm.submit();
-
-
-    // // console.log(prod_id);
-    // let tot = parseInt($('input[type=number]').val());
-    // // console.log(tot);
-    // tot = (tot + increment);
-    // // console.log(document.getElementById('qty['+prod_id+']').value);
-    // if (tot < 1) tot = 1;
-    // if (document.getElementById('qty['+prod_id+']').value != tot) {
-    //     document.getElementById('qty['+prod_id+']').value = tot;
-    //     // document.querySelector('input[type=number]').val(document.querySelector('input[type=number]').val() + increment);
-    //     let cart = document.getElementsByClassName('shopcart-counter active');
-    //     // console.log(cart);
-    //     for (let i = 0; i < cart.length; i += 1) {
-    //         // console.log(parseInt(cart[i].innerHTML));
-    //         cart[i].innerHTML = parseInt(cart[i].innerHTML) + increment;
-    //     }
-    // }
-    // // console.log(cart[0].innerHTML);
-
 }
 
 $('form').submit(function (event) {
-    // event.preventDefault();
-    console.log(event.target.action);
-    // cart
     const cartadd = "/cart/add";
     const cartupdate = "/cart/update";
-    const found = (event.target.action.match(cartadd) || event.target.action.match(cartupdate));
+    const found = (event.target.action.match(cartadd) ||
+                   event.target.action.match(cartupdate));
     if (found) {
         event.preventDefault();
         // if (window.prompt())
@@ -90,9 +69,6 @@ $('form').submit(function (event) {
                 result += parseInt(val.qty);
                 prix += parseFloat(val.price) * parseInt(val.qty);
             });
-            // console.log(response);
-            // console.log(result);
-            // console.log(prix);
             $("#bought").html(result);
             $("#total").html(prix);
         });
@@ -100,15 +76,34 @@ $('form').submit(function (event) {
 });
 
 
+//myForm.submit();
+
+
+// // console.log(prod_id);
+// let tot = parseInt($('input[type=number]').val());
+// // console.log(tot);
+// tot = (tot + increment);
+// // console.log(document.getElementById('qty['+prod_id+']').value);
+// if (tot < 1) tot = 1;
+// if (document.getElementById('qty['+prod_id+']').value != tot) {
+//     document.getElementById('qty['+prod_id+']').value = tot;
+//     // document.querySelector('input[type=number]').val(document.querySelector('input[type=number]').val() + increment);
+//     let cart = document.getElementsByClassName('shopcart-counter active');
+//     // console.log(cart);
+//     for (let i = 0; i < cart.length; i += 1) {
+//         // console.log(parseInt(cart[i].innerHTML));
+//         cart[i].innerHTML = parseInt(cart[i].innerHTML) + increment;
+//     }
+// }
+// // console.log(cart[0].innerHTML);
+
+// }
+
 // $('form').submit(function (event) {
-//     // event.preventDefault();
-//     console.log(event.target.action);
-//     // prodlist->base->'shopcart-counter active'
 //     const regex = "/cart/add";
 //     const found = event.target.action.match(regex);
 //     if (found) {
 //         event.preventDefault();
-//         // if (window.prompt())
 //         let formData = $(this).serialize();
 //         $.ajax({
 //             url: event.target.action + '/json',

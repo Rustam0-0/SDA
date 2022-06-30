@@ -1065,7 +1065,7 @@ footer .address {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 /* line 982, theme.scss */
@@ -1548,6 +1548,14 @@ header .icon-place {
     margin-right: 10px;
     margin-bottom: 0px;
     margin-left: 10px;
+}
+
+.separ {
+    height: 17px;
+    width: 2px;
+    background: #ffcc00;
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* line 1199, theme.scss */

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin_commandes", name="app_admin")
+     * @Route("/admin_orders", name="app_admin")
      */
     public function index(CategoryRepository $repocat, OrderRepository $order): Response
     {

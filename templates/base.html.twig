@@ -96,15 +96,15 @@
                     <form action="{{ path('prodlist_search') }}" method="get"
                           class="search-widget-form d-none d-lg-block">
                         <input id="search-widget-input" class="input-field search-input"
-                               type="text" placeholder="Que recherchez-vous?" name="q">
+                               type="text" placeholder="Que recherchez-vous?" name="value">
                         <button class="button-circle is-primary shadow-none" type="submit">
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
-                        {% if app.request.query.get('q') %}
+                        {% if app.request.query.get('value') %}
                             {% for label, messages in app.flashes(['success', 'warning']) %}
                                 {% for message in messages %}
                                     <div class="flash-{{ label }}">
-                                        {{ message }} {{ app.request.query.get('q') }}
+                                        {{ message }} {{ app.request.query.get('value') }}
                                     </div>
                                 {% endfor %}
                             {% endfor %}
@@ -121,47 +121,47 @@
                             <ion-icon class="button-person" name="person-circle-outline"></ion-icon>
                         </a>
                         <ul class="dropdown-menu login-icon-drop" aria-labelledby="navbaruserDropdown">
-                            <li>
-                                <a class="dropdown-item" href="{{ path('singup') }}">
-                                    MON PROFIL
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ path('my_orders') }}">
-                                    MES COMMANDES
-                                </a>
-                            </li>
+{#                            <li>#}
+{#                                <a class="dropdown-item" href="{{ path('contacts') }}">#}
+{#                                    MON PROFIL#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="dropdown-item" href="{{ path('my_orders') }}">#}
+{#                                    MES COMMANDES#}
+{#                                </a>#}
+{#                            </li>#}
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">
                                     DECONNEXION
                                 </a>
                             </li>
                         </ul>
-                    {% else %}
-                        <a href="{{ path('app_login') }}">
-                            <ion-icon title="Copmte" class="button-person" name="person-circle-outline"></ion-icon>
-                        </a>
+{#                    {% else %}#}
+{#                        <a href="{{ path('app_login') }}">#}
+{#                            <ion-icon title="Copmte" class="button-person" name="person-circle-outline"></ion-icon>#}
+{#                        </a>#}
                     {% endif %}
                 </li>
-                <li class="shopcart-widget" style="padding-top: 7px; padding-left: 4px">
-                    <a title="Panier"
-                       href="{{ path('cart') }}"  onclick="openNav()"
-                       class="button-circle is-primary">
-                        {#<i class="icon ion-ios-cart-outline"></i>#}
-                         <span class="iconify" data-icon="ion:cart-outline"></span>
-                        {% if app.session.get('cart') %}
-                            {% set total = 0 %}
-                            {% for key,row in app.session.get('cart') %}
-                                {% set total = total + app.session.get('cart')[key]["qty"] %}
-                            {% endfor %}
-                            <span class="shopcart-counter active" id="bought">
-                                    {{ total }}
-                            </span>
-                        {% else %}
-                            <span class="shopcart-counter active" id="bought">0</span>
-                        {% endif %}
-                    </a>
-                </li>
+{#                <li class="shopcart-widget" style="padding-top: 7px; padding-left: 4px">#}
+{#                    <a title="Panier"#}
+{#                       href="{{ path('cart') }}"  onclick="openNav()"#}
+{#                       class="button-circle is-primary">#}
+{#                        #}{#<i class="icon ion-ios-cart-outline"></i>#}
+{#                         <span class="iconify" data-icon="ion:cart-outline"></span>#}
+{#                        {% if app.session.get('cart') %}#}
+{#                            {% set total = 0 %}#}
+{#                            {% for key,row in app.session.get('cart') %}#}
+{#                                {% set total = total + app.session.get('cart')[key]["qty"] %}#}
+{#                            {% endfor %}#}
+{#                            <span class="shopcart-counter active" id="bought">#}
+{#                                    {{ total }}#}
+{#                            </span>#}
+{#                        {% else %}#}
+{#                            <span class="shopcart-counter active" id="bought">0</span>#}
+{#                        {% endif %}#}
+{#                    </a>#}
+{#                </li>#}
 {#                {% endif %}#}
             </ul>
         </div>
@@ -228,7 +228,7 @@
 <footer>
     <div class="container-fluid">
         <div class="d-flex flex-wrap">
-            <div class="col-lg-3 col-md-5 col-sm-5 hide-xs">
+            <div class="col-lg-4 col-md-5 col-sm-5 hide-xs">
                 <a href="/" title="Saveurs d'Armenie">
                     <img class="img-fluid w-100" src="https://localhost:8000/assets/images/footer/black.jpg">
                 </a>
@@ -236,11 +236,19 @@
                     <p><span>SAS "Saveurs d'Armenie", 2020<br> Tous les droits sont réservés</span></p>
                 </div>
             </div>
-            <div class="col-lg-4 offset-1 col-md-6 col-sm-6 col-xs-12 foot-menus">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 foot-menus">
                 <div id="jump-here" class="foot-contacts-inner">
+                    <div class="mail" style="font-size: 15px; font-weight: 300; line-height: 21px; margin-bottom: 15px">
+                        <span class="iconify" data-icon="ion:clock"
+                              style="color: #ffcc00; font-size: 28px; margin-right: 13px">
+                        </span>
+                        Mardi - Dimanche 10h00 - 19h00
+                    </div>
                     <div class="phone">
                         <i class="icon-phone icon"></i>
                         <a href="tel:0617336170" class="tel">0617336170</a>
+                        <span class="separ"></span>
+                        <a href="tel:0621104405" class="tel">0621104405</a>
                     </div>
                     <div class="address">
                         <i class="icon icon-place"></i>
@@ -251,11 +259,8 @@
                         </a>
                     </div>
                     <div class="mail" style="font-size: 15px; font-weight: 300; line-height: 21px;">
-                        {#                        <ion-icon name="mail-outline"></ion-icon> #}
-                        {#                        <i class="icon icon-email"></i> #}
-                        {#                        <i class="icon ion-ios-mail-outline"></i> #}
                         <span class="iconify" data-icon="ion:mail-outline"
-                              style="color: #ffcc00; font-size: 28px; margin-right: 13px"></span>
+                              style="color: #ffcc00; font-size: 28px; margin-right: 18px"></span>
                         <a href="mailto:saveursdarmenie80@gmail.com" class="">saveursdarmenie80@gmail.com</a>
                     </div>
                 </div>
@@ -279,6 +284,9 @@
                         </ul>
                     </div>
                 </div>
+{#                <div class="insales">#}
+{#                    powered by <a href="https://idbi.ru/">IDBI</a>#}
+{#                </div>#}
             </div>
         </div>
     </div>
@@ -299,15 +307,15 @@
         <ul class="mobile-menu clear-list menu level-1 navbar-nav">
             <form action="{{ path('prodlist_search') }}" method="get" class="search-widget-form">
                 <input id="search-widget-input" class="input-field search-input"
-                       type="text" placeholder="Que recherchez-vous?" name="q">
+                       type="text" placeholder="Que recherchez-vous?" name="value">
                 <button class="button-circle is-primary" type="submit">
                     <i class="icon ion-ios-search"></i>
                 </button>
-                {% if app.request.query.get('q') %}
+                {% if app.request.query.get('value') %}
                     {% for label, messages in app.flashes(['success', 'warning']) %}
                         {% for message in messages %}
                             <div class="flash-{{ label }}">
-                                {{ message }} {{ app.request.query.get('q') }}
+                                {{ message }} {{ app.request.query.get('value') }}
                             </div>
                         {% endfor %}
                     {% endfor %}

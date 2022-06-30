@@ -63,7 +63,6 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/add", name="cart_add")
      */
-    // prodlist, class="my_form" action="{{ path('cart_add') }}"
     public function cartAdd(SessionInterface $session, ProductRepository $prod, Request $request): Response
     {
         $cart = $session->get("cart", []);
@@ -80,8 +79,6 @@ class CartController extends AbstractController
             ];
             $session->set("cart", $cart);
         }
-        dump($cart);
-
         $referer = $request->headers->get('referer');
         return new RedirectResponse($referer);
     }
@@ -105,9 +102,6 @@ class CartController extends AbstractController
             ];
             $session->set("cart", $cart);
         }
-//        dump($cart);
-//        $referer = $request->headers->get('referer');
-//        return new RedirectResponse($referer);
         return $this->json($cart,201,[]);
     }
 
@@ -132,7 +126,6 @@ class CartController extends AbstractController
             }
         }
         $session->set("cart", $cart);
-
         $referer = $request->headers->get('referer');
         return new RedirectResponse($referer);
     }
@@ -159,9 +152,7 @@ class CartController extends AbstractController
             }
         }
         $session->set("cart", $cart);
-
-        $referer = $request->headers->get('referer');
-        //return new RedirectResponse($referer);
+//        $referer = $request->headers->get('referer');
         return $this->json($cart,201,[]);
     }
 

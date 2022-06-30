@@ -77,9 +77,14 @@ class ProductRepository extends ServiceEntityRepository
     public function findBySearch($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.name Like :val')
+            ->join("p.subcat", "s")
+            ->join("s.category", "c")
+            ->andWhere('p.name Like :value')
             ->orWhere('p.description Like :value')
-            ->setParameter('val', '%'.$value.'%')
+            ->orWhere('s.name Like :value')
+            ->orWhere('c.name Like :value')
+
+//            ->setParameter('val', '%'.$value.'%')
             ->setParameter('value', '%'.$value.'%')
             ->orderBy('p.id', 'ASC')
             //    ->setMaxResults(10)

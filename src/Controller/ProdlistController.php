@@ -20,13 +20,14 @@ class ProdlistController extends AbstractController
     {
         $categories = $repocat->findAll();
         $list_promos = $repoprod->findByPromo();
-//        $list = $repoprod->findAll();
 
-        $list = $paginator->paginate(
-            $repoprod->findAll(),
-            $request->query->getInt('page', 1),
-            10
-        );
+        $list = $repoprod->findAll();
+
+//        $list = $paginator->paginate(
+//            $repoprod->findAll(),
+//            $request->query->getInt('page', 1),
+//            10
+//        );
 
         return $this->render('prodlist/index.html.twig', [
             'categories' => $categories,
@@ -42,14 +43,14 @@ class ProdlistController extends AbstractController
     {
         $categories = $repocat->findAll();
         $subcat = $repoprod->find($id);
+        $list = $subcat->getProducts();
         $list_promos = $repopromo->findByPromo();
-//        $list = $subcat->getProducts();
 
-        $list = $paginator->paginate(
-            $subcat->getProducts(),
-            $request->query->getInt('page', 1),
-            10
-        );
+//        $list = $paginator->paginate(
+//            $subcat->getProducts(),
+//            $request->query->getInt('page', 1),
+//            10
+//        );
 
         return $this->render('prodlist/index.html.twig', [
             'categories' => $categories,
@@ -79,12 +80,10 @@ class ProdlistController extends AbstractController
      */
     public function index4(ProductRepository $repo, CategoryRepository $cat, Request $request): Response
     {
-        $name = $request->get('q');
+        $value = $request->get('value');
         $list_promos = $repo->findByPromo();
-        //   dump($name);
-        //   dump($repo->findBySearch($name));
 
-        if ($repo->findBySearch($name)) {
+        if ($repo->findBySearch($value)) {
             $this->addFlash('success', 'Resultat de votre recherche pour: ');
         }
         else {
@@ -92,7 +91,7 @@ class ProdlistController extends AbstractController
         }
         return $this->render('prodlist/index.html.twig', [
             'categories'=> $cat->findAll(),
-            'list' => $repo->findBySearch($name),
+            'list' => $repo->findBySearch($value),
             'list_promos' => $list_promos
         ]);
     }
@@ -103,18 +102,10 @@ class ProdlistController extends AbstractController
     public function index5(CategoryRepository $repocat, ProductRepository $repoprod, PaginatorInterface $paginator, Request $request): Response
     {
         $categories = $repocat->findAll();
-//        $list = $repoprod->findBy(array('promo' => Null));
         $list_promos = $repoprod->findByPromo();
-
-//        $list = $paginator->paginate(
-//            $repoprod->findAll(),
-//            $request->query->getInt('page', 1),
-//            10
-//        );
 
         return $this->render('promo_list/index.html.twig', [
             'categories' => $categories,
-//            'list' => $list,
             'list_promos' => $list_promos
         ]);
     }

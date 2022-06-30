@@ -13,12 +13,6 @@ class BaseController extends AbstractController
     /**
      * @Route("/base", name="app_base")
      */
-//    public function index(): Response
-//    {
-//        return $this->render('base.html.twig', [
-//            'controller_name' => 'BaseController',
-//        ]);
-//    }
 
     public function index(CategoryRepository $repocat, ProductRepository $repoprod): Response
     {

@@ -37,7 +37,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SingupController extends AbstractController
 {
     /**
-     * @Route("/singup", name="singup")
+     * @Route("/contacts", name="contacts")
      */
     public function singup(ClientRepository $client, CategoryRepository $repocat, Request $request, EntityManagerInterface $em): Response
     {

@@ -66,19 +66,17 @@
                                     <div class="d-flex">
                                         <button class="btn btn-link px-2" style="height: 25px"
                                                 {# onclick="this.parentNode.querySelector('input[type=number]').stepDown()" #}
-                                                onclick="updateCountCart(this.form, {{ key }}, -1)"
-                                        >
+                                                onclick="updateCountCart(this.form, {{ key }}, -1)" >
                                             <i class="fas fa-minus"></i>
                                         </button>
-                                        <input type="number" class="form-control-xl" name="qty" id="qty[{{ key }}]"
+                                        <input type="number" class="form-control-xl ml-4" name="qty" id="qty[{{ key }}]"
                                                value="{{ row.qty }}" min="1" max="{{ row.stock }}"
                                                onchange="this.form.submit()"
                                                 {# onchange="updateProduct(this.form)" #}
                                                style="width: 40px; border: none">
                                         <button class="btn btn-link px-2" style="height: 25px"
                                                 {# onclick="this.parentNode.querySelector('input[type=number]').stepUp()" #}
-                                                onclick="updateCountCart(this.form, {{ key }}, 1)"
-                                        >
+                                                onclick="updateCountCart(this.form, {{ key }}, 1)" >
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
@@ -122,7 +120,7 @@
             <hr>
             <div class="container d-flex justify-content-center">
                 <h3 style="font-size: 3rem">Total ({{ quantity }} article{% if quantity >1 %}s{% endif %}) :
-                    <span style="font-weight: bold; font-size: 3rem" id="total">{{ total }} €</span>
+                    <span style="font-weight: bold; font-size: 3rem" id="total">{{ total |number_format(2, '.', ' ') }} €</span>
                 </h3>
             </div>
             <div class="container d-flex justify-content-center py-5">
