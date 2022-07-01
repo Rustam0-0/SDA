@@ -48,19 +48,15 @@ class SingupController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $task = $form->getData();
-            //dd($task);
 
             $cli = new Client();
             $cli->setName($task["name"]);
             $cli->setSurname($task["surname"]);
             $cli->setTel($task["tel"]);
             $cli->setAddress($task["address"]);
-                //$cli->setZipcode($task["zipcode"]);
-                //$cli->setCity($task["city"]);
             $cli->setZipcode("80000");
             $cli->setCity("Amiens");
             $cli->setDateAdd(new \DateTime());
-
             $cli->setUser($this->getUser());
 
             $em->persist($cli);
@@ -75,7 +71,6 @@ class SingupController extends AbstractController
         return $this->render('singup/index.html.twig', [
             'categories' => $categories,
             'form' => $form->createView()
-
         ]);
     }
 }

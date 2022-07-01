@@ -78,7 +78,6 @@ class ValidController extends AbstractController
             $ord->setShipCity($city);
             $ord->setShipTel($tel);
             $ord->setDate(new \DateTime());
-
             $ord->setPayer($payer);
 
             $em->persist($ord);
